@@ -41,7 +41,7 @@
       <input type="text" class="form-control bg-light" name="username" required>
       <div class="invalid-feedback">
         Please fill out this field.
-      </div>
+      </
     </div>
 
     <div class="input-group mb-2">
