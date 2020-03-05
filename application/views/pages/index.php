@@ -18,7 +18,7 @@
                 <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
                 <div class="card-header t">
                     <h5>Resource Title</h5>
-                    <div class="text-muted">
+                    <div class="text-muted"> hfgfgfgfgfgfg
                         <h6>Department of </h6>
                         <small>Course Title</small>
                     </div>
