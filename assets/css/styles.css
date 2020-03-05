@@ -25,7 +25,7 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-translucent-white-bg-25 {
+.translucent-white-bg-25 {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
@@ -50,26 +50,26 @@ translucent-white-bg-25 {
 }
 
 nav#generic-navbar div#nav-menu li.active {
-  border-bottom: 0.1rem solid #eee;
+  border-bottom: 0.1rem solid rgb(14, 138, 14) !important;
 }
 
 nav#generic-navbar .navbar-toggler:hover {
-  border-color: #fff !important;
+  border-color: rgb(255, 255, 255) !important;
   padding-right: 2rem;
   transition: padding 0.3s;
   transition-timing-function: ease;
 }
 
 nav#generic-navbar div#nav-menu li a:hover {
-  color: #fff !important;
-  border-bottom: 0.3rem solid #fff;
+  color: rgb(43, 201, 37) !important;
+  border-bottom: 0.3rem solid rgb(19, 109, 16);
   border-radius: 0.3rem;
   transition: 0.3s;
   transition-timing-function: linear;
 }
 
 nav#generic-navbar div#nav-menu li.active {
-  border-bottom: 0.1rem solid #eee;
+  border-bottom: 0.1rem solid rgb(19, 109, 16);
 }
 
 div#page-contents {
@@ -79,6 +79,7 @@ div#page-contents {
 
 main#content-wrap {
   padding-bottom: 27rem;
+  background: rgb(255, 255, 255);
 }
 
 footer#generic-footer {
@@ -89,21 +90,40 @@ footer#generic-footer {
 }
 
 /* index */
-section#index-info-section .info-header-top .info-icon {
-  font-size: 5rem;
+div .index-header {
+  background-image: url(../imgs/header.jpg);
+  background-size: cover;
 }
 
-section#index-contact-section .col-sm {
-  margin-top: 3rem;
+div .index-header .headline {
+ position: relative; 
+ padding-top: 19%;
+ padding-bottom: 30%;
 }
 
-.index-logo {
-  width: 70% !important;
+div .index-header .index-header-title {
+  color: rgb(181, 196, 184);
+  font-size: 7rem;
 }
 
-@media(max-width: 34em)
-{
-  .index-logo {
-    width: 100% !important;
+div .index-header .auth-container a {
+  font-size: 2rem;
+}
+
+div .index-header .auth-container a#login {
+  width: 15rem !important;
+}
+
+@media(max-width: 34em) {
+  div .index-header .index-header-title {
+    font-size: 3rem;
+  }
+
+  div .index-header .auth-container a {
+    font-size: 1.1rem;
+  }
+
+  div .index-header .auth-container a#login {
+    width: 10rem !important;
   }
 }

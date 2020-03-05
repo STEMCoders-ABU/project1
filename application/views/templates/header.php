@@ -12,9 +12,9 @@
     
     <title>
       <?php if (isset($page_title)): ?>
-        <?= $page_title . ' - Project Title'; ?>
+        <?= $page_title . ' - Campus Space'; ?>
       <?php else: ?>
-        <?= 'Project Title'; ?>
+        <?= 'Campus Space'; ?>
       <?php endif; ?>
     </title>
 
@@ -34,9 +34,9 @@
   	<!-- The Header -->
     <header class="sticky-top">
       <!-- Navbar -->
-      <nav class="navbar navbar-dark bg-primary text-white navbar-expand-sm px-3 shadow shadow-sm" id="generic-navbar">
+      <nav class="navbar navbar-dark bg-dark text-white navbar-expand-sm px-3 shadow shadow-sm" id="generic-navbar">
         <a class="navbar-brand" href="<?php echo site_url() ?>">
-        	<span class="fas fa-code mr-2"></span><h5 class="d-inline align-bottom title-font">PROJECT TITLE</h5>
+        	<h5 class="d-inline align-bottom title-font">Campus Space</h5>
         </a>
         
         <button class="navbar-toggler text-light border border-light" style="outline:none" type="button" data-toggle="collapse"
@@ -47,11 +47,12 @@
         <div id="nav-menu" class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav alex-font text-white">
             <li class="nav-item active"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">Link 1</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">Link 2</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">Link 3</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">Link 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">About</a></li>
           </ul>
+
+          <a href="<?= site_url(); ?>" class="btn btn-success btn-md-lg ml-md-4 mt-3 mt-md-0">Sign Out</a>
         </div>
       </nav>
     </header>
