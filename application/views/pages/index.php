@@ -11,7 +11,7 @@
 <div class="index-contents mt-5">
     <div class="jumbotron">
         <h4 class="text-center text-dark text-muted">Latest Resources</h4>
-        <hr class="bg-muted w-25">
+        <hr class="bg-dark w-25">
 
         <div class="card-deck mt-5">
             <div class="card">
