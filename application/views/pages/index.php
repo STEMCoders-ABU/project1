@@ -29,22 +29,9 @@
                         A short description of the resource...
                     </p>
                 </div>
-            </div><!-- /card -->
 
-            <div class="card">
-                <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
-                <div class="card-header t">
-                    <h5>Resource Title</h5>
-                    <div class="text-muted">
-                        <h6>Department of </h6>
-                        <small>Course Title</small>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="lead text-left alex-font">
-                        A short description of the resource...
-                    </p>
+                <div class="card-footer">
+                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
                 </div>
             </div><!-- /card -->
 
@@ -62,8 +49,37 @@
                     <p class="lead text-left alex-font">
                         A short description of the resource...
                     </p>
+                </div>
+
+                <div class="card-footer">
+                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
+                </div>
+            </div><!-- /card -->
+
+            <div class="card">
+                <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
+                <div class="card-header t">
+                    <h5>Resource Title</h5>
+                    <div class="text-muted">
+                        <h6>Department of </h6>
+                        <small>Course Title</small>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <p class="lead text-left alex-font">
+                        A short description of the resource...
+                    </p>
+                </div>
+
+                <div class="card-footer">
+                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
                 </div>
             </div><!-- /card -->
         </div>
+    </div>
+
+    <div class="mt-5">
+
     </div>
 </div>
