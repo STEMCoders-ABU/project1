@@ -9,7 +9,7 @@
 </div>
 
 <div class="index-contents mt-5">
-    <div class="jumbotron shadow shadow-sm">
+    <div class="jumbotron">
         <h4 class="text-center text-dark text-muted">Latest Resources</h4>
         <hr class="bg-muted w-25">
 
