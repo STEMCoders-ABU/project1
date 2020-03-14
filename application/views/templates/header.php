@@ -23,13 +23,6 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/all.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/fonts.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/styles.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/styles_sidebar.css') ?>">
-
-    <!-- Libraries CSS Files -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/nivo-slider.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/nivo-slider-theme.css') ?>">
-    <!-- Libraries CSS Files enhance nivo slides-->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/animate.min.css') ?>">
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -66,4 +59,4 @@
     
     <div id="page-contents">
       <!-- The Main Contents -->
-      <main id="content-wrap" class="container-fluid mt-2">
+      <main id="content-wrap" class="container-fluid mt-3">

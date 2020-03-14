@@ -6,7 +6,7 @@
 
 
 <div class="card shadow shadow-lg">
-  <div class="card-header text-white bg-dark">
+  <div class="card-header text-success bg-dark">
    Register an Account
     <hr class="mt-3 w-25 bg-success">
   </div>
@@ -41,7 +41,7 @@
       <input type="text" class="form-control bg-light" name="username" required>
       <div class="invalid-feedback">
         Please fill out this field.
-      </div>
+      </
     </div>
 
     <div class="input-group mb-2">
@@ -145,7 +145,7 @@
     </div>
     
     <div class="mx-auto">
-      <button type="submit" class="btn btn-outline-success">Send Message</button>
+      <button type="submit" class="btn btn-outline-dark">Send Message</button>
     </div>
   </form>
 
