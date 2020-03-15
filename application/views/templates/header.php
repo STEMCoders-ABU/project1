@@ -59,4 +59,4 @@
     
     <div id="page-contents">
       <!-- The Main Contents -->
-      <main id="content-wrap" class="container-fluid mt-3">
+      <main id="content-wrap" class="container-fluid">
