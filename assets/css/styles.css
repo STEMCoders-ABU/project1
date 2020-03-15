@@ -127,3 +127,115 @@ div .index-header .auth-container a#login {
     width: 10rem !important;
   }
 }
+/* styling for about page */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+#about-section {
+  padding: 0; 
+  margin: 0;
+  width: 100%;
+  min-height: 300px;
+  background-image: url('../imgs/bg-image.jpg');
+  background-size: contain;
+}
+.text-center{
+  padding: 5px 0;
+  color: azure;
+  text-decoration-style: solid;
+  text-decoration-color: seagreen;
+}
+.content-text{
+  background-color: rgba(0, 0, 0, 0.555);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: azure;
+}
+.content-text p{
+  margin: 0 50px;
+
+}
+.about-container{
+  width: 100%;
+}
+.about-container .logo-container{
+  width: 50%;
+  background-color: #333;
+  color: azure;
+  float: left;
+}
+.logo-container div{
+  margin: 0 auto;
+}
+
+.logo-container h5{
+  color: maroon;
+}
+.about-container img{
+  border: 3px solid whitesmoke;
+		border-radius: 50%;
+		-moz-border-radius:50%;
+		-webkit-border-radius:50%;
+    width:150px;
+    height: 150px;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);			/*adding box shadow*/
+}
+/*RESOURCES PAGE*/
+.res-container{
+  width: 100%;
+  min-height: 500px;
+  box-sizing: border-box;
+  background: seagreen;
+  color: #222;
+  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1em;
+}
+.wrapper{
+  box-shadow: 0 0 20px 0 rgba(16, 43, 9, 0.89);
+  width: 50%;
+  margin: 0 auto;
+}
+
+.res-info{
+  padding: 1em;
+  background: #c9e6ff;
+}
+.res-selection div{
+  float: left;
+}
+
+.res-selection form{
+  background: #333;
+  color:rgb(119, 108, 108);
+  padding: 20px;
+}
+
+.res-selection form select{
+  width: 60%;
+  height: 30px;
+  margin:5px;
+  padding: 0 20px;
+}
+
+.res-selection form button{
+  width: 25%;
+  padding: 10px 0;
+  position: relative;
+  margin: 0 auto;
+  right: 0px;
+  border: 0;
+  border-radius: 10px;
+  background: rgb(0, 143, 55);
+  color: #fff;
+}
+.res-selection form button:hover{
+  border: 2px solid azure;
+}
+.res-selection form label{
+  color: azure;
+
+}

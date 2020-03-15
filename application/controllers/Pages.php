@@ -6,4 +6,19 @@ class Pages extends CI_Controller
         $data['page_title'] = 'Home';
         load_view('pages/index', $data);
     }
+<<<<<<< Updated upstream
+=======
+
+    public function about()
+    {
+        $data['page_title'] = 'About';
+        load_view('pages/about', $data);
+    }
+
+    public function resources()
+    {
+        $data['page_title'] = 'Resources';
+        load_view('pages/resources', $data);
+    }
+>>>>>>> Stashed changes
 }
