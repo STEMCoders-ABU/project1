@@ -19,7 +19,7 @@
 		</div>
 		
 	</section>
-	 <section class="about-section-3">
+	 <section class="about-section-3" >
 		<div class="innersection-1">
 			<h2 class="text-center">MISSION</h2>
 			<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque, quo.</p>
