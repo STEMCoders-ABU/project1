@@ -2,7 +2,7 @@
     <div class="wrapper">
       
       <div class="res-info">
-          <h3>RESOURCES</h3>
+          <h3 class="text-center">RESOURCES</h3>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat consequuntur in dolor 
           esse aliquid expedita sapiente consectetur eum recusandae ea.
       </div>
@@ -29,19 +29,19 @@
             <option value="400">400</option>
           </select>
         </div>
-
-        <button type="submit" name="button">GO</button>
+     
         </form>
+        <a href="http://localhost/project1/" class="btn btn-success btn-lg shadow shadow-sm" id="get-resources"> GO </a>
        
       </div>
       <div class="res-MFV">
-        <div class="most-frequent-visted">
-          <h3>COMPUTER SCIENCE > 200 LEVEL > COSC201</h3>
-        </div>
-        <div class="most-frequently-visited">
-          <h3>COMPUTER ENGINEERING > 400 LEVEL > COEN412</h3>
-        </div>
-      </div>  
+        <h4>MOST FREQUENTLY VISITED:</h4>
+        <ul>
+          <li><a href = "http://localhost/project1/.." class="MFV"> COMPUTER SCIENCE< 100LEVEL < COSC101 </a> </li>
+          <li><a href = "http://localhost/project1/.." class= "MFV"> GENERAL STUDIES< 100LEVEL < GENS101 </a> </li>          
+          <li><a href = "http://localhost/project1/.." class="MFV"> COMPUTER SCIENCE< 200LEVEL < COSC201 </a> </li>
+          <li><a href = "http://localhost/project1/.." class= "MFV"> GENERAL STUDIES< 300LEVEL < GENS211 </a> </li>          
+        </ul>
     </div>
 
 </div>
