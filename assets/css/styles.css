@@ -127,6 +127,7 @@ div .index-header .auth-container a#login {
     width: 10rem !important;
   }
 }
+
 /*ABOUT PAGE*/
 #about-container{
   padding: 0; 
@@ -204,6 +205,7 @@ div .index-header .auth-container a#login {
     float: none;
   }
 }
+
 /*RESOURCES PAGE*/
 .res-container{
   width: 100%;
