@@ -12,9 +12,16 @@ class Pages extends CI_Controller
         $data['page_title'] = 'About';
         load_view('pages/about', $data);
     }
+
     public function resources()
     {
         $data['page_title'] = 'Resources';
         load_view('pages/resources', $data);
+    }
+
+    public function login()
+    {
+        $data['page_title'] = 'Login';
+        load_view('pages/login', $data);
     }
 }
