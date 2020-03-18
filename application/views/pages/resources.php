@@ -1,35 +1,55 @@
 <div class="res-container">   
     <div class="wrapper">
-      
+      <div class="row">
       <div class="res-info">
           <h3 class="text-center">RESOURCES</h3>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat consequuntur in dolor 
           esse aliquid expedita sapiente consectetur eum recusandae ea.
       </div>
       
-      <div class="res-selection">
-        <form action="#">
-        <div>   
-          <label for="department"> DEPARTMENT:</label>
+      <div class="res-selection ">
+      <div class="row">
+<div class="col-2 col-m-2 ">
+<label for="faculty"> FACULTY:</label>
+          <select name="faculty">
+            <option disabled selected>--SELECT--</option>
+            <option value="physical-sci">PHYSICAL SCIENCES</option>
+            <option value="life-sci">LIFE SCIENCES</option>
+          </select>
+</div>
+</div>
+
+<div class="row">
+<div class="col-2 col-m-2 ">
+<label for="department"> DEPARTMENT:</label>
           <select name="department">
             <option disabled selected>--SELECT--</option>
             <option value="computer-science">COMPUTER SCIENCE</option>
             <option value="mathematics">MATHEMATICS</option>
             <option value="statistics">STATISTICS</option>
             <option value="biology">BIOLOGY</option>
-          </select>
-        </div>
-        <div>
-          <label for="level"> LEVEL:</label> 
+          </select>    
+</div>
+</div>
+
+<div class="row">
+<div class="col-2 col-m-2 ">
+<label for="level"> LEVEL:</label> 
           <select name="level">
             <option disabled selected>--SELECT--</option>
             <option value="100">100</option>
             <option value="200">200</option>
             <option value="300">300</option>
             <option value="400">400</option>
-          </select>
-        </div>
+          </select>  
+</div>
+</div>
+
+
      
+
+     
+        </div>
         </form>
         <a href="http://localhost/project1/" class="btn btn-success btn-lg shadow shadow-sm" id="get-resources"> GO </a>
        
