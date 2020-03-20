@@ -53,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['video_comments'] = 'resources_page/video_comments';
 $route['comments'] = 'resources_page/comments';
 $route['resources'] = 'resources_page/resources';
+$route['resources'] = 'resources/index';
 $route['register'] = 'users/register';
 $route['login'] = 'users/login';
 $route['users/(:any)'] = 'users/$1';

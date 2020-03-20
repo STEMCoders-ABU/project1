@@ -1,15 +1,5 @@
-<!--div class="index-header m-n3 mb-5">
-    <div class="translucent-bg-50 text-center headline">
-        <h1 class="index-header-title">Campus Space</h1>
-        <div class="mt-5 auth-container">
-            <a href="<?= site_url(); ?>" class="btn btn-outline-light btn-lg mr-2 shadow shadow-sm" id="login">Sign In</a>
-            <a href="<?= site_url(); ?>" class="btn btn-success btn-lg shadow shadow-sm" id="register">Create Account</a>
-        </div>
-    </div>
-</div --> 
-
- <!-- Start Slider Area -->
- <div id="home" class="slider-area">
+<!-- Start Slider Area -->
+ <div id="home" class="slider-area m-n5">
     <div class="bend niceties preview-2">
       <div id="ensign-nivoslider" class="slides">
         <img src="<?php echo base_url('assets/imgs/slider/slider1.jpg'); ?>"  title="#slider-direction-1" />
@@ -96,7 +86,7 @@
   <!-- End Slider Area -->
 
 
-<div class="index-contents mt-5">
+<div class="index-contents mt-5 ml-n3 mr-n3">
     <div class="jumbotron">
         <h4 class="text-center text-dark text-muted">Latest Resources</h4>
         <hr class="bg-muted w-25">
