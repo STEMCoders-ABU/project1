@@ -12,4 +12,10 @@ class resources_page extends CI_Controller
         $data['page_title'] = 'comments';
         load_view('resources_page/comments', $data);
     }
+
+    public function video_comments()
+    {
+        $data['page_title'] = 'comments';
+        load_view('resources_page/video_comments', $data);
+    }
 }

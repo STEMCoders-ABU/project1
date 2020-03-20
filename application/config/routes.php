@@ -50,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+$route['video_comments'] = 'resources_page/video_comments';
 $route['comments'] = 'resources_page/comments';
 $route['resources'] = 'resources_page/resources';
 $route['register'] = 'users/register';

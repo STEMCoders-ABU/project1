@@ -273,4 +273,11 @@ div .index-header .auth-container a#login {
   height: 30px;
 }
 
+/* resource comments section */
+
+.far .fa-comments{
+	font-size: 4rem;
+	color: #08a1a1;
+}
+ 
 
