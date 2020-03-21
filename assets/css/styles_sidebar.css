@@ -1,18 +1,31 @@
 
 
 .wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
+  display: inline-block;
+
+
+
+  padding: 15px;
+
+  width: 100%;
+}
+#main-content {
+
+  margin-left: 250px;
+
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    /*min-width: 100vh; */
+  width: 250px;
+
+  height: 100%;
+
+  position: fixed;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
+    
+    
 }
 
 #sidebar.active {
@@ -59,8 +72,18 @@ a, a:hover, a:focus{
 
 
 #sidebar .sidebar-header{
+  padding: 20;
+ 
+  height: 20px;
+
+}
+#sidebar .sidebar-header2{
   padding: 20px;
-  background: #6d7fcc;
+
+  color: #fff;
+}
+#sidebar{
+
 }
 #sidebar ul.components{
   padding: 20px 0px;
