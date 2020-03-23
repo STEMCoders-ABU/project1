@@ -1,33 +1,66 @@
-
+<div class="wrapper">
 
   <!-- sidebar design -->
-        <nav id="sidebar" style="position:fixed ">
-          
-          
-            <div class="sidebar-header2 navbar-dark bg-dark">
-                <center><h7>Department :</h7><center> <h7 id="department_choosen">Computer Engineering</h7>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Campus Spaces</h3>
             </div>
-           
          <ul class="list-unstyled components">
-           <div>
-                    <li id="b1"><a href="#"><i class="fa fa-book">  Cosc 101</i></a></li>
-                    <li id="b2"><a href="#"><i class="fa fa-book">  Physics 131</i></a></li>
-                    <li id="b3"><a href="#"><i class="fa fa-book">  Maths 101</i></a></li>
-                    <li id="b4"><a href="#"><i class="fa fa-book">  Maths 105</i></a></li>
-                    <li id="b5"><a href="#"><i class="fa fa-book">  Gens 101</i></a></li>
-                    <li id="b6"><a href="#"><i class="fa fa-book">  Gens 103</i></a></li>
-                    <li id="b7"><a href="#"><i class="fa fa-book">  Physics 111</i></a></li>
-                    <li id="b8"><a href="#"><i class="fa fa-book">  Chem 101</i></a></li>
-              
-                   </div>
-          
-         <ul>
-           
+            <p>RESOURCES AVALIABLE</p>
+            <li class="active">
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Materials</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">cosc101</a>
+                    </li>
+                    <li>
+                        <a href="#">cosc102</a>
+                    </li>
+                    <li>
+                        <a href="#">cosc211</a>
+                    </li>
+                    <li>
+                        <a href="#">cosc212</a>
+                    </li>
+                </ul> 
+            </li>
+            
+            <li>
+                <a href="#">handout</a>
+            </li>
+            
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Textbooks</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">textbk1</a>
+                    </li>
+                    <li>
+                        <a href="#">textbk2</a>
+                    </li>
+                    <li>
+                        <a href="#">textbk3</a>
+                    </li>
+                    <li>
+                        <a href="#">textbk4</a>
+                    </li>
+                </ul> 
+            </li>
+            
+            <li>
+                <a href="#">Videos</a>
+            </li>
+            <li>
+                <a href="#">Documents</a>
+            </li>
+        </ul>
+        
+            
         </nav>
      <!-- end of sidebar design -->   
-     <div class="wrapper">
-    
-        <div class="container">
+
+
+        <div id="content" class="container">
           <!-- toggle nav -->
              <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">  
@@ -48,7 +81,27 @@
 
             <div class="col-sm-8">
 
-              
+              <div class="card">
+                <div class="card-body shadow shadow-sm">
+                      <div class="input-group mt-2 mb-2">
+                          <div class="input-group-prepend w-75">
+                              <span class="input-group-text">categories</span>   
+                                  <select class="form-control bg-light" name="faculty" required>
+                                      <option value="" selected="selected">-select--</option> 
+                                      <option value="ADM">Materials</option>
+                                      <option value="AGR">Documents</option>
+                                      <option value="ART"> Videos</option>
+                                </select>                          
+                          </div> 
+                    </div>
+
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light" name="search" placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Go</button>
+                        </div>
+                 </div>
+              </div>
             </div>
             
               
@@ -56,26 +109,12 @@
           
          </div>
          <!-- end search box -->
-        
-         <div class="row">
-          <div class="col-lg-12">
-            
-            <ol class="breadcrumb">
-              <li><p> <i class="fa fa-home"></i><a href="#">Home /  </a> </p></li>
-              <li><p> / <i class="fa fa-address-book"></i><a href="#">Materials /</p></li>
-              <li><p> / <i class="fa fa-book"></i><a href="#">Documents /</p></li>
-              <li><p> / <i class="fa fa-video"></i><a href="">Videos </p></li>
-            </ol>
-            
-          </div>
-          
-        </div>
-        <center ><i class="fa fa-book"><b id="course_name"> Computer Engineering</b></i></center>
-        <hr class="bg-dark w-75 mt-3 mb-3">
+
+
          <!-- row for frequently visited and search displayed-->
          <div class="row">
           <div class="col-sm-11 mx-auto">
-           
+            <hr class="bg-dark w-75 mt-3 mb-3">
 
 
             <!-- search found/not found display box -->

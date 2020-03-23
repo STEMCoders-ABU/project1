@@ -19,11 +19,4 @@ class Resources extends CI_Controller
         $data['page_title'] = 'Resources';
         load_view('resources/video_comments', $data);
     }
-    
-    public function test()
-    {
-        $data['page_title'] = 'Resources';
-        load_view('resources/test', $data);
-    }
-
 }
