@@ -53,10 +53,10 @@
                  
         <div id="nav-menu" class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav alex-font text-white">
-            <li class="nav-item active"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">Resources</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo site_url() ?>">About</a></li>
+            <li class="nav-item <?php if ($page_title == 'Home') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
+            <li class="nav-item <?php if ($page_title == 'Resources') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('resources') ?>">Resources</a></li>
+            <li class="nav-item <?php if ($page_title == 'Contact') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('contact') ?>">Contact</a></li>
+            <li class="nav-item <?php if ($page_title == 'About') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('about') ?>">About</a></li>
           </ul>
 
           <a href="<?= site_url(); ?>" class="btn btn-success btn-md-lg ml-md-4 mt-3 mt-md-0">Sign Out</a>
