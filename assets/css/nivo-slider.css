@@ -28,9 +28,22 @@
 .nivoSlider {
 	position:relative;
 	width:100%;
-	height:auto;
+	height: 70vh !important;
 	overflow: hidden;
 }
+
+@media(max-width: 34em) {
+    .nivoSlider {
+        height: 50vh !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1169px) {
+    .nivoSlider {
+        height: 50vh !important;
+    }
+}
+
 .nivoSlider img {
 	position:absolute;
 	top:0px;

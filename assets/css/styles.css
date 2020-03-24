@@ -86,130 +86,73 @@ footer#generic-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /*height: 15rem;*/
+  height: 5rem;
 }
 
 /* index */
-div .index-header {
-  background-image: url(../imgs/header.jpg);
-  background-size: cover;
-}
-
-div .index-header .headline {
- position: relative; 
- padding-top: 19%;
- padding-bottom: 30%;
-}
-
-div .index-header .index-header-title {
-  color: rgb(181, 196, 184);
-  font-size: 7rem;
-}
-
-div .index-header .auth-container a {
-  font-size: 2rem;
-}
-
-div .index-header .auth-container a#login {
-  width: 15rem !important;
-}
-
-@media(max-width: 34em) {
-  div .index-header .index-header-title {
-    font-size: 3rem;
-  }
-
-  div .index-header .auth-container a {
-    font-size: 1.1rem;
-  }
-
-  div .index-header .auth-container a#login {
-    width: 10rem !important;
-  }
+div .index-contents {
+  margin-top: 3rem;
 }
 
 /*SECTION A*/
 #section-a {
-  padding: 2em 1em 1em;
+  margin-top: 3rem;
+  padding: 3rem;
   width: 100%;
   background-color: seagreen;
   min-height: 300px;
   overflow: auto;
 }
-#section-a ul {
-	list-style: none; /*no bullet points*/
-	margin: 0;
- 	justify-content: space-around; /*space btwn elements*/
-}
-#section-a li {
-	margin-bottom: 1em;
-	background: #fff;
-	color: #333;
-}
+
 #section-a .card{
-  box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.719), 0 16px 30px 0 rgba(0, 0, 0, 0.603);
+  box-shadow: 0 12px 20px 0 rgba(41, 41, 41, 0.719), 0 16px 30px 0 rgba(44, 44, 44, 0.603);
   text-align: center;
-  width: 30%;
-  min-height: 500px;
-  float: left;
-  margin: 8px;
-
 }
 
-#section-a .card-content {
-  padding: 1em;
-  margin: 0 1em;
-  
-}
 #section-a .card img{
-    display: block;
-    width: 100%; /*100% of container*/
-    height: auto;
+   height: 50%;
 }
+
 #section-a .card-btn{
-  display: inline-block;
-	background: #333;
-	color: #fff;
-	text-decoration: none;
-	padding: 1em 2em;
-	border: 1px solid #666;
-  margin: 0.5em 0;
-  width: 50%;
-  align-self: center;
+  margin-top: 3rem;
+  width: 80%;
+}
+
+@media(max-width: 34em) {
+  #section-a {
+    padding: 1.5rem;
+  }
 }
 
 /*SECTION B*/
-#section-b{
-  overflow: auto;
+#section-b {
+  padding: 4rem;
+  margin-bottom: 6rem !important;
 }
-#section-b > div{
-  float: left;
-  width: 50%;
-  min-height: 400px;
-  background-color: rgba(0, 0, 0, 0.719);
-}
-.subsection1{
 
+@media(max-width: 34em) {
+  #section-b {
+    padding: 3rem;
+  }
 }
+
 /*SECTION C*/
-.news-img{
-  width: 30%;
-  height: inherit;
-  float: left;
-  background-color: khaki;
+#section-c .card {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem !important;
 }
 
-#section-c .news-img img{
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  width: 50px;
-  height: 50px;
+@media(max-width: 34em) {
+  #section-c #sub-header {
+    font-size: 0.8rem;
+  }
+
+  #section-c .card {
+    margin: 0.9rem !important;
+  }
 }
-.news-text{
-  width: 70%;
-  float: right ;
-}
+
 /*ABOUT PAGE*/
 #about-container{
   padding: 0; 
