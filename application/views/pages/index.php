@@ -1,10 +1,10 @@
 <!-- Start Slider Area -->
  <div id="home" class="slider-area m-n5">
-    <div class="bend niceties preview-2">
+ <div class="bend niceties preview-2">
       <div id="ensign-nivoslider" class="slides">
-        <img src="<?php echo base_url('assets/imgs/slider/slider1.jpg'); ?>"  title="#slider-direction-1" />
-        <img src="<?php echo base_url('assets/imgs/slider/slider2.jpg'); ?>" title="#slider-direction-2" />
-        <img src="<?php echo base_url('assets/imgs/slider/slider3.jpg'); ?>" title="#slider-direction-3" />
+        <img src="<?php echo base_url('assets/imgs/index/slider1.jpeg'); ?>"  title="#slider-direction-1" />
+        <img src="<?php echo base_url('assets/imgs/index/slider2.jpeg'); ?>" title="#slider-direction-2" />
+        <img src="<?php echo base_url('assets/imgs/index/slider3.jpeg'); ?>" title="#slider-direction-3" />
       </div>
 
       <!-- direction 1 -->
@@ -85,148 +85,86 @@
   </div>
   <!-- End Slider Area -->
 
-
 <div class="index-contents mt-5 ml-n3 mr-n3">
-    <div class="jumbotron">
-        <h4 class="text-center text-dark text-muted">Latest Resources</h4>
-        <hr class="bg-muted w-25">
-
-        <div class="card-deck mt-5">
-            <div class="card">
-                <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
-                <div class="card-header t">
-                    <h5>Resource Title</h5>
-                    <div class="text-muted">
-                        <h6>Department of </h6>
-                        <small>Course Title</small>
-                    </div>
+    <!--SECTION A .. CARDS-->
+   <section id="section-a" class="grid">
+        <ul>
+            <li>
+                <div class="card">
+                    <img src="assets/imgs/index/res-card.jpeg">
+                    <div class="card-content"></div>
+                    <h4 class="card-title">RESOURCES</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, assumenda!</p>
+    
+                    <a href="#" class="card-btn">GO</a>
                 </div>
-
-                <div class="card-body">
-                    <p class="lead text-left alex-font">
-                        A short description of the resource...
-                    </p>
+            </li>
+            <li>
+                <div class="card">
+                    <img src="assets/imgs/index/opp-card.jpg">
+                    <div class="card-content"></div>
+                    <h4 class="card-title">LATEST OPPORTUNITIES</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, in?</p>
+    
+                    <a href="#section-c" class="card-btn">GO </a>
                 </div>
-
-                <div class="card-footer">
-                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
+            </li>
+            <li>
+                <div class="card">
+                    <img src="assets/imgs/index/gp-card.jpg">
+                    <div class="card-content"></div>
+                    <h4 class="card-title">GP CALCULATOR</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, eos!</p>
+    
+                    <a href="#" class="card-btn">GO</a>
                 </div>
-            </div><!-- /card -->
-
-            <div class="card">
-                <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
-                <div class="card-header t">
-                    <h5>Resource Title</h5>
-                    <div class="text-muted">
-                        <h6>Department of </h6>
-                        <small>Course Title</small>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="lead text-left alex-font">
-                        A short description of the resource...
-                    </p>
-                </div>
-
-                <div class="card-footer">
-                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
-                </div>
-            </div><!-- /card -->
-
-            <div class="card">
-                <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
-                <div class="card-header t">
-                    <h5>Resource Title</h5>
-                    <div class="text-muted">
-                        <h6>Department of </h6>
-                        <small>Course Title</small>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="lead text-left alex-font">
-                        A short description of the resource...
-                    </p>
-                </div>
-
-                <div class="card-footer">
-                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
-                </div>
-            </div><!-- /card -->
-        </div><!-- /card-deck -->
-
-        <div class="card-deck mt-md-5">
-            <div class="card">
-                <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
-                <div class="card-header t">
-                    <h5>Resource Title</h5>
-                    <div class="text-muted">
-                        <h6>Department of </h6>
-                        <small>Course Title</small>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="lead text-left alex-font">
-                        A short description of the resource...
-                    </p>
-                </div>
-
-                <div class="card-footer">
-                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
-                </div>
-            </div><!-- /card -->
-
-            <div class="card">
-                <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
-                <div class="card-header t">
-                    <h5>Resource Title</h5>
-                    <div class="text-muted">
-                        <h6>Department of </h6>
-                        <small>Course Title</small>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="lead text-left alex-font">
-                        A short description of the resource...
-                    </p>
-                </div>
-
-                <div class="card-footer">
-                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
-                </div>
-            </div><!-- /card -->
-
-            <div class="card">
-                <img class="card-img-top img-fluid" alt="Resource Cover Photo" src="<?= base_url('assets/imgs/header.jpg'); ?>">
-                <div class="card-header t">
-                    <h5>Resource Title</h5>
-                    <div class="text-muted">
-                        <h6>Department of </h6>
-                        <small>Course Title</small>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <p class="lead text-left alex-font">
-                        A short description of the resource...
-                    </p>
-                </div>
-
-                <div class="card-footer">
-                    <a href="<?= site_url(); ?>" class="btn btn-success btn-block">Explore</a>
-                </div>
-            </div><!-- /card -->
-        </div><!-- /card-deck -->
-
-        <div class="mt-5">
-            <a href="<?= site_url(); ?>" class="btn btn-dark stretch-on-hover">Show More <span class="fas fa-arrow-right ml-3"></a></a>
+            </li>
+        </ul>
+   </section>
+    <!--SECTION B .. INFO-->
+    <section id="section-b" class="grid">
+        <div class="subsection1">
+            <h2>WHAT DIFFERENCE DOES IT MAKE?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam consectetur natus quibusdam excepturi facere ducimus?</p>
         </div>
-    </div>
+        <div class="subsection2"> <img src="assets/imgs/index/reading.jpg"> </div>
+       
 
-    <div class="mt-5">
-
-    </div>
+    </section>
+     <!--SECTION C .. OPPORTUNITIES-->
+   <section id="section-c" class="grid">
+       <h2>LATEST OPPORTUNITIES</h2>
+       <p>LOCAL SCHOLARSHIPS| ABROAD SCHOLARSHIPS| SEMINARS| WORKSHOPS| GRANTS| COMPETITIONS</p>
+        <div class="jumbotron">
+            <div class="news-img">
+                <img src="assets/imgs/index/gp-card.jpg">
+            </div>
+            <div class="news-text">
+            <h3 class="news-title">NEWS TITLE</h3>
+           
+             <a href="#"> link to official site</a>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="news-img">
+                <img src="assets/imgs/index/gp-card.jpg">
+            </div>
+            <div class="news-text">
+            <h3 class="news-title">NEWS TITLE</h3>
+           
+             <a href="#"> link to official site</a>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="news-img">
+                <img src="assets/imgs/index/gp-card.jpg">
+            </div>
+            <div class="news-text">
+            <h3 class="news-title">NEWS TITLE</h3>
+           
+             <a href="#"> link to official site</a>
+            </div>
+        </div>
+   </section>
+ 
 </div>
