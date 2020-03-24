@@ -1,77 +1,72 @@
-<div class="wrapper">
+<div class="wrapper ml-n3 mr-n3">
 
   <!-- sidebar design -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Campus Spaces</h3>
-            </div>
-         <ul class="list-unstyled components">
-            <p>RESOURCES AVALIABLE</p>
-            <li class="active">
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Materials</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">cosc101</a>
-                    </li>
-                    <li>
-                        <a href="#">cosc102</a>
-                    </li>
-                    <li>
-                        <a href="#">cosc211</a>
-                    </li>
-                    <li>
-                        <a href="#">cosc212</a>
-                    </li>
-                </ul> 
-            </li>
-            
-            <li>
-                <a href="#">handout</a>
-            </li>
-            
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Textbooks</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">textbk1</a>
-                    </li>
-                    <li>
-                        <a href="#">textbk2</a>
-                    </li>
-                    <li>
-                        <a href="#">textbk3</a>
-                    </li>
-                    <li>
-                        <a href="#">textbk4</a>
-                    </li>
-                </ul> 
-            </li>
-            
-            <li>
-                <a href="#">Videos</a>
-            </li>
-            <li>
-                <a href="#">Documents</a>
-            </li>
-        </ul>
-        
-            
-        </nav>
-     <!-- end of sidebar design -->   
+  <nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>Resources</h3>
+    </div>
+    <ul class="list-unstyled components">
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Materials</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+              <li>
+                  <a href="#">cosc101</a>
+              </li>
+              <li>
+                  <a href="#">cosc102</a>
+              </li>
+              <li>
+                  <a href="#">cosc211</a>
+              </li>
+              <li>
+                  <a href="#">cosc212</a>
+              </li>
+          </ul> 
+      </li>
+      
+      <li>
+          <a href="#">handout</a>
+      </li>
+      
+      <li>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Textbooks</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li>
+                  <a href="#">textbk1</a>
+              </li>
+              <li>
+                  <a href="#">textbk2</a>
+              </li>
+              <li>
+                  <a href="#">textbk3</a>
+              </li>
+              <li>
+                  <a href="#">textbk4</a>
+              </li>
+          </ul> 
+      </li>
+      
+      <li>
+          <a href="#">Videos</a>
+      </li>
+      <li>
+          <a href="#">Documents</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- end of sidebar design -->   
 
 
-        <div id="content" class="container">
-          <!-- toggle nav -->
-             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">  
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fa fa-align-left"></i> <span>toggle sidebar</span>
-                    </button>
-
-                 </div>
-               </nav>
-
-           <!-- end of toggle nav -->
+  <div id="content" class="container">
+    <!-- toggle nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">  
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="fa fa-align-left mr-2"></i> <span>Menu</span>
+        </button>
+      </div>
+    </nav>
+      <!-- end of toggle nav -->
 
            <!-- entire page contents container --> 
             <div class="container">
