@@ -38,6 +38,12 @@
     }
 }
 
+@media (min-width: 992px) and (max-width: 1169px) {
+    .nivoSlider {
+        height: 50vh !important;
+    }
+}
+
 .nivoSlider img {
 	position:absolute;
 	top:0px;

@@ -86,7 +86,7 @@ footer#generic-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /*height: 15rem;*/
+  height: 5rem;
 }
 
 /* index */
@@ -97,7 +97,7 @@ div .index-contents {
 /*SECTION A*/
 #section-a {
   margin-top: 3rem;
-  padding: 2em 1em 1em;
+  padding: 3rem;
   width: 100%;
   background-color: seagreen;
   min-height: 300px;
@@ -119,45 +119,40 @@ div .index-contents {
 }
 
 @media(max-width: 34em) {
-  #section-a .card-btn{
-    position: relative;
-    
-    width: 70%;
+  #section-a {
+    padding: 1.5rem;
   }
 }
 
 /*SECTION B*/
-#section-b{
-  overflow: auto;
+#section-b {
+  padding: 4rem;
+  margin-bottom: 6rem !important;
 }
-#section-b > div{
-  float: left;
-  width: 50%;
-  min-height: 400px;
-  background-color: rgba(0, 0, 0, 0.719);
-}
-.subsection1{
 
+@media(max-width: 34em) {
+  #section-b {
+    padding: 3rem;
+  }
 }
+
 /*SECTION C*/
-.news-img{
-  width: 30%;
-  height: inherit;
-  float: left;
-  background-color: khaki;
+#section-c .card {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem !important;
 }
 
-#section-c .news-img img{
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  width: 50px;
-  height: 50px;
+@media(max-width: 34em) {
+  #section-c #sub-header {
+    font-size: 0.8rem;
+  }
+
+  #section-c .card {
+    margin: 0.9rem !important;
+  }
 }
-.news-text{
-  width: 70%;
-  float: right ;
-}
+
 /*ABOUT PAGE*/
 #about-container{
   padding: 0; 
