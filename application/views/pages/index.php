@@ -86,41 +86,38 @@
   <!-- End Slider Area -->
 
 <div class="index-contents mt-5 ml-n3 mr-n3">
-    <!--SECTION A .. CARDS-->
-   <section id="section-a" class="grid">
-        <ul>
-            <li>
-                <div class="card">
-                    <img src="assets/imgs/index/res-card.jpeg">
-                    <div class="card-content"></div>
-                    <h4 class="card-title">RESOURCES</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, assumenda!</p>
-    
-                    <a href="#" class="card-btn">GO</a>
-                </div>
-            </li>
-            <li>
-                <div class="card">
-                    <img src="assets/imgs/index/opp-card.jpg">
-                    <div class="card-content"></div>
-                    <h4 class="card-title">LATEST OPPORTUNITIES</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, in?</p>
-    
-                    <a href="#section-c" class="card-btn">GO </a>
-                </div>
-            </li>
-            <li>
-                <div class="card">
-                    <img src="assets/imgs/index/gp-card.jpg">
-                    <div class="card-content"></div>
-                    <h4 class="card-title">GP CALCULATOR</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, eos!</p>
-    
-                    <a href="#" class="card-btn">GO</a>
-                </div>
-            </li>
-        </ul>
-   </section>
+
+    <section id="section-a">
+      <div class="card-deck">
+        <div class="card">
+          <img class="img-fluid card-img-top" src="<?= base_url('assets/imgs/index/res-card.jpeg') ?>">
+          <div class="card-body">
+            <h4 class="card-title">RESOURCES</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, assumenda!</p>
+            <a href="#" class="btn btn-dark card-btn card-link">Explore</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="img-fluid card-img-top" src="<?= base_url('assets/imgs/index/opp-card.jpg') ?>">
+          <div class="card-body">
+            <h4 class="card-title">LATEST OPPORTUNITIES</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, assumenda!</p>
+            <a href="#" class="btn btn-dark card-btn card-link">Explore</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="img-fluid card-img-top" src="<?= base_url('assets/imgs/index/gp-card.jpg') ?>">
+          <div class="card-body">
+            <h4 class="card-title">GP CALCULATOR</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, assumenda!</p>
+            <a href="#" class="btn btn-dark card-btn card-link">Explore</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!--SECTION B .. INFO-->
     <section id="section-b" class="grid">
         <div class="subsection1">
