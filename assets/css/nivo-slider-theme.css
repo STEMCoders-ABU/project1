@@ -126,7 +126,7 @@ Supports Thumbs: true
 
 @media (min-width: 1400px) and (max-width:1920px) {
   .slider-content {
-    padding: 340px 0;
+    padding: 140px 0;
   }
 }
 
@@ -134,7 +134,7 @@ Supports Thumbs: true
 
 @media (min-width: 992px) and (max-width: 1169px) {
   .slider-content {
-    padding: 144px 0;
+    padding: 44px 0;
   }
 }
 
@@ -142,7 +142,7 @@ Supports Thumbs: true
 
 @media (min-width: 768px) and (max-width: 991px) {
   .slider-content {
-    padding: 93px 0;
+    padding: 193px 0;
   }
   .layer-1-2 h1 {
     font-size: 22px;
@@ -160,7 +160,7 @@ Supports Thumbs: true
     display: none;
   }
   .slider-content {
-    padding: 46px 0px;
+    padding: 100px 0px;
   }
   .layer-1-2 {
     margin: 10px 0;
