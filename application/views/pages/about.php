@@ -8,13 +8,13 @@
 	</section>
 	<section class="about-section-2">
 		<div class="logo-wrapper">
-			<img class="circular-img" src="assets/imgs/stemlogo.jpg" > 
+			<img src="assets/imgs/stemlogo.jpg" > 
 			<p>STEM CODERS CLUB<p>
 	
 	
 		</div>
 		<div class="logo-wrapper">
-			<img class="circular-img" src="assets/imgs/abu-logo.png">
+			<img src="assets/imgs/abu-logo.png">
 			<p>AHMADU BELLO UNIVERSITY</p> 
 		</div>
 		
