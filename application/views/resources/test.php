@@ -1,6 +1,6 @@
 <div class="resources-siderbar-wrapper ml-n3 mr-n3">
     <!-- Sidebar -->
-    <nav id="resources-sidebar">
+    <nav id="resources-sidebar" class="shadow shadow-lg">
         <div class="resources-sidebar-header">
             <h3>Resources Menu</h3>
         </div>
@@ -51,12 +51,43 @@
 
     <!-- Contents -->
     <div id="resources-content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white">
-            <div class="container-fluid">
-                <button type="button" id="resources-sidebar-collapse" class="btn btn-info ml-n4">
-                    <span class="fas fa-align-left mr-2"></span>
-                    <span>Menu</span>
+        <button type="button" id="resources-sidebar-collapse" class="btn btn-light shadow shadow-lg">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Main Contents -->
+        <div class="mt-5" id="resources-main-contents">
+            
+            <!-- Search Bar -->
+            <div class="search-bar card jumbotron mx-auto p-5">
+                <?= form_open('resources/search', ''); ?>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text category">Category</span>                          
+                        </div> 
+                        <select class="form-control bg-light" name="category" required> 
+                            <option value="materials">Materials</option>
+                            <option value="documents">Documents</option>
+                            <option value="videos">Videos</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mt-3"> 
+                        <select class="form-control bg-light" name="category" required> 
+                            <option value="materials">Materials</option>
+                            <option value="documents">Documents</option>
+                            <option value="videos">Videos</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-success">
+                                <span class="fas fa-search mr-1"></span> Search
+                            </button>                          
+                        </div>
+                    </div>
+                </form>
             </div>
-        </nav>
+        </div>
     </div>
 </div>
