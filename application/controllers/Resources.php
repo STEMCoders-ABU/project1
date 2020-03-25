@@ -5,7 +5,7 @@ class Resources extends CI_Controller
     public function index()
     {
         $data['page_title'] = 'Resources';
-        load_view('resources/index', $data);
+        load_view('resources/resources', $data);
     }
 
     public function comments()
@@ -18,11 +18,5 @@ class Resources extends CI_Controller
     {
         $data['page_title'] = 'Resources';
         load_view('resources/video_comments', $data);
-    }
-
-    public function test()
-    {
-        $data['page_title'] = 'Resources';
-        load_view('resources/test', $data);
     }
 }

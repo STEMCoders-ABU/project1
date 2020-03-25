@@ -1,6 +1,6 @@
     </main>
 
-    <footer class="bg-dark text-white container-fluid pt-4 mt-5" id="generic-footer">
+    <footer class="bg-dark text-white container-fluid pt-4" id="generic-footer">
         <h4 class="mb-n5 alegreya-r">&copy;<?= date('Y'); ?> <span>STEM Coders Club, ABU Zaria</span></h4>
     </footer>
 </div>

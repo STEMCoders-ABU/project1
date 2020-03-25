@@ -88,7 +88,7 @@ nav#resources-sidebar ul li .active > a, a[aria-expanded="true"] {
 nav#resources-sidebar ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #343a40;
+  background: #377c46;
 }
 
 div#resources-content {
@@ -140,7 +140,7 @@ div#resources-content {
 }
 
 div#resources-main-contents .search-bar {
-  width: 80% !important;
+  width: 100% !important;
 }
 
 div#resources-main-contents .search-bar button {
