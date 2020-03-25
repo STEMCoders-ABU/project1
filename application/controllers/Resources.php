@@ -8,15 +8,9 @@ class Resources extends CI_Controller
         load_view('resources/index', $data);
     }
 
-    public function comments()
+    public function resource()
     {
         $data['page_title'] = 'Resources';
-        load_view('resources/comments', $data);
-    }
-
-    public function video_comments()
-    {
-        $data['page_title'] = 'Resources';
-        load_view('resources/video_comments', $data);
+        load_view('resources/resources', $data);
     }
 }

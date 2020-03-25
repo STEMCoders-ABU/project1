@@ -1,8 +1,11 @@
 
 
 $(document).ready(function (){
-	$('#sidebarCollapse').on('click', function (){
-		$('#sidebar').toggleClass('active');
+	$('#resources-sidebar-collapse').on('click', function (){
+		$('#resources-sidebar').toggleClass('open');
+		$('div .resources-siderbar-wrapper').toggleClass('open');
+		$('div#resources-content').toggleClass('open');
+		$(this).toggleClass('active');
 	});
 
 });
