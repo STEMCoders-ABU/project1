@@ -93,9 +93,9 @@ nav#resources-sidebar ul ul a {
 
 div#resources-content {
   width: 100%;
-  padding: 20px;
+  padding-top: 20px;
   min-height: 100vh;
-  transition: all 0.3s;
+  transition: all 0.5s;
 }
 
 #resources-sidebar-collapse {
@@ -147,12 +147,21 @@ div#resources-main-contents .search-bar button {
   background: seagreen;
 }
 
+div#resources-main-contents .search-bar button:hover {
+  background: #fff;
+  color: #343a40;
+}
+
 div#resources-main-contents .search-bar .category {
-  background: seagreen;
+  background: #343a40;
   color: #fff;
 }
 
 @media (max-width: 768px) {
+  div .resources-siderbar-wrapper.open {
+    flex-wrap: wrap;
+  }
+
   nav#resources-sidebar {
     margin-left: -250px;
     transform: rotateY(100deg);
@@ -161,7 +170,7 @@ div#resources-main-contents .search-bar .category {
   nav#resources-sidebar.open {
     margin-left: 0;
     transform: none;
-    display: inline;
+    width: 100%;
   }
   
   #resources-sidebar-collapse span:first-of-type,
@@ -186,6 +195,11 @@ div#resources-main-contents .search-bar .category {
 
   #resources-sidebar-collapse.active span:last-of-type {
     transform: rotate(-45deg) translate(1px, -1px);
+  }
+
+  div#resources-content.open {
+    margin-left: 1rem;
+    width: 100%;
   }
 
   div#resources-main-contents .search-bar {

@@ -49,19 +49,19 @@
         </ul>
     </nav>
 
+    <button type="button" id="resources-sidebar-collapse" class="btn btn-light shadow shadow-lg m-1">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
     <!-- Contents -->
     <div id="resources-content">
-        <button type="button" id="resources-sidebar-collapse" class="btn btn-light shadow shadow-lg">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
         <!-- Main Contents -->
         <div class="mt-5" id="resources-main-contents">
             
             <!-- Search Bar -->
-            <div class="search-bar card jumbotron mx-auto p-5">
+            <div class="search-bar card jumbotron mx-auto p-5 shadow shadow-lg">
                 <?= form_open('resources/search', ''); ?>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
@@ -75,11 +75,7 @@
                     </div>
 
                     <div class="input-group mt-3"> 
-                        <select class="form-control bg-light" name="category" required> 
-                            <option value="materials">Materials</option>
-                            <option value="documents">Documents</option>
-                            <option value="videos">Videos</option>
-                        </select>
+                        <input type="text" class="form-control bg-light" name="search" placeholder="Enter keyword" required>
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-success">
                                 <span class="fas fa-search mr-1"></span> Search
