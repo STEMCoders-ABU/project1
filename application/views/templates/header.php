@@ -66,4 +66,4 @@
     
     <div id="page-contents">
       <!-- The Main Contents -->
-      <main id="content-wrap" class="container-fluid alegreya-r">
+      <main id="content-wrap" class="container-fluid p-0 alegreya-r" style="padding-bottom: 6rem !important;">

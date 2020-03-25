@@ -1,4 +1,4 @@
-<div class="resources-siderbar-wrapper ml-n3 mr-n3">
+<div class="resources-siderbar-wrapper">
     <!-- Sidebar -->
     <nav id="resources-sidebar" class="shadow shadow-lg">
         <div class="resources-sidebar-header">

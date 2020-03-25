@@ -1,5 +1,5 @@
 <!-- Start Slider Area -->
- <div id="home" class="slider-area m-n5">
+ <div id="home" class="slider-area">
  <div class="bend niceties preview-2">
       <div id="ensign-nivoslider" class="slides">
         <img src="<?php echo base_url('assets/imgs/index/slider1.jpeg'); ?>"  title="#slider-direction-1" />
@@ -24,7 +24,7 @@
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
                   <a class="ready-btn right-btn page-scroll" href="#services">Login</a>
-                  <a class="ready-btn page-scroll" href="#about">See Resources</a>
+                  <a class="ready-btn page-scroll" href="<?= site_url('resources'); ?>">Explore Resources</a>
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">See Resource</a>
+                  <a class="ready-btn right-btn page-scroll" href="<?= site_url('resources'); ?>">Explore Resources</a>
                   <a class="ready-btn page-scroll" href="#about">Explore</a>
                 </div>
               </div>
@@ -73,7 +73,7 @@
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
+                  <a class="ready-btn right-btn page-scroll" href="<?= site_url('resources'); ?>">Explore Resources</a>
                   <a class="ready-btn page-scroll" href="#about">Learn More</a>
                 </div>
               </div>
@@ -94,7 +94,7 @@
           <div class="card-body">
             <h4 class="card-title">RESOURCES</h4>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, assumenda!</p>
-            <a href="#" class="btn btn-dark card-btn card-link">Explore</a>
+            <a href="<?= site_url('resources'); ?>" class="btn btn-dark card-btn card-link">Explore</a>
           </div>
         </div>
 

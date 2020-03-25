@@ -234,14 +234,8 @@ div .index-contents {
 
 /*RESOURCES FIRST PAGE*/
 .res-container{
-  width: 100%;
-  min-height: 500px;
-  box-sizing: border-box;
   background: seagreen;
-  color: #222;
-  line-height: 1.6;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 1em;
+  
 }
 .wrapper{
   box-shadow: 0 0 20px 0 rgba(16, 43, 9, 0.89);
