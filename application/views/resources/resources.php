@@ -1,4 +1,4 @@
-<div class="resources-siderbar-wrapper">
+<div class="resources-siderbar-wrapper pr-2">
     <!-- Sidebar -->
     <nav id="resources-sidebar" class="shadow shadow-lg">
         <div class="resources-sidebar-header">
