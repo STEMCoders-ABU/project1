@@ -90,6 +90,12 @@ footer#generic-footer {
   z-index: 1000;
 }
 
+@media(max-width: 34em) {
+  footer#generic-footer h4 {
+    font-size: 1.2rem;
+  }
+}
+
 /* index */
 div .index-contents {
   margin-top: 3rem;
@@ -301,3 +307,12 @@ div .index-contents {
 }
  
 
+/* Moderation Pages */
+.moderation-index-card a {
+  background: seagreen !important;
+}
+
+.moderation-index-card a:hover {
+  background: azure !important;
+  color: seagreen;
+}
