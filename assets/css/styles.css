@@ -49,8 +49,12 @@
   border-radius: 20%;
 }
 
-nav#generic-navbar div#nav-menu li.active {
-  border-bottom: 0.1rem solid rgb(14, 138, 14) !important;
+.btn-theme {
+  background: seagreen !important;
+}
+
+.btn-theme:hover {
+  background: rgb(34, 90, 58) !important;
 }
 
 nav#generic-navbar .navbar-toggler:hover {
@@ -61,15 +65,16 @@ nav#generic-navbar .navbar-toggler:hover {
 }
 
 nav#generic-navbar div#nav-menu li a:hover {
-  color: rgb(43, 201, 37) !important;
-  border-bottom: 0.3rem solid rgb(19, 109, 16);
+  color: seagreen !important;
+  border-bottom: 0.3rem solid rgb(64, 187, 118);
   border-radius: 0.3rem;
   transition: 0.3s;
   transition-timing-function: linear;
 }
 
 nav#generic-navbar div#nav-menu li.active {
-  border-bottom: 0.1rem solid rgb(19, 109, 16);
+  border-bottom: 0.1rem solid seagreen;
+  transition: all 0.3s ease-in-out;
 }
 
 div#page-contents {
@@ -90,14 +95,48 @@ footer#generic-footer {
   z-index: 1000;
 }
 
-/* index */
-div .index-contents {
-  margin-top: 3rem;
+/* Index */
+div .index-header {
+  background-image: url(../imgs/bg-image.jpg);
+  background-size: cover;
+}
+
+div .index-header .headline {
+ position: relative; 
+ padding-top: 8%;
+ padding-bottom: 8%;
+}
+
+div .index-header .index-header-title {
+  color: rgb(181, 196, 184);
+  font-size: 8rem;
+}
+
+div .index-header .auth-container a {
+  font-size: 2rem;
+}
+
+div .index-header .auth-container a#login {
+  width: 15rem !important;
+}
+
+@media(max-width: 34em) {
+  div .index-header .index-header-title {
+    font-size: 3rem;
+  }
+
+  div .index-header .auth-container a {
+    font-size: 1.1rem;
+  }
+
+  div .index-header .auth-container a#login {
+    width: 10rem !important;
+  }
 }
 
 /*SECTION A*/
 #section-a {
-  margin-top: 3rem;
+  margin-top: 0.5rem;
   padding: 3rem;
   width: 100%;
   background-color: seagreen;
