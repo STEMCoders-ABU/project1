@@ -139,6 +139,10 @@ div#resources-content {
   margin: 5px auto;
 }
 
+div#resources-content {
+  margin-left: 1rem;
+}
+
 div#resources-main-contents .search-bar {
   width: 100% !important;
 }
@@ -158,10 +162,7 @@ div#resources-main-contents .search-bar .category {
 }
 
 @media (max-width: 768px) {
-  div .resources-siderbar-wrapper.open {
-    flex-wrap: wrap;
-  }
-
+  
   nav#resources-sidebar {
     margin-left: -250px;
     transform: rotateY(100deg);
@@ -197,9 +198,8 @@ div#resources-main-contents .search-bar .category {
     transform: rotate(-45deg) translate(1px, -1px);
   }
 
-  div#resources-content.open {
+  div#resources-content {
     margin-left: 1rem;
-    width: 100%;
   }
 
   div#resources-main-contents .search-bar {
