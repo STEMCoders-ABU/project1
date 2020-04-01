@@ -51,6 +51,7 @@
 
 .btn-theme {
   background: seagreen !important;
+  border: 1px solid azure;
 }
 
 .btn-theme:hover {
