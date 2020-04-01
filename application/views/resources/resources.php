@@ -68,14 +68,14 @@
         </ul>
     </nav>
 
-    <button type="button" id="resources-sidebar-collapse" class="btn btn-light shadow shadow-lg m-1">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
     <!-- Contents -->
     <div id="resources-content">
+        <button type="button" id="resources-sidebar-collapse" class="btn btn-light shadow shadow-lg m-1">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
         <!-- Main Contents -->
         <div class="mt-5" id="resources-main-contents">
             
