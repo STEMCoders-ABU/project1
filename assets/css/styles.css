@@ -51,7 +51,6 @@
 
 .btn-theme {
   background: seagreen !important;
-  border: 1px solid azure;
 }
 
 .btn-theme:hover {
@@ -66,9 +65,11 @@ nav#generic-navbar .navbar-toggler:hover {
 }
 
 nav#generic-navbar div#nav-menu li a:hover {
-  color: seagreen !important;
-  border-bottom: 0.3rem solid rgb(64, 187, 118);
-  border-radius: 0.3rem;
+  color: azure !important;
+  background: seagreen;
+  font-weight: bold;
+  padding: 0.7rem;
+  box-shadow: 0 4px 8px 0 rgb(35, 36, 36), 0 4px 4px 0 rgb(60, 61, 61);
   transition: 0.3s;
   transition-timing-function: linear;
 }
