@@ -1,10 +1,13 @@
 <div class="index-header">
   <div class="translucent-bg-50 text-center headline">
     <h1 class="index-header-title">Campus Space</h1>
-    <div class="mt-5 auth-container">
-        <a href="<?= site_url(); ?>" class="btn btn-outline-light btn-lg mr-5 shadow shadow-sm" id="login">Sign In</a>
+
+    <?php if (!$this->session->has_userdata('logged')): ?>
+      <div class="mt-5 auth-container">
+        <a href="<?= site_url('moderation/login'); ?>" class="btn btn-outline-light btn-lg mr-5 shadow shadow-sm" id="login">Sign In</a>
         <a href="<?= site_url('resources'); ?>" class="btn btn-success btn-lg shadow shadow-sm btn-theme" id="register">Explore Resources</a>
-    </div>
+      </div>
+    <?php endif; ?>
   </div>
 </div>
 

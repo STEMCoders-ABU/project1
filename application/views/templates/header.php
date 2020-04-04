@@ -60,7 +60,9 @@
             <li class="nav-item <?php if ($page_title == 'About') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('about') ?>">About</a></li>
           </ul>
 
-          <a href="<?= site_url(); ?>" class="btn btn-success btn-md-lg ml-md-4 mt-3 mt-md-0 btn-theme">Sign Out</a>
+          <?php if ($this->session->has_userdata('logged')): ?>
+            <a href="<?= site_url('moderation/logout'); ?>" class="btn btn-success btn-md-lg ml-md-4 mt-3 mt-md-0 btn-theme">Sign Out</a>
+          <?php endif; ?>
         </div>
       </nav>
     </header>
