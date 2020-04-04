@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2020 at 04:25 PM
+-- Generation Time: Apr 04, 2020 at 04:49 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -60,6 +60,13 @@ CREATE TABLE `departments` (
   `faculty_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `department`, `faculty_id`) VALUES
+(1, 'Test Department', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -70,6 +77,13 @@ CREATE TABLE `faculties` (
   `id` int(10) UNSIGNED NOT NULL,
   `faculty` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `faculties`
+--
+
+INSERT INTO `faculties` (`id`, `faculty`) VALUES
+(1, 'Test Faculty');
 
 -- --------------------------------------------------------
 
@@ -111,6 +125,13 @@ CREATE TABLE `moderators` (
   `department_id` int(11) NOT NULL,
   `reg_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `moderators`
+--
+
+INSERT INTO `moderators` (`id`, `username`, `email`, `password`, `full_name`, `gender`, `phone`, `department_id`, `reg_date`) VALUES
+(1, 'test', 'test@gmail.com', 'password', 'Tester', 'Male', '08123456789', 1, '2020-04-04 15:48:25');
 
 -- --------------------------------------------------------
 
@@ -224,13 +245,13 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `levels`
@@ -242,7 +263,7 @@ ALTER TABLE `levels`
 -- AUTO_INCREMENT for table `moderators`
 --
 ALTER TABLE `moderators`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `resources`
