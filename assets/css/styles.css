@@ -69,6 +69,7 @@ nav#generic-navbar div#nav-menu li a:hover {
   background: seagreen;
   font-weight: bold;
   padding: 0.7rem;
+  margin-bottom: -0.6rem;
   box-shadow: 0 4px 8px 0 rgb(35, 36, 36), 0 4px 4px 0 rgb(60, 61, 61);
   transition: 0.3s;
   transition-timing-function: linear;
@@ -354,6 +355,6 @@ div .index-header .auth-container a#login {
 }
 
 .moderation-index-card a:hover {
-  background: azure !important;
-  color: seagreen;
+  background: rgb(39, 41, 41) !important;
+  color: azure;
 }
