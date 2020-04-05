@@ -358,3 +358,30 @@ div .index-header .auth-container a#login {
   background: rgb(39, 41, 41) !important;
   color: azure;
 }
+
+div.manage-resources-search-bar {
+  margin-bottom: 6rem;
+}
+
+/* Pagination */
+ul.pagination {
+  margin-top: 6rem;
+}
+
+ul.pagination li.page-item a.page-link {
+  background: #343a40;
+  color: azure;
+  border-color: #77797a;
+}
+
+ul.pagination li.page-item a.page-link:hover {
+  background: azure;
+  color: #343a40;
+  border-color: #343a40;
+}
+
+ul.pagination li.page-item.active a.page-link {
+  background: seagreen;
+  border-color: azure;
+  padding: 1.5rem;
+}

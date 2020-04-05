@@ -34,25 +34,20 @@
 
 		<div class="input-group mb-3 row">
           <div class="col-sm-3 text-left">
-          	<label>News Type:</label>
+          	<label>News Category:</label>
           </div>
           <div class="col-sm">
-            <select name="resource_type" class="custom-select bg-light">
-                <option value="t1" selected>General Announcement</option>
-                <option value="t2">Emergency</option>
-                <option value="t3">Assignment</option>
-                <option value="t4">Assesment</option>
-            </select>
+            <?= get_news_categories_select(); ?>
           </div>
         </div>
 
-		<div class="input-group mb-3 row">
+		    <div class="input-group mb-3 row">
           <div class="col-sm-3 text-left">
           	<label>Content:</label>
           </div>
           <div class="col-sm">
-            <textarea class="form-control bg-light" name="resource_desc" maxlength="5000" rows="5" 
-                placeholder="Write the content..."    required><?= set_value('news_content'); ?></textarea>
+            <textarea class="form-control bg-light" name="news_content" maxlength="5000" rows="5" 
+                placeholder="Write the content... (5000 characters maximum)"    required><?= set_value('news_content'); ?></textarea>
           </div>
         </div>
 

@@ -1,18 +1,33 @@
 <div class="mt-5 container-fluid text-center">
     
     <div class="search-bar card jumbotron mx-auto p-5 shadow shadow-lg mt-5 container">
+
+        <?php if ($this->session->flashdata('course_added')): ?>
+            <div class="mb-4 alert alert-success lead">
+                <?= $this->session->flashdata('course_added'); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if(validation_errors()): ?>
+            <div class="mb-4 alert alert-danger">
+                <strong>The following errors occured</strong><br><br>
+                <?= validation_errors(); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($custom_error)): ?>
+            <div class="mb-4 alert alert-danger">
+                <?= $custom_error; ?>
+            </div>
+        <?php endif; ?>
+
         <?= form_open('moderation/add_course', ''); ?>
-            <div class="input-group mb-2"> 
-                <select class="form-control bg-light" name="level" required> 
-                    <option value="l1">100</option>
-                    <option value="l2">200</option>
-                    <option value="l3">300</option>
-                    <option value="l4">400</option>
-                </select>
+            <div class="input-group mt-3"> 
+                <input type="text" class="form-control bg-light" name="course_title" maxlength="60" minlength="4" value="<?= set_value('course_title'); ?>" placeholder="Enter Course Title" required>
             </div>
 
             <div class="input-group mt-3"> 
-                <input type="text" class="form-control bg-light" name="search" placeholder="Enter Course Code" required>
+                <input type="text" class="form-control bg-light" name="course_code" maxlength="12" minlength="3" value="<?= set_value('course_code'); ?>" placeholder="Enter Course Code" required>
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-success btn-theme">
                         <span class="fas fa-plus mr-1"></span> Add Course

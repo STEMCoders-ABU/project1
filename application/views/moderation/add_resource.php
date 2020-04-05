@@ -22,29 +22,13 @@
     <?php endif; ?>
     
     <?= form_open_multipart('moderation/add_resource'); ?>
-        <div class="input-group mb-3 row">
-          <div class="col-sm-3 text-left">
-          	<label>Level:</label>
-          </div>
-          <div class="col-sm">
-            <select name="level" class="custom-select bg-light">
-                <option value="l1" selected>100</option>
-                <option value="l2">200</option>
-                <option value="l3">300</option>
-            </select>
-          </div>
-        </div>
-
+        
         <div class="input-group mb-3 row">
           <div class="col-sm-3 text-left">
           	<label>Course:</label>
           </div>
           <div class="col-sm">
-            <select name="course" class="custom-select bg-light">
-                <option value="c1" selected>COSC101</option>
-                <option value="c2">COSC102</option>
-                <option value="c3">COSC103</option>
-            </select>
+            <?= get_courses_select(); ?>
           </div>
         </div>
 
@@ -59,15 +43,10 @@
 
 		<div class="input-group mb-3 row">
           <div class="col-sm-3 text-left">
-          	<label>Resource Type:</label>
+          	<label>Resource Category:</label>
           </div>
           <div class="col-sm">
-            <select name="resource_type" class="custom-select bg-light">
-                <option value="video" selected>Video</option>
-                <option value="txtBook">Textbook</option>
-                <option value="document">Document</option>
-                <option value="material">Material</option>
-            </select>
+            <?= get_resource_categories_select(); ?>
           </div>
         </div>
 
@@ -77,7 +56,7 @@
           </div>
           <div class="col-sm">
             <textarea class="form-control bg-light" name="resource_desc" maxlength="2000" rows="5" 
-                placeholder="Describe this resource"    required><?= set_value('resource_desc'); ?></textarea>
+                placeholder="Describe this resource" required><?= set_value('resource_desc'); ?></textarea>
           </div>
         </div>
 
