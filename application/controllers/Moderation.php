@@ -46,6 +46,7 @@ class Moderation extends CI_Controller
                     [
                         'username' => $username,
                         'logged' => TRUE,
+                        'faculty_id' => $moderator_data['faculty_id'],
                         'department_id' => $moderator_data['department_id'],
                         'level_id' => $moderator_data['level_id'],
                     ];
@@ -107,6 +108,8 @@ class Moderation extends CI_Controller
                 [
                     'title' => get_post('resource_name'),
                     'course_id' => get_post('course'),
+                    'faculty_id' => $this->session->userdata('faculty_id'),
+                    'department_id' => $this->session->userdata('department_id'),
                     'level_id' => $this->session->userdata('level_id'),
                     'category_id' => $category_id,
                     'description' => get_post('resource_desc'),
@@ -510,5 +513,19 @@ _END;
 				redirect();
 			}
 		}
-	}
+    }
+    
+    function get_departments()
+    {
+        $faculty_id = get_post('faculty_id');
+
+        $departments = $this->moderation_model->get_faculty_departments($faculty_id);
+        if ($departments)
+            echo get_departments_select($departments);
+        else
+        {
+            $output = '<select id="department_select" class="form-control bg-light" name="department" required><option value="0">None</option></select>';
+            echo $output;
+        }
+    }
 }

@@ -42,6 +42,35 @@
 		return $config;
 	}
 
+	function get_faculties_select()
+	{
+		$CI =& get_instance();
+		$moderation_model = $CI->load->model('moderation_model');
+
+		$faculties = $CI->moderation_model->get_faculties();
+
+		$select = '<select id="faculty_select" class="form-control bg-light" name="faculty" required>';
+
+		foreach ($faculties as $faculty)
+			$select .= '<option value=' . $faculty['id'] . '>' . $faculty['faculty'] . '</option>';
+
+		$select .= '</select>';
+
+		return $select;
+	}
+
+	function get_departments_select ($departments)
+	{
+		$select = '<select id="department_select" class="form-control bg-light" name="department" required>';
+
+		foreach ($departments as $department)
+			$select .= '<option value=' . $department['id'] . '>' . $department['department'] . '</option>';
+
+		$select .= '</select>';
+
+		return $select;
+	}
+
 	function get_levels_select()
 	{
 		$CI =& get_instance();

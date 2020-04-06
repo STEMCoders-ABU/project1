@@ -3,10 +3,10 @@
 $config =
 [
 	'mailtype' => 'html',
-	'useragent' => 'Stem Coders',
+	'useragent' => 'Campus space',
 	'protocol' => 'smtp',
-	'smtp_host' => 'mail.stemcoders.com.ng',
-	'smtp_user' => 'admin@stemcoders.com.ng',
+	'smtp_host' => 'mail.campusspace.com.ng',
+	'smtp_user' => 'admin@campusspace.com.ng',
 	'smtp_pass' => 'Hwsv1ct0ry',
 	'smtp_port' => 465,
 	'smtp_crypto' => 'ssl'

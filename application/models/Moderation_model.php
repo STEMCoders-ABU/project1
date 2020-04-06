@@ -18,6 +18,17 @@ class Moderation_model extends CI_Model
         return $this->db->get('levels')->result_array();
     }
 
+    public function get_faculties()
+    {
+        return $this->db->get('faculties')->result_array();
+    }
+
+    public function get_faculty_departments ($faculty_id)
+    {
+        return $this->db->get_where('departments', ['faculty_id' => $faculty_id])
+            ->result_array();
+    }
+    
     public function get_courses ($department_id, $level_id)
     {
         return $this->db->get_where('courses', ['department_id' => $department_id, 'level_id' => $level_id])
