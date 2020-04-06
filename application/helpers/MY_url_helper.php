@@ -81,7 +81,7 @@
 		$select = '<select class="form-control bg-light" name="level" required>';
 
 		foreach ($levels as $level)
-			$select .= '<option value=' . $level['level'] . '>' . $level['level'] . '</option>';
+			$select .= '<option value=' . $level['id'] . '>' . $level['level'] . '</option>';
 
 		$select .= '</select>';
 

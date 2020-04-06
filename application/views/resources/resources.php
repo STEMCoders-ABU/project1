@@ -6,65 +6,21 @@
         </div>
 
         <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#materialsMenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Materials</a>
-                <ul class="collapse list-unstyled" id="materialsMenu">
-                    <li>
-                        <a href="#">COSC101</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC102</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC103</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="#textbooksMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Textbooks</a>
-                <ul class="collapse list-unstyled" id="textbooksMenu">
-                    <li>
-                        <a href="#">COSC101</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC102</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC103</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="#documentsMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Documents</a>
-                <ul class="collapse list-unstyled" id="documentsMenu">
-                    <li>
-                        <a href="#">COSC101</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC102</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC103</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-            <a href="#videosMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Videos</a>
-                <ul class="collapse list-unstyled" id="videosMenu">
-                    <li>
-                        <a href="#">COSC101</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC102</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC103</a>
-                    </li>
-                </ul>
-            </li>
+            <?php foreach ($sidebar_contents as $sidebar_content): ?>
+                <?php if (! $sidebar_content['contents']): continue; ?>
+                <?php endif; ?>
+                <?php $header = $sidebar_content['header']; ?>
+                <li>
+                    <a href="#<?= $header; ?>" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><?= $header; ?></a>
+                    <ul class="collapse list-unstyled" id="<?= $header; ?>">
+                        <?php foreach ($sidebar_content['contents'] as $course): ?>
+                            <li>
+                                <a class="sidebar_course_link"><?= $course['course']; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+            <?php endforeach; ?>
         </ul>
     </nav>
 
@@ -83,15 +39,7 @@
             <div class="search-bar card jumbotron mx-auto p-5 shadow shadow-lg">
                 <?= form_open('resources/search', ''); ?>
                     <div class="input-group mb-2">
-                        <!--<div class="input-group-prepend">
-                            <span class="input-group-text category">Category</span>                          
-                        </div>--> 
-                        <select class="form-control bg-light" name="category" required> 
-                            <option value="materials">Materials</option>
-                            <option value="documents">Documents</option>
-                            <option value="documents">Textbooks</option>
-                            <option value="videos">Videos</option>
-                        </select>
+                        
                     </div>
 
                     <div class="input-group mt-3"> 

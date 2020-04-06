@@ -17,4 +17,29 @@ class Resources_model extends CI_Model
 
         return $query->get()->result_array();
     }
+
+    function get_resource_categories_ids()
+    {
+        return $this->db->select('id')->from('resource_categories')
+            ->get()->result_array();
+    }
+
+    function get_resource_catgory_title ($resource_category_id)
+    {
+        return $this->db->select('category')
+            ->get_where('resource_categories', ['id' => $resource_category_id])
+            ->row_array()['category'];
+    }
+
+    function get_courses_for_category ($resource_category_id, $restrictions)
+    {
+        $restrictions['resources.category_id'] = $resource_category_id;
+
+        $query = $this->db->select('courses.course_code AS course, courses.id as course_id')
+            ->from('resources')
+            ->join('courses', 'courses.id = resources.course_id')
+            ->where($restrictions);
+
+        return $query->get()->result_array();
+    }
 }
