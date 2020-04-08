@@ -37,9 +37,13 @@ class Resources_model extends CI_Model
 
     function get_resource_catgory_title ($resource_category_id)
     {
-        return $this->db->select('category')
-            ->get_where('resource_categories', ['id' => $resource_category_id])
-            ->row_array()['category'];
+        $query = $this->db->select('category')
+            ->get_where('resource_categories', ['id' => $resource_category_id]);
+
+        if ($query->row_array())
+            return $query->row_array()['category'];
+        else
+            return FALSE;
     }
 
     function get_courses_for_category ($resource_category_id, $restrictions)
@@ -56,9 +60,13 @@ class Resources_model extends CI_Model
 
     function get_course_code ($course_id)
     {
-        return $this->db->select('courses.course_code')
-            ->get_where('courses', ['id' => $course_id])
-            ->row_array()['course_code'];
+        $query = $this->db->select('courses.course_code')
+            ->get_where('courses', ['id' => $course_id]);
+
+        if ($query->row_array())
+            return $query->row_array()['course_code'];
+        else
+            return FALSE;
     }
 
     public function get_resources ($restrictions)
@@ -104,5 +112,19 @@ class Resources_model extends CI_Model
         return $this->db->select('author, date_added AS date, comment')
             ->get_where('category_comments', ['id' => $id])
             ->row_array();
+    }
+
+    function get_resource ($resource_id)
+    {
+        $query = $this->db->select('resources.id, resources.title AS resource_title, resource_categories.category AS resource_category, '
+            . 'departments.department AS resource_department, resources.description AS resource_description, resources.downloads AS resource_downloads,'
+            . 'courses.course_code AS resource_course_code, resources.file AS resource_file, resources.date_added AS resource_date')
+            ->from('resources')
+            ->join('resource_categories', 'resource_categories.id = resources.category_id')
+            ->join('departments', 'departments.id = resources.department_id')
+            ->join('courses', 'courses.id = resources.course_id')
+            ->where(['resources.id' => $resource_id]);
+
+        return $query->get()->row_array();
     }
 }

@@ -205,4 +205,8 @@ div#resources-main-contents .search-bar .category {
   div#resources-main-contents .search-bar {
     width: 100% !important;
   }
+
+  h4.res-header {
+    font-size: 1.1rem;
+  }
 }

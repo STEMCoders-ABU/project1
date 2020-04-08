@@ -57,7 +57,18 @@ class Resources extends CI_Controller
             $course_id = $first_course_id;
 
         $course_code = $this->resources_model->get_course_code($course_id);
+        if (! $course_code)
+        {
+            $data['error'] = TRUE;
+            load_view('resources/resources', $data);
+        }
+
         $category = $this->resources_model->get_resource_catgory_title($category_id);
+        if (! $category)
+        {
+            $data['error'] = TRUE;
+            load_view('resources/resources', $data);
+        }
 
         $restrictions['resources.course_id'] = $course_id;
         $restrictions['resources.category_id'] = $category_id;
@@ -121,5 +132,12 @@ class Resources extends CI_Controller
 
         $comment_data = $this->resources_model->get_category_comment($id);
         echo generate_comment_markup($comment_data);
+    }
+
+    function view ($resource_id)
+    {
+        $data['page_title'] = 'Resources';
+        $data['resource'] = $this->resources_model->get_resource($resource_id);
+        load_view('resources/view', $data);
     }
 }

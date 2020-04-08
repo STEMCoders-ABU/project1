@@ -443,3 +443,199 @@ _CARD;
 _COMMENT;
 		return $markup;
 	}
+
+	function generate_video_resource_view ($resource)
+	{
+		$file_url = base_url('assets/resources/files/' . $resource['resource_file']);
+		$title = $resource['resource_title'];
+		$description = $resource['resource_description'];
+		$department = $resource['resource_department'];
+		$course = $resource['resource_course_code'];
+		$downloads = $resource['resource_downloads'];
+		$download_link = site_url('download/resource/' . $resource['id']);
+		$date = $resource['resource_date'];
+
+		$view = <<<_VIEW
+			<div class="text-center shadow shadow-lg">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe src="{$file_url}" frameborder="0" class="embed-responsive-item"></iframe>
+				</div>
+
+				<div class="p-4 p-md-5">
+					<h4 class="text-left mb-3">{$title}</h4>
+
+					<div class="text-left lead ml-3 mb-5 text-muted">
+						<p class="mb-2">{$department}</p>
+						<p class="mb-2">{$course}</p>
+						<p class="mb-2">{$downloads} Downloads</p>
+					</div>
+
+					<a href="{$file_url}" class="btn btn-success btn-theme btn-lg btn-block">Open Video</a>
+					<a href="{$download_link}" class="btn btn-success btn-theme btn-lg btn-block">Download Video Now</a>
+				</div>
+			</div>
+
+			<div class="mt-5 shadow shadow-sm" style="margin-top: 10rem">
+				<div class="jumbotron p-4 bg-dark text-white" style="margin-top: 6rem">
+					<h4 class="text-center">About This Resource</h4>
+				</div>
+
+				<p class="lead text-mute px-2">Added on {$date}</p>
+
+				<p class="lead px-4 pb-3 text-muted">
+					{$description}
+				</p>
+			</div>
+_VIEW;
+		return $view;
+	}
+
+	function generate_material_resource_view ($resource)
+	{
+		$file_url = base_url('assets/resources/files/' . $resource['resource_file']);
+		$img_url = base_url(get_resource_header_img('Material'));
+		$title = $resource['resource_title'];
+		$description = $resource['resource_description'];
+		$department = $resource['resource_department'];
+		$course = $resource['resource_course_code'];
+		$downloads = $resource['resource_downloads'];
+		$download_link = site_url('download/resource/' . $resource['id']);
+		$date = $resource['resource_date'];
+
+		$view = <<<_VIEW
+			<div class="text-center shadow shadow-lg">
+				<img src="{$img_url}" alt="Header Image"
+					class="img-fluid img-thumbnail">
+
+				<div class="p-4 p-md-5">
+					<h4 class="text-left mb-3">{$title}</h4>
+
+					<div class="text-left lead ml-3 mb-5 text-muted">
+						<p class="mb-2">{$department}</p>
+						<p class="mb-2">{$course}</p>
+						<p class="mb-2">{$downloads} Downloads</p>
+					</div>
+
+					<a href="{$file_url}" class="btn btn-success btn-theme btn-lg btn-block">Open Material</a>
+					<a href="{$download_link}" class="btn btn-success btn-theme btn-lg btn-block">Download Material Now</a>
+				</div>
+			</div>
+
+			<div class="mt-5 shadow shadow-sm" style="margin-top: 10rem">
+				<div class="jumbotron p-4 bg-dark text-white" style="margin-top: 6rem">
+					<h4 class="text-center">About This Resource</h4>
+				</div>
+
+				<p class="lead text-mute px-2">Added on {$date}</p>
+
+				<p class="lead px-4 pb-3 text-muted">
+					{$description}
+				</p>
+			</div>
+_VIEW;
+		return $view;
+	}
+
+	function generate_document_resource_view ($resource)
+	{
+		$file_url = base_url('assets/resources/files/' . $resource['resource_file']);
+		$img_url = base_url(get_resource_header_img('Document'));
+		$title = $resource['resource_title'];
+		$description = $resource['resource_description'];
+		$department = $resource['resource_department'];
+		$course = $resource['resource_course_code'];
+		$downloads = $resource['resource_downloads'];
+		$download_link = site_url('download/resource/' . $resource['id']);
+		$date = $resource['resource_date'];
+
+		$view = <<<_VIEW
+			<div class="text-center shadow shadow-lg">
+				<img src="{$img_url}" alt="Header Image"
+					class="img-fluid img-thumbnail">
+
+				<div class="p-4 p-md-5">
+					<h4 class="text-left mb-3">{$title}</h4>
+
+					<div class="text-left lead ml-3 mb-5 text-muted">
+						<p class="mb-2">{$department}</p>
+						<p class="mb-2">{$course}</p>
+						<p class="mb-2">{$downloads} Downloads</p>
+					</div>
+
+					<a href="{$file_url}" class="btn btn-success btn-theme btn-lg btn-block">Open Document</a>
+					<a href="{$download_link}" class="btn btn-success btn-theme btn-lg btn-block">Download Document Now</a>
+				</div>
+			</div>
+
+			<div class="mt-5 shadow shadow-sm" style="margin-top: 10rem">
+				<div class="jumbotron p-4 bg-dark text-white" style="margin-top: 6rem">
+					<h4 class="text-center">About This Resource</h4>
+				</div>
+
+				<p class="lead text-mute px-2">Added on {$date}</p>
+
+				<p class="lead px-4 pb-3 text-muted">
+					{$description}
+				</p>
+			</div>
+_VIEW;
+		return $view;
+	}
+
+	function generate_textbook_resource_view ($resource)
+	{
+		$file_url = base_url('assets/resources/files/' . $resource['resource_file']);
+		$img_url = base_url(get_resource_header_img('Textbook'));
+		$title = $resource['resource_title'];
+		$description = $resource['resource_description'];
+		$department = $resource['resource_department'];
+		$course = $resource['resource_course_code'];
+		$downloads = $resource['resource_downloads'];
+		$download_link = site_url('download/resource/' . $resource['id']);
+		$date = $resource['resource_date'];
+
+		$view = <<<_VIEW
+			<div class="text-center shadow shadow-lg">
+				<img src="{$img_url}" alt="Header Image"
+					class="img-fluid img-thumbnail">
+
+				<div class="p-4 p-md-5">
+					<h4 class="text-left mb-3">{$title}</h4>
+
+					<div class="text-left lead ml-3 mb-5 text-muted">
+						<p class="mb-2">{$department}</p>
+						<p class="mb-2">{$course}</p>
+						<p class="mb-2">{$downloads} Downloads</p>
+					</div>
+
+					<a href="{$file_url}" class="btn btn-success btn-theme btn-lg btn-block">Open Textbook</a>
+					<a href="{$download_link}" class="btn btn-success btn-theme btn-lg btn-block">Download Textbook Now</a>
+				</div>
+			</div>
+
+			<div class="mt-5 shadow shadow-sm" style="margin-top: 10rem">
+				<div class="jumbotron p-4 bg-dark text-white" style="margin-top: 6rem">
+					<h4 class="text-center">About This Resource</h4>
+				</div>
+
+				<p class="lead text-mute px-2">Added on {$date}</p>
+
+				<p class="lead px-4 pb-3 text-muted">
+					{$description}
+				</p>
+			</div>
+_VIEW;
+		return $view;
+	}
+
+	function generate_resource_view ($category, $resource)
+	{
+		if ($category == 'Material')
+			return generate_material_resource_view($resource);
+		else if ($category == 'Document')
+			return generate_document_resource_view($resource);
+		else if ($category == 'Textbook')
+			return generate_textbook_resource_view($resource);
+		else if ($category == 'Video')
+			return generate_video_resource_view($resource);
+	}

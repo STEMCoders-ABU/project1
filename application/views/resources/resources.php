@@ -1,3 +1,12 @@
+<?php if (isset($error)): ?>
+    <div class="alert alert-info mt-5 mx-5">
+        <p class="lead text-center">Oops! We found no resources matching your search data!</p>
+        <p class="lead text-center">No resource was uploaded with such configuration. Please contact your class rep for more info.</p>
+    </div>
+
+    <?php return; ?>
+<?php endif; ?>
+
 <div class="resources-siderbar-wrapper pr-2">
     <!-- Sidebar -->
     <nav id="resources-sidebar" class="shadow shadow-lg">
@@ -120,7 +129,7 @@
             <div class="shadow shadow-lg" style="margin-top: 10rem">
                 <div class="jumbotron p-3 pb-4">
                     <div class="jumbotron p-4 bg-dark text-white mx-n3 mt-n3">
-                        <h4 class="text-center">Similar Resources for <?= $course_code; ?> [<?= $category . 's' ?>]</h4>
+                        <h4 class="text-center res-header">Most Downloaded Resources for <?= $course_code; ?> [<?= $category . 's' ?>]</h4>
                     </div>
 
                     <div>
