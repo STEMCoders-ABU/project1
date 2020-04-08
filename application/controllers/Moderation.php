@@ -528,4 +528,9 @@ _END;
             echo $output;
         }
     }
+
+    function add_category_comment()
+    {
+        echo 'hehehe';
+    }
 }

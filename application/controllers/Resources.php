@@ -16,38 +16,94 @@ class Resources extends CI_Controller
         load_view('resources/index', $data);
     }
 
-    public function resource()
+    public function resource ($faculty_id = 0, $department_id = 0, $level_id = 0, $category_id = 0, $course_id = 0, $items_offset = 0)
     {
         $data['page_title'] = 'Resources';
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
-            $resource_categories_ids = $this->resources_model->get_resource_categories_ids();
-            $sidebar_contents = [];
-
-            $faculty_id = get_post('faculty');
-            $department_id = get_post('department');
-            $level_id = get_post('level');
-            $restrictions = 
-            [
-                'resources.faculty_id' => $faculty_id,
-                'resources.department_id' => $department_id,
-                'resources.level_id' => $level_id,
-            ];
-
-            foreach ($resource_categories_ids as $resource_category_id)
-            {
-                $group['header'] = $this->resources_model->get_resource_catgory_title($resource_category_id['id']) . 's';
-                $group['contents'] = $this->resources_model->get_courses_for_category($resource_category_id['id'], $restrictions);
-                $sidebar_contents[] = $group;
-            }
-
-            $data['sidebar_contents'] = $sidebar_contents;
-            load_view('resources/resources', $data);
-        }
-        else
-        {
+        if ($faculty_id == 0 && $department_id == 0 && $level_id == 0)
             redirect('resources');
+
+        $resource_categories_ids = $this->resources_model->get_resource_categories_ids();
+        $sidebar_contents = [];
+
+        $restrictions = 
+        [
+            'resources.faculty_id' => $faculty_id,
+            'resources.department_id' => $department_id,
+            'resources.level_id' => $level_id,
+        ];
+
+        $first_category_with_resources_id = NULL;
+        $first_course_id = NULL;
+
+        foreach ($resource_categories_ids as $resource_category_id)
+        {
+            $group['category_id'] = $resource_category_id['id'];
+            $group['header'] = $this->resources_model->get_resource_catgory_title($resource_category_id['id']) . 's';
+            $group['contents'] = $this->resources_model->get_courses_for_category($resource_category_id['id'], $restrictions);
+            $sidebar_contents[] = $group;
+
+            if ($first_category_with_resources_id == NULL && $group['contents'])
+            {
+                $first_category_with_resources_id = $group['category_id'];
+                $first_course_id = $group['contents'][array_key_first($group['contents'])]['course_id'];
+            }
         }
+
+        if ($category_id == 0)
+            $category_id = $first_category_with_resources_id;
+
+        if ($course_id == 0)
+            $course_id = $first_course_id;
+
+        $course_code = $this->resources_model->get_course_code($course_id);
+        $category = $this->resources_model->get_resource_catgory_title($category_id);
+
+        $restrictions['resources.course_id'] = $course_id;
+        $restrictions['resources.category_id'] = $category_id;
+
+        $comments_restrictions = 
+        [
+            'department_id' => $department_id,
+            'level_id' => $level_id,
+            'course_id' => $course_id,
+        ];
+
+        $frequently_accessed = $this->resources_model->get_restricted_frequenty_accessed_resources($restrictions);
+
+        $items_per_page = 10;
+        $total_items = count($this->resources_model->get_resources($restrictions));
+
+        $this->load->library('pagination');
+
+        $pagination_config = get_pagination_config(base_url('resources/resource/' . $faculty_id . '/' . $department_id 
+            . '/' . $level_id . '/' . $category_id . '/' . $course_id), $total_items, $items_per_page);
+        
+        $this->pagination->initialize($pagination_config);
+
+        $data['faculty_id'] = $faculty_id;
+        $data['department_id'] = $department_id;
+        $data['level_id'] = $level_id;
+        $data['category_id'] = $category_id;
+        $data['course_id'] = $course_id;
+        $data['sidebar_contents'] = $sidebar_contents;
+        $data['course_code'] = $course_code;
+        $data['category'] = $category;
+        $data['resources'] = $this->resources_model->get_limited_resources($items_per_page, $items_offset, $restrictions);
+        $data['freq_resources'] = $frequently_accessed;
+        $data['pagination'] = $this->pagination->create_links();
+        $data['category_comments'] = $this->resources_model->get_category_comments($comments_restrictions);
+
+        load_view('resources/resources', $data);
+    }
+
+    function add_category_comment()
+    {
+        echo 'hehehe';
+    }
+
+    function foom()
+    {
+        echo 'lalala';
     }
 }

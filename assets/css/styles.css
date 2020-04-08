@@ -139,7 +139,7 @@ div .index-header .auth-container a#login {
   }
 
   div .index-header .auth-container a#login {
-    width: 10rem !important;
+    width: 8rem !important;
   }
 }
 
@@ -289,56 +289,22 @@ div .index-header .auth-container a#login {
   box-shadow: 0 0 20px 0 rgba(16, 43, 9, 0.89);
 }
 
-.res-info{
-  padding: 1em;
-  background: #c9e6ff;
-}
-.res-selection div{
-  float: left;
+p.resource-card-text {
+  height: 10rem !important;
 }
 
-.res-selection {
-  background: #333;
-  color:rgb(119, 108, 108);
-  padding: 20px;
+div.resources-index-mfa {
+  margin-top: 5rem;
 }
 
-.res-selection form select{
-  width: 60%;
-  height: 30px;
-  margin:5px;
-  padding: 0 20px;
-}
+@media(max-width: 34em) {
+  div.resources-index-mfa {
+    padding: 0.2rem;
+  }
 
-.res-selection form button{
-  width: 25%;
-  padding: 10px 0;
-  position: relative;
-  margin: 0 auto;
-  right: 0px;
-  border: 0;
-  border-radius: 10px;
-  background: rgb(0, 143, 55);
-  color: #fff;
-}
-.res-selection form button:hover{
-  background-color: rgb(43, 201, 37)
-}
-.res-selection form label{
-  color: azure;
-}
-.res-MFV{ /*msv = most frquently visited*/
-  width: 100%;
-  min-height: 300px;
-  background-color: beige; 
-}
-.res-MFV h4{
-  color: darkred;
-  padding: 5px 10px;
-}
-.res-MFV li{
-  border-bottom: 2px dotted #333;
-  height: 30px;
+  p.resource-card-text {
+    height: 12rem !important;
+  }
 }
 
 /* resource comments section */
@@ -364,8 +330,12 @@ div.manage-resources-search-bar {
 }
 
 /* Pagination */
-ul.pagination {
-  margin-top: 6rem;
+div.pagination-container {
+  margin-top: 6rem !important;
+  margin-bottom: 0.7rem !important;
+  padding: 0.5rem;
+  padding-top: 1.7rem;
+  background-color: #e9ecef;
 }
 
 ul.pagination li.page-item a.page-link {
@@ -383,5 +353,14 @@ ul.pagination li.page-item a.page-link:hover {
 ul.pagination li.page-item.active a.page-link {
   background: seagreen;
   border-color: azure;
-  padding: 1.5rem;
+  padding-bottom: 1.3rem;
+}
+
+/* Ajax */
+.ajax-loader-indicator {
+  visibility: hidden;
+}
+
+.ajax-loading {
+  visibility: visible !important;
 }

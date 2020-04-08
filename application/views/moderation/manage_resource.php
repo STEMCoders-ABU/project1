@@ -37,10 +37,6 @@
         </div>
 
         <?php if (isset($resources) && count($resources) > 0): ?>
-            <?php if (count($resources) > 20): ?>
-                <div class="text-center mt-5 mb-5"><?= $pagination ?? ''; ?></div>
-            <?php endif; ?>
-
             <div class="mt-5 table-responsive manage-resource-table">
                 <table class="table table-bordered">
                     <thead class="thead-dark">
@@ -75,7 +71,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="text-center mt-5 mb-5"><?= $pagination ?? ''; ?></div>
+            <div class="text-center w-100 pagination-container">
+                <?= $pagination ?? ''; ?>
+            </div>
         
             <?php else: ?>
                 <div class="alert alert-info">
