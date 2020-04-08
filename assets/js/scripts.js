@@ -1,5 +1,6 @@
 
 var LOCAL_HOST = true;
+var SITE_URL = 'http://localhost/project1/';
 
 $(document).ready(function (){
 	$('#resources-sidebar-collapse').on('click', function (){
@@ -46,13 +47,6 @@ $(document).ready(function (){
 			window.location.href = link;
 		}
 	);
-
-	$('button#btn-submit-category-comment').click(
-		function()
-		{
-			foo();
-		}
-	);
 });
 
 function get_selected_value (selector)
@@ -79,7 +73,7 @@ function fetch_and_display_departments()
 {
 	var faculty_id = get_selected_faculty_id();
 
-	$.post('moderation/get_departments', {'faculty_id': faculty_id},
+	$.post(SITE_URL + 'moderation/get_departments', {'faculty_id': faculty_id},
 		function(data, status)
 		{
 			if (status === 'success')
@@ -95,25 +89,38 @@ function fetch_and_display_departments()
 	);
 }
 
-function add_comment (department_id, level_id, category_id, course_id)
+function add_category_comment (department_id, level_id, category_id, course_id)
 {
-	
-}
+	if ($('img.ajax-loader-indicator').hasClass('ajax-loading'))
+		return;
 
-function foo()
-{
-	var faculty_id =1; 
+	var author = $('input#category-comment-author').val();
+	var comment = $('textarea#category-comment').val();
 
-	$.post('moderation/add_category_comment', {},
+	if (author == '' || comment == '')
+	{
+		alert('Please fill out the comment fields before submission!');
+		return;
+	}
+
+	$('img.ajax-loader-indicator').addClass('ajax-loading');
+
+	var post_data = {'department_id': department_id, 'level_id': level_id, 'category_id': category_id,
+		'course_id': course_id, 'author': author, 'comment': comment};
+
+	$.post(SITE_URL + 'resources/add_category_comment', post_data,
 		function(data, status)
-		{alert(status);
+		{
 			if (status === 'success')
 			{
-				alert(data);
+				$('input#category-comment-author').val('');
+				$('textarea#category-comment').val('');
+				$('img.ajax-loader-indicator').removeClass('ajax-loading');
+				$('div#category-comments-container').append(data);
 			}
 			else
 			{
-				alert('Oops! An internal server error occurred. Please reload the page.');
+				alert('Oops! We could not add your comment, please try again.');
 			}
 		}
 	);

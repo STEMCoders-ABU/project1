@@ -66,6 +66,7 @@ class Resources extends CI_Controller
         [
             'department_id' => $department_id,
             'level_id' => $level_id,
+            'category_id' => $category_id,
             'course_id' => $course_id,
         ];
 
@@ -99,11 +100,26 @@ class Resources extends CI_Controller
 
     function add_category_comment()
     {
-        echo 'hehehe';
-    }
+        $department_id = get_post('department_id');
+        $level_id = get_post('level_id');
+        $category_id = get_post('category_id');
+        $course_id = get_post('course_id');
+        $author = get_post('author');
+        $comment = get_post('comment');
 
-    function foom()
-    {
-        echo 'lalala';
+        $entries = 
+        [
+            'category_id' => $category_id,
+            'course_id' => $course_id,
+            'department_id' => $department_id,
+            'level_id' => $level_id,
+            'author' => $author,
+            'comment' => $comment,
+        ];
+
+        $id = $this->resources_model->add_category_comment($entries);
+
+        $comment_data = $this->resources_model->get_category_comment($id);
+        echo generate_comment_markup($comment_data);
     }
 }

@@ -152,30 +152,17 @@
                     <h4 class="text-center">Comments for <?= $course_code; ?> [<?= $category . 's' ?>]</h4>
                 </div>
 
-                <?php if (isset($category_comments) && $category_comments): ?>
-                        <?php foreach ($category_comments as $comment): ?>
-                            <div class="p-3 bg-light mt-3 container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <img src="<?= base_url('assets/imgs/avatar.png'); ?>" alt="Avatar" class="img-fluid" style="height: 20vh">
-                                    </div>
-
-                                    <div class="col-sm mt-3 p-md-0 pt-md-2">
-                                        <h4><?= $comment['author']; ?></h4>
-                                        <small class="text-mute"><span class="far fa-calendar mr-2"></span><?= $comment['date']; ?></small>
-
-                                        <p class="lead mt-3 text-muted">
-                                            <?= $comment['comment']; ?>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                <?php else: ?>
-                    <p class="lead text-center p-3">No category comments yet! Write comments below</p>
-                <?php endif; ?>
+                <div id="category-comments-container">
+                    <?php if (isset($category_comments) && $category_comments): ?>
+                            <?php foreach ($category_comments as $comment): ?>
+                                <?= generate_comment_markup($comment); ?>
+                            <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="lead text-center p-3">No category comments yet! Write comments below</p>
+                    <?php endif; ?>
+                </div>
                 
-                <div class="bg-ligh p-3" style="margin-top: 9rem">
+                <div class="bg-ligh p-3" style="margin-top: 4rem">
                     <div class="input-group mt-3"> 
                         <input id="category-comment-author" type="text" class="form-control" name="author" placeholder="Enter Display Name" maxlength="20" required>
                     </div>
@@ -184,7 +171,8 @@
                         <textarea id="category-comment" rows="3" class="form-control" name="comment" placeholder="Your Message" maxlength="500" required></textarea>
                     </div>
 
-                    <button id="btn-submit-category-comment" class="btn btn-success btn-lg mr-5 btn-theme">
+                    <button id="btn-submit-category-comment" class="btn btn-success btn-lg mr-5 btn-theme"
+                        onclick="add_category_comment(<?= $department_id . ',' . $level_id . ',' . $category_id . ',' . $course_id; ?>)">
                         <span class="fas fa-comment mr-1"></span> Comment
                     </button>
 

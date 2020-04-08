@@ -415,3 +415,31 @@ _CARD;
 _CARD;
 		return $card;
 	}
+
+	function generate_comment_markup ($comment)
+	{
+		$author = $comment['author'];
+		$date = $comment['date'];
+		$body = $comment['comment'];
+		$img_url = base_url('assets/imgs/avatar.png');
+
+		$markup = <<<_COMMENT
+			<div class="p-3 bg-light mt-3 container-fluid">
+				<div class="row">
+					<div class="col-sm-2">
+						<img src="{$img_url}" alt="Avatar" class="img-fluid" style="height: 20vh">
+					</div>
+
+					<div class="col-sm mt-3 p-md-0 pt-md-2">
+						<h4>{$author}</h4>
+						<small class="text-mute"><span class="far fa-calendar mr-2"></span>{$date}</small>
+
+						<p class="lead mt-3 text-muted">
+							{$body}
+						</p>
+					</div>
+				</div>
+			</div>
+_COMMENT;
+		return $markup;
+	}

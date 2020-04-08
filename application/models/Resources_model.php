@@ -91,4 +91,18 @@ class Resources_model extends CI_Model
             
         return $query->get()->result_array();
     }
+
+    function add_category_comment ($entries)
+    {
+        $this->db->insert('category_comments', $entries);
+        
+        return $this->db->insert_id();
+    }
+
+    function get_category_comment ($id)
+    {
+        return $this->db->select('author, date_added AS date, comment')
+            ->get_where('category_comments', ['id' => $id])
+            ->row_array();
+    }
 }
