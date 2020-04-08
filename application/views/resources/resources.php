@@ -7,7 +7,7 @@
     <?php return; ?>
 <?php endif; ?>
 
-<div class="resources-siderbar-wrapper pr-2">
+<div class="resources-wrapper pr-2 d-none">
     <!-- Sidebar -->
     <nav id="resources-sidebar" class="shadow shadow-lg">
         <div class="resources-sidebar-header">
@@ -191,4 +191,8 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="text-center mt-5 resource-loading-container">
+    <img src="<?= base_url('assets/imgs/ajax-loader-texed.gif'); ?>" alt="Loading..." class="img-fluid resource-loading">
 </div>

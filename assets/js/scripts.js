@@ -47,6 +47,9 @@ $(document).ready(function (){
 			window.location.href = link;
 		}
 	);
+
+	/* Ajax */
+	setTimeout(show_resources, 1000);
 });
 
 function get_selected_value (selector)
@@ -162,4 +165,10 @@ function add_resource_comment (resource_id)
 			}
 		}
 	);
+}
+
+function show_resources()
+{
+	$('div.resource-loading-container').addClass('d-none');
+	$('div.resources-wrapper').removeClass('d-none');
 }

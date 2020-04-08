@@ -364,3 +364,13 @@ ul.pagination li.page-item.active a.page-link {
 .ajax-loading {
   visibility: visible !important;
 }
+
+img.resource-loading {
+  width: 25%;
+}
+
+@media(max-width: 34em) {
+  img.resource-loading {
+    width: 50%;
+  }
+}
