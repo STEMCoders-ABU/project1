@@ -49,6 +49,7 @@ $(document).ready(function (){
 	);
 
 	/* Ajax */
+	setTimeout(show_index, 1500);
 	setTimeout(show_resources, 1000);
 });
 
@@ -171,4 +172,10 @@ function show_resources()
 {
 	$('div.resource-loading-container').addClass('d-none');
 	$('div.resources-wrapper').removeClass('d-none');
+}
+
+function show_index()
+{
+	$('div.index-loading-container').addClass('d-none');
+	$('div.index-container').removeClass('d-none');
 }
