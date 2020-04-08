@@ -117,6 +117,44 @@ function add_category_comment (department_id, level_id, category_id, course_id)
 				$('textarea#category-comment').val('');
 				$('img.ajax-loader-indicator').removeClass('ajax-loading');
 				$('div#category-comments-container').append(data);
+				$('p.no-comment').addClass('d-none');
+			}
+			else
+			{
+				alert('Oops! We could not add your comment, please try again.');
+			}
+		}
+	);
+}
+
+function add_resource_comment (resource_id)
+{
+	if ($('img.ajax-loader-indicator').hasClass('ajax-loading'))
+		return;
+
+	var author = $('input#category-comment-author').val();
+	var comment = $('textarea#category-comment').val();
+
+	if (author == '' || comment == '')
+	{
+		alert('Please fill out the comment fields before submission!');
+		return;
+	}
+
+	$('img.ajax-loader-indicator').addClass('ajax-loading');
+
+	var post_data = {'resource_id': resource_id, 'author': author, 'comment': comment};
+
+	$.post(SITE_URL + 'resources/add_resource_comment', post_data,
+		function(data, status)
+		{
+			if (status === 'success')
+			{
+				$('input#category-comment-author').val('');
+				$('textarea#category-comment').val('');
+				$('img.ajax-loader-indicator').removeClass('ajax-loading');
+				$('div#category-comments-container').append(data);
+				$('p.no-comment').addClass('d-none');
 			}
 			else
 			{

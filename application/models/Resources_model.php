@@ -78,12 +78,35 @@ class Resources_model extends CI_Model
         return $query->get()->result_array();
     }
 
+    public function get_searched_resources ($keyword, $restrictions)
+    {
+        $query = $this->db->select('id')
+            ->from('resources')
+            ->where($restrictions)
+            ->like('resources.title', $keyword);
+
+        return $query->get()->result_array();
+    }
+
     public function get_limited_resources ($items_per_page, $items_offset, $restrictions)
     {
         $query = $this->db->select('resources.id, resources.title AS resource_title, resources.file AS resource_file, '
             . 'resources.description AS resource_description')
             ->from('resources')
             ->where($restrictions)
+            ->order_by('resources.date_added DESC')
+            ->limit($items_per_page, $items_offset);
+
+        return $query->get()->result_array();
+    }
+
+    public function get_limited_searched_resources ($keyword, $items_per_page, $items_offset, $restrictions)
+    {
+        $query = $this->db->select('resources.id, resources.title AS resource_title, resources.file AS resource_file, '
+            . 'resources.description AS resource_description')
+            ->from('resources')
+            ->where($restrictions)
+            ->like('resources.title', $keyword)
             ->order_by('resources.date_added DESC')
             ->limit($items_per_page, $items_offset);
 
@@ -111,6 +134,30 @@ class Resources_model extends CI_Model
     {
         return $this->db->select('author, date_added AS date, comment')
             ->get_where('category_comments', ['id' => $id])
+            ->row_array();
+    }
+
+    function get_resource_comments ($comments_restrictions)
+    {
+        $query = $this->db->select('author, date, comment')
+            ->from('comments')
+            ->where($comments_restrictions)
+            ->order_by('date ASC');
+            
+        return $query->get()->result_array();
+    }
+
+    function add_resource_comment ($entries)
+    {
+        $this->db->insert('comments', $entries);
+        
+        return $this->db->insert_id();
+    }
+
+    function get_resource_comment ($id)
+    {
+        return $this->db->select('author, date, comment')
+            ->get_where('comments', ['id' => $id])
             ->row_array();
     }
 

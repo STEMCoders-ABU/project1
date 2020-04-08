@@ -53,13 +53,13 @@
             
             <!-- Search Bar -->
             <div class="search-bar card jumbotron mx-auto p-5 shadow shadow-lg">
-                <?= form_open('resources/search', ''); ?>
+                <?= form_open('resources/search/' . $faculty_id . '/' . $department_id . '/' . $level_id . '/' . $category_id . '/' . $course_id . '/null'); ?>
                     <div class="input-group mb-2">
                         <?= get_resource_categories_select(); ?>
                     </div>
 
                     <div class="input-group mt-3"> 
-                        <input type="text" class="form-control bg-light" name="search" placeholder="Enter keyword" required>
+                        <input type="text" class="form-control bg-light" name="keyword" placeholder="Enter keyword" required>
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-success">
                                 <span class="fas fa-search mr-1"></span> Search
@@ -167,7 +167,7 @@
                                 <?= generate_comment_markup($comment); ?>
                             <?php endforeach; ?>
                     <?php else: ?>
-                        <p class="lead text-center p-3">No category comments yet! Write comments below</p>
+                        <p class="lead text-center p-3 no-comment">No category comments yet! Write comments below</p>
                     <?php endif; ?>
                 </div>
                 
