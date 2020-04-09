@@ -54,7 +54,7 @@
             <li class="nav-item <?php if ($page_title == 'About') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('about') ?>">About</a></li>
           </ul>
 
-          <?php if ($this->session->has_userdata('logged')): ?>
+          <?php if ($this->session->has_userdata('logged') || $this->session->has_userdata('admin_logged')): ?>
             <a href="<?= site_url('moderation/logout'); ?>" class="btn btn-success btn-md-lg ml-md-4 mt-3 mt-md-0 btn-theme">Sign Out</a>
           <?php endif; ?>
         </div>

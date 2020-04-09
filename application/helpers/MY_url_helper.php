@@ -41,15 +41,15 @@
 
 		return $config;
 	}
-
-	function get_faculties_select()
+ 
+	function get_faculties_select ($id = '')
 	{
 		$CI =& get_instance();
 		$moderation_model = $CI->load->model('moderation_model');
 
 		$faculties = $CI->moderation_model->get_faculties();
 
-		$select = '<select id="faculty_select" class="form-control bg-light" name="faculty" required>';
+		$select = '<select id="' . $id . '" class="form-control bg-light" name="faculty" required>';
 
 		foreach ($faculties as $faculty)
 			$select .= '<option value=' . $faculty['id'] . '>' . $faculty['faculty'] . '</option>';

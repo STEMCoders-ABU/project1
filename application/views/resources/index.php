@@ -11,7 +11,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-dark text-light">Faculty</span>                          
                         </div>
-                        <?= get_faculties_select(); ?>
+                        <?= get_faculties_select('faculty_select'); ?>
                     </div>
                 </div>
 

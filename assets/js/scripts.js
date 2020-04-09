@@ -18,13 +18,33 @@ $(document).ready(function (){
 	});
 	
 	/* Resources Codes */
-	// display departments for currently selected faculty
-	fetch_and_display_departments();
+	// display departments for currently selected faculty (Resources Index)
+	fetch_and_display_departments('select#faculty_select', 'div#departments_select_container');
 
 	// update the select options when the faculty select changes
 	$('select#faculty_select').change(function()
 		{
-			fetch_and_display_departments();
+			fetch_and_display_departments('select#faculty_select', 'div#departments_select_container');
+		}
+	);
+
+	// display departments for currently selected faculty (Admin Index)
+	fetch_and_display_departments('form.update-dept-form select#faculty_select', 'div#departments_select_container');
+
+	// update the select options when the faculty select changes
+	$('form.update-dept-form select#faculty_select').change(function()
+		{
+			fetch_and_display_departments('form.update-dept-form select#faculty_select', 'div#departments_select_container');
+		}
+	);
+
+	// display departments for currently selected faculty (Admin Index)
+	fetch_and_display_departments('form.add-mod-form select#faculty_select', 'div#departments_select_container2');
+
+	// update the select options when the faculty select changes
+	$('form.add-mod-form select#faculty_select').change(function()
+		{
+			fetch_and_display_departments('form.add-mod-form select#faculty_select', 'div#departments_select_container2');
 		}
 	);
 
@@ -58,9 +78,9 @@ function get_selected_value (selector)
 	return $(selector).children('option:selected').val();
 }
 
-function get_selected_faculty_id()
+function get_selected_faculty_id (selector)
 {
-	return get_selected_value('select#faculty_select');
+	return get_selected_value(selector);
 }
 
 function get_selected_department_id()
@@ -73,17 +93,19 @@ function get_selected_level_id()
 	return get_selected_value('select#level_select');
 }
 
-function fetch_and_display_departments()
+function fetch_and_display_departments (faculty_selector, container_selector)
 {
-	var faculty_id = get_selected_faculty_id();
+	var faculty_id = get_selected_faculty_id(faculty_selector);
+	if (! faculty_id)
+		return;
 
 	$.post(SITE_URL + 'moderation/get_departments', {'faculty_id': faculty_id},
 		function(data, status)
 		{
 			if (status === 'success')
 			{
-				$('select#department_select').remove();
-				$('div#departments_select_container').append(data);
+				$(container_selector + ' select#department_select').remove();
+				$(container_selector).append(data);
 			}
 			else
 			{

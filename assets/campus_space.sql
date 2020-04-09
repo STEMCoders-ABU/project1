@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2020 at 06:12 PM
+-- Generation Time: Apr 10, 2020 at 01:03 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -25,6 +25,56 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `administrators`
+--
+
+CREATE TABLE `administrators` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(12) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `password` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `administrators`
+--
+
+INSERT INTO `administrators` (`id`, `username`, `email`, `password`) VALUES
+(1, 'stemcoders', 'stemcoders.abu@gmail.com', 'in4aPin4aL');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_comments`
+--
+
+CREATE TABLE `category_comments` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `level_id` int(11) NOT NULL,
+  `author` varchar(20) NOT NULL,
+  `comment` varchar(500) NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category_comments`
+--
+
+INSERT INTO `category_comments` (`id`, `category_id`, `course_id`, `department_id`, `level_id`, `author`, `comment`, `date_added`) VALUES
+(2, 2, 2, 1, 1, 'emris', 'hey', '2020-04-08 09:27:29'),
+(3, 2, 2, 1, 1, 'emris', 'I love this resource', '2020-04-08 09:32:47'),
+(4, 2, 2, 1, 1, 'Student', 'I will like to say that this resource is somewhat somehow....\n\nKidding, just testing :)', '2020-04-08 09:33:40'),
+(5, 2, 2, 1, 1, 'emmy', 'Trisl', '2020-04-08 09:39:08'),
+(6, 4, 3, 1, 1, 'emris', 'First comment, yay!', '2020-04-08 09:39:44'),
+(7, 2, 2, 1, 1, 'me', 'Another one', '2020-04-08 09:42:23'),
+(8, 4, 2, 1, 1, 'emmi', 'This is a comment', '2020-04-08 23:53:33');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `comments`
 --
 
@@ -35,6 +85,16 @@ CREATE TABLE `comments` (
   `author` varchar(60) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `comment`, `resource_id`, `author`, `date`) VALUES
+(1, 'new comment', 12, 'emris', '2020-04-08 23:07:07'),
+(2, 'uhm', 11, 'emris', '2020-04-08 23:07:56'),
+(3, 'again', 11, 'emris', '2020-04-08 23:09:53'),
+(4, 'we are here', 10, 'emris', '2020-04-08 23:10:23');
 
 -- --------------------------------------------------------
 
@@ -237,7 +297,12 @@ INSERT INTO `resources` (`id`, `title`, `course_id`, `faculty_id`, `department_i
 (4, 'Test 101 Document', 2, 1, 1, 1, 4, 'This is a document for TEST101', 'test-101-document.docx', '2020-04-05 10:46:47', 0),
 (5, 'Test 102 Document', 3, 1, 1, 1, 4, 'This is a document for TEST102', 'test-102-document.docx', '2020-04-05 10:46:47', 0),
 (6, 'A Video', 4, 2, 2, 3, 2, 'Im speechless', 'a-video.mp4', '2020-04-06 14:42:05', 0),
-(7, 'A document', 6, 2, 2, 3, 4, 'Im speechless again', 'a-document.xlsx', '2020-04-06 14:43:22', 0);
+(7, 'A document', 6, 2, 2, 3, 4, 'Im speechless again', 'a-document.xlsx', '2020-04-06 14:43:22', 0),
+(8, 'Another Video Resource', 2, 1, 1, 1, 2, 'Thislkjdhhd jfskjdsokjnj iojsnokfsnjcsok noan nsdkjnsk nnasna nnn nlnvlksnmcslknm lknalkxnzlnxzjnxakj nnaln lknnlknlkjn lnnALKNXALXN NLNAXNMLNL NLZNXKLNACLANA Nkjnscxkjncnk jnjsjljckjjlaknlcnln nlnclczlnxzlxlan lanxlanxlaxn ln.', 'another-video-resource.mp4', '2020-04-07 10:18:02', 0),
+(9, 'Another Video Resource2', 2, 1, 1, 1, 2, 'Thislkjdhhd jfskjdsokjnj iojsnokfsnjcsok noan nsdkjnsk nnasna nnn nlnvlksnmcslknm lknalkxnzlnxzjnxakj nnaln lknnlknlkjn lnnALKNXALXN NLNAXNMLNL NLZNXKLNACLANA Nkjnscxkjncnk jnjsjljckjjlaknlc.', 'another-video-resource2.mp4', '2020-04-07 11:35:12', 0),
+(10, 'Another Video Resource3', 2, 1, 1, 1, 2, 'Thislkjdhhd jfskjdsokjnj iojsnokfsnjcsok noan nsdkjnsk nnasna nnn nlnvlksnmcslknm lknalkxnzlnxzjnxakj nnaln lknnlknlkjn lnnALKNXALXN NLNAXNMLNL NLZNXKLNACLANA Nkjnscxkjncnk jnjsjljckjjlaknlc.', 'another-video-resource3.mp4', '2020-04-07 11:35:45', 0),
+(11, 'Another Video Resource4', 2, 1, 1, 1, 2, 'Thislkjdhhd jfskjdsokjnj iojsnokfsnjcsok noan nsdkjnsk nnasna nnn nlnvlksnmcslknm lknalkxnzlnxzjnxakj nnaln lknnlknlkjn lnnALKNXALXN NLNAXNMLNL NLZNXKLNACLANA Nkjnscxkjncnk jnjsjljckjjlaknlc.', 'another-video-resource4.mp4', '2020-04-07 11:39:56', 0),
+(12, 'New document', 2, 1, 1, 1, 4, 'Some description this is', 'new-document.xlsx', '2020-04-07 14:55:10', 0);
 
 -- --------------------------------------------------------
 
@@ -263,6 +328,18 @@ INSERT INTO `resource_categories` (`id`, `category`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `administrators`
+--
+ALTER TABLE `administrators`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category_comments`
+--
+ALTER TABLE `category_comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `comments`
@@ -344,10 +421,22 @@ ALTER TABLE `resource_categories`
 --
 
 --
+-- AUTO_INCREMENT for table `administrators`
+--
+ALTER TABLE `administrators`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `category_comments`
+--
+ALTER TABLE `category_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -401,7 +490,7 @@ ALTER TABLE `password_resets`
 -- AUTO_INCREMENT for table `resources`
 --
 ALTER TABLE `resources`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `resource_categories`
