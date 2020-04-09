@@ -366,11 +366,11 @@ ul.pagination li.page-item.active a.page-link {
 }
 
 img.resource-loading {
-  width: 25%;
+  width: 40%;
 }
 
 @media(max-width: 34em) {
   img.resource-loading {
-    width: 50%;
+    width: 75%;
   }
 }

@@ -194,5 +194,5 @@
 </div>
 
 <div class="text-center mt-5 resource-loading-container">
-    <img src="<?= base_url('assets/imgs/ajax-loader-texed.gif'); ?>" alt="Loading..." class="img-fluid resource-loading">
+    <img src="<?= base_url('assets/imgs/ajax-loader-spinner.gif'); ?>" alt="Loading..." class="img-fluid resource-loading">
 </div>
