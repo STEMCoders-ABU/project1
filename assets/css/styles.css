@@ -98,7 +98,7 @@ footer#generic-footer {
   z-index: 1000;
 }
 
-@media(max-width: 34em) {
+@media(max-width: 575.98px) {
   footer#generic-footer h4 {
     font-size: 1.2rem;
   }
@@ -129,7 +129,7 @@ div .index-header .auth-container a#login {
   width: 15rem !important;
 }
 
-@media(max-width: 34em) {
+@media(max-width: 575.98px) {
   div .index-header .index-header-title {
     font-size: 3rem;
   }
@@ -167,7 +167,7 @@ div .index-header .auth-container a#login {
   width: 80%;
 }
 
-@media(max-width: 34em) {
+@media(max-width: 575.98px) {
   #section-a {
     padding: 1.5rem;
   }
@@ -179,7 +179,7 @@ div .index-header .auth-container a#login {
   margin-bottom: 6rem !important;
 }
 
-@media(max-width: 34em) {
+@media(max-width: 575.98px) {
   #section-b {
     padding: 3rem;
   }
@@ -192,7 +192,7 @@ div .index-header .auth-container a#login {
   margin-bottom: 1.5rem !important;
 }
 
-@media(max-width: 34em) {
+@media(max-width: 575.98px) {
   #section-c #sub-header {
     font-size: 0.8rem;
   }
@@ -274,7 +274,7 @@ div .index-header .auth-container a#login {
   color: lightgray;
   float: right;
 }
-@media(max-width: 34em) {
+@media(max-width: 575.98px) {
   div .about-section-3{
     float: none;
   }
@@ -306,7 +306,7 @@ a.news-card-btn-more {
   margin-bottom: 0.5rem;
 }
 
-@media(max-width: 34em) {
+@media(max-width: 575.98px) {
   div.resources-index-mfa {
     padding: 0.2rem;
   }
@@ -387,7 +387,7 @@ img.resource-loading {
   width: 40%;
 }
 
-@media(max-width: 34em) {
+@media(max-width: 575.98px) {
   img.resource-loading {
     width: 75%;
   }

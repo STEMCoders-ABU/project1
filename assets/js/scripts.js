@@ -112,6 +112,11 @@ function get_selected_level_id()
 	return get_selected_value('select#level_select');
 }
 
+function get_selected_news_id()
+{
+	return get_selected_value('select#news_category_select');
+}
+
 function fetch_and_display_departments (faculty_selector, container_selector)
 {
 	var faculty_id = get_selected_faculty_id(faculty_selector);
@@ -294,4 +299,82 @@ function show_index()
 {
 	$('div.index-loading-container').addClass('d-none');
 	$('div.index-container').removeClass('d-none');
+}
+
+function sub_for_news()
+{
+	if ($('img.ajax-loader-indicator').hasClass('ajax-loading'))
+		return;
+
+	var faculty_id = get_selected_faculty_id('select#faculty_select');
+	var department_id = get_selected_department_id();
+	var level_id = get_selected_level_id();
+	var email = $('input.sub_email').val();
+
+	if (email == '')
+	{
+		alert('Please enter the email you want to subscribe with!');
+		return;
+	}
+
+	$('img.ajax-loader-indicator').addClass('ajax-loading');
+
+	var post_data = {'faculty_id': faculty_id, 'department_id': department_id, 'level_id': level_id,
+		'email': email};
+
+	$.post(SITE_URL + 'news_sub', post_data,
+		function(data, status)
+		{
+			if (status === 'success')
+			{
+				$('div#subscription_feedback').removeClass('d-none');
+				$('p#feedback_text').html('');
+				$('p#feedback_text').html(data);
+				$('img.ajax-loader-indicator').removeClass('ajax-loading');
+			}
+			else
+			{
+				alert('Oops! We could not add your comment, please try again.');
+			}
+		}
+	);
+}
+
+function sub_for_resources()
+{
+	if ($('img.ajax-loader-indicator').hasClass('ajax-loading'))
+		return;
+
+	var faculty_id = get_selected_faculty_id('select#faculty_select');
+	var department_id = get_selected_department_id();
+	var level_id = get_selected_level_id();
+	var email = $('input.sub_email').val();
+
+	if (email == '')
+	{
+		alert('Please enter the email you want to subscribe with!');
+		return;
+	}
+
+	$('img.ajax-loader-indicator').addClass('ajax-loading');
+
+	var post_data = {'faculty_id': faculty_id, 'department_id': department_id, 'level_id': level_id,
+		'email': email};
+
+	$.post(SITE_URL + 'resources_sub', post_data,
+		function(data, status)
+		{
+			if (status === 'success')
+			{
+				$('div#subscription_feedback').removeClass('d-none');
+				$('p#feedback_text').html('');
+				$('p#feedback_text').html(data);
+				$('img.ajax-loader-indicator').removeClass('ajax-loading');
+			}
+			else
+			{
+				alert('Oops! We could not add your comment, please try again.');
+			}
+		}
+	);
 }

@@ -123,7 +123,7 @@
                     <?php endif; ?>
                 </div>
                 
-                <div class="bg-ligh p-3" style="margin-top: 4rem">
+                <div class="p-3" style="margin-top: 4rem">
                     <div class="input-group mt-3"> 
                         <input id="category-comment-author" type="text" class="form-control" name="author" placeholder="Enter Display Name" maxlength="20" required>
                     </div>

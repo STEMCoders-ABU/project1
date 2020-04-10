@@ -3,7 +3,7 @@ class News_model extends CI_Model
 {
     function get_latest_news()
     {
-        $query = $this->db->select('news.id, news.title AS news_title, news_categories.category AS news_category, '
+        $query = $this->db->select('news.id, news.title AS news_title, news_categories.category AS news_category, news.content AS news_content, '
             . 'levels.level AS news_level, faculties.faculty AS news_faculty, departments.department AS news_department')
             ->from('news')
             ->join('news_categories', 'news_categories.id = news.category_id')
@@ -158,5 +158,19 @@ class News_model extends CI_Model
             ->limit($items_per_page, $items_offset);
 
         return $query->get()->result_array();
+    }
+
+    function subscription_exists ($restrictions)
+    {
+        $query = $this->db->select('id')
+            ->from('news_subscriptions')
+            ->where($restrictions);
+
+        return $query->get()->row_array();
+    }
+
+    function add_subscription ($entries)
+    {
+        $this->db->insert('news_subscriptions', $entries);
     }
 }

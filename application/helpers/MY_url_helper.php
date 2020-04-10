@@ -71,14 +71,14 @@
 		return $select;
 	}
 
-	function get_levels_select()
+	function get_levels_select ($id = '')
 	{
 		$CI =& get_instance();
 		$moderation_model = $CI->load->model('moderation_model');
 
 		$levels = $CI->moderation_model->get_levels();
 
-		$select = '<select id="level_select" class="form-control bg-light" name="level" required>';
+		$select = '<select id="' . $id . '" class="form-control bg-light" name="level" required>';
 
 		foreach ($levels as $level)
 			$select .= '<option value=' . $level['id'] . '>' . $level['level'] . '</option>';
@@ -170,7 +170,7 @@
 
 		$categories = $CI->moderation_model->get_news_categories();
 
-		$select = '<select class="form-control bg-light" name="category" required>';
+		$select = '<select id="news_category_select" class="form-control bg-light" name="category" required>';
 		$select .= '<option value="0" selected>All</option>';
 
 		foreach ($categories as $category)
@@ -188,7 +188,7 @@
 
 		$categories = $CI->moderation_model->get_news_categories();
 
-		$select = '<select class="form-control bg-light" name="category" required>';
+		$select = '<select id="news_category_select" class="form-control bg-light" name="category" required>';
 		
 		foreach ($categories as $category)
 			if ($selected == $category['id'])
