@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2020 at 01:03 AM
+-- Generation Time: Apr 10, 2020 at 06:39 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -80,9 +80,9 @@ INSERT INTO `category_comments` (`id`, `category_id`, `course_id`, `department_i
 
 CREATE TABLE `comments` (
   `id` int(10) UNSIGNED NOT NULL,
-  `comment` varchar(200) NOT NULL,
+  `comment` varchar(500) NOT NULL,
   `resource_id` int(11) NOT NULL,
-  `author` varchar(60) NOT NULL,
+  `author` varchar(20) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -223,6 +223,7 @@ CREATE TABLE `news` (
   `title` varchar(200) NOT NULL,
   `content` varchar(5000) NOT NULL,
   `category_id` int(11) NOT NULL,
+  `faculty_id` int(10) UNSIGNED NOT NULL,
   `department_id` int(11) NOT NULL,
   `level_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL DEFAULT current_timestamp()
@@ -232,8 +233,11 @@ CREATE TABLE `news` (
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`id`, `title`, `content`, `category_id`, `department_id`, `level_id`, `date_added`) VALUES
-(1, 'The Test News Title', 'This is some general announcement...', 1, 1, 1, '2020-04-05 10:51:14');
+INSERT INTO `news` (`id`, `title`, `content`, `category_id`, `faculty_id`, `department_id`, `level_id`, `date_added`) VALUES
+(3, 'The Test News Title', 'This some general news!', 1, 1, 1, 1, '2020-04-10 08:47:52'),
+(4, 'The Test News Title For Assignment', 'This some assignment news!', 3, 1, 1, 1, '2020-04-10 08:48:15'),
+(5, 'Another The Test News Title', 'Some content this is', 1, 1, 1, 1, '2020-04-10 10:45:52'),
+(6, 'Another The Test News Title Again', 'nshdhjdshjdhjhjdh dhchchdhcdhcdxh xhxhcxhchxchxc hhbkjankjnzknknjkxbzb bbcbcbbcbbbcxz zbnxhjzbxzxnbzxnbznbxz zbzjnbkjkkbnzbb  bchbzbcbbcbxzbcbcbbc xzbkzkznzkzzk  bbbczbkjbcjuwywywywywywbsbsbcsbbchbbc bnsxzkjbz bzjkbzbnkjbzbjzbcbkjz zkjkjczbkjbkbckjzbkzkb zkckzbckzbcbbbcbc znbxbzbxb zbxbbbsx zbxbshaujxainbzjnön ölzblbz.b lbzöxbzkjxzkxbkzjnbz bz z  z', 1, 1, 1, 1, '2020-04-10 11:37:25');
 
 -- --------------------------------------------------------
 
@@ -254,7 +258,79 @@ INSERT INTO `news_categories` (`id`, `category`) VALUES
 (1, 'General Announcement'),
 (2, 'Breaking News'),
 (3, 'Assignment'),
-(4, 'Assessment');
+(4, 'Assessment'),
+(5, 'Scholarship');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_category_comments`
+--
+
+CREATE TABLE `news_category_comments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL,
+  `level_id` int(10) UNSIGNED NOT NULL,
+  `author` varchar(20) NOT NULL,
+  `comment` varchar(500) NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `news_category_comments`
+--
+
+INSERT INTO `news_category_comments` (`id`, `category_id`, `department_id`, `level_id`, `author`, `comment`, `date_added`) VALUES
+(1, 3, 1, 1, 'emris', 'A comment', '2020-04-10 12:00:01'),
+(2, 3, 1, 1, 'emris', 'Another comment', '2020-04-10 12:00:14'),
+(3, 1, 1, 1, 'emmy', 'Commenting here', '2020-04-10 12:00:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_comments`
+--
+
+CREATE TABLE `news_comments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `comment` varchar(500) NOT NULL,
+  `news_id` int(10) UNSIGNED NOT NULL,
+  `author` varchar(20) NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `news_comments`
+--
+
+INSERT INTO `news_comments` (`id`, `comment`, `news_id`, `author`, `date_added`) VALUES
+(1, 'another comment', 6, 'emris', '2020-04-10 12:52:33'),
+(2, 'Yet another comment', 6, 'emmy', '2020-04-10 12:55:03'),
+(3, 'first comment', 5, 'emris', '2020-04-10 12:58:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_subscriptions`
+--
+
+CREATE TABLE `news_subscriptions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `faculty_id` int(10) UNSIGNED NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL,
+  `level_id` int(10) UNSIGNED NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `news_subscriptions`
+--
+
+INSERT INTO `news_subscriptions` (`id`, `email`, `faculty_id`, `department_id`, `level_id`, `date_added`) VALUES
+(5, 'imran@gmail.com', 1, 1, 1, '2020-04-10 17:24:15'),
+(6, 'imran@gmail.com', 1, 1, 3, '2020-04-10 17:28:59');
 
 -- --------------------------------------------------------
 
@@ -303,6 +379,21 @@ INSERT INTO `resources` (`id`, `title`, `course_id`, `faculty_id`, `department_i
 (10, 'Another Video Resource3', 2, 1, 1, 1, 2, 'Thislkjdhhd jfskjdsokjnj iojsnokfsnjcsok noan nsdkjnsk nnasna nnn nlnvlksnmcslknm lknalkxnzlnxzjnxakj nnaln lknnlknlkjn lnnALKNXALXN NLNAXNMLNL NLZNXKLNACLANA Nkjnscxkjncnk jnjsjljckjjlaknlc.', 'another-video-resource3.mp4', '2020-04-07 11:35:45', 0),
 (11, 'Another Video Resource4', 2, 1, 1, 1, 2, 'Thislkjdhhd jfskjdsokjnj iojsnokfsnjcsok noan nsdkjnsk nnasna nnn nlnvlksnmcslknm lknalkxnzlnxzjnxakj nnaln lknnlknlkjn lnnALKNXALXN NLNAXNMLNL NLZNXKLNACLANA Nkjnscxkjncnk jnjsjljckjjlaknlc.', 'another-video-resource4.mp4', '2020-04-07 11:39:56', 0),
 (12, 'New document', 2, 1, 1, 1, 4, 'Some description this is', 'new-document.xlsx', '2020-04-07 14:55:10', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resources_subscriptions`
+--
+
+CREATE TABLE `resources_subscriptions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `faculty_id` int(10) UNSIGNED NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL,
+  `level_id` int(10) UNSIGNED NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -396,6 +487,24 @@ ALTER TABLE `news_categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `news_category_comments`
+--
+ALTER TABLE `news_category_comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news_comments`
+--
+ALTER TABLE `news_comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news_subscriptions`
+--
+ALTER TABLE `news_subscriptions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -409,6 +518,12 @@ ALTER TABLE `password_resets`
 ALTER TABLE `resources`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `title` (`title`);
+
+--
+-- Indexes for table `resources_subscriptions`
+--
+ALTER TABLE `resources_subscriptions`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `resource_categories`
@@ -472,13 +587,31 @@ ALTER TABLE `moderators`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `news_categories`
 --
 ALTER TABLE `news_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `news_category_comments`
+--
+ALTER TABLE `news_category_comments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `news_comments`
+--
+ALTER TABLE `news_comments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `news_subscriptions`
+--
+ALTER TABLE `news_subscriptions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
@@ -491,6 +624,12 @@ ALTER TABLE `password_resets`
 --
 ALTER TABLE `resources`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `resources_subscriptions`
+--
+ALTER TABLE `resources_subscriptions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `resource_categories`
