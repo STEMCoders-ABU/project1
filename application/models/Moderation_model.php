@@ -239,5 +239,45 @@ class Moderation_model extends CI_Model
 		$query = $this->db->where('email', $email)
 			->update('moderators', $new_data);
 		return $query;
-	}
+    }
+
+    public function add_faculty ($faculty)
+    {
+        $this->db->insert('faculties', ['faculty' => $faculty]);
+    }
+
+    public function update_faculty ($id, $faculty)
+	{
+		$this->db->where('id', $id)
+			->update('faculties', ['faculty' => $faculty]);
+    }
+
+    public function remove_faculty ($id)
+    {
+        $this->db->where(['id' => $id])
+			->delete('faculties');
+    }
+
+    public function add_department ($department, $f_id)
+	{
+		$this->db->insert('departments', ['department' => $department, 'faculty_id' => $f_id]);
+    }
+
+    public function update_department ($d_id, $department, $f_id)
+	{
+        $this->db->where('faculty_id', $f_id)
+            ->where('id', $d_id)
+			->update('departments', ['department' => $department]);
+    }
+
+    public function add_moderator($entries)
+    {
+        $this->db->insert('moderators', $entries);
+    }
+
+    public function is_moderator_unique($entries)
+    {
+        $query = $this->db->get_where('moderators', ['faculty_id' => $entries['faculty_id'], 'department_id' => $entries['department_id'], 'level_id' => $entries['level_id']]);
+        return $query->num_rows() == 1;
+    }
 }
