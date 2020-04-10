@@ -6,7 +6,8 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->model('moderation_model');
+        $this->load->model('moderation_model');
+        $this->load->helper('email');
     }
 
     public function index()
@@ -69,5 +70,185 @@ class Admin extends CI_Controller
 	{
 		$this->session->sess_destroy();
 		redirect('index');
+    }
+
+    function add_faculty()
+    {
+        if (!($this->session->has_userdata('admin_logged')))
+            redirect('admin/login');
+            
+        $data['page_title'] = 'Administration';
+
+        $this->form_validation->set_rules('faculty_name', 'Faculty Name', 'required|max_length[60]|is_unique[faculties.faculty]',
+        ['is_unique' => 'A faculty with the same given name already exists!']);
+
+        if ($this->form_validation->run() == FALSE)
+            load_view('admin/index', $data);
+        else
+        {
+            $faculty = get_post('faculty_name');
+            
+            $this->moderation_model->add_faculty($faculty);
+            $this->session->set_flashdata('flash_message', 'A new faculty is added successfully!');
+            load_view('admin/index', $data);
+        }
+    }
+
+    function update_faculty()
+    {
+        if (!($this->session->has_userdata('admin_logged')))
+            redirect('admin/login');
+
+        $data['page_title'] = 'Administration';
+
+        $this->form_validation->set_rules('faculty_name', 'New Faculty Name', 'required|max_length[60]|is_unique[faculties.faculty]',
+        ['is_unique' => 'A faculty with the same given name already exists!']);
+        $this->form_validation->set_rules('faculty', 'Old Faculty ID', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+            load_view('admin/index', $data);
+        else
+        {
+            $faculty = get_post('faculty_name');
+            
+            $faculty_id = get_post('faculty');
+            $this->moderation_model->update_faculty($faculty_id, $faculty);
+            $this->session->set_flashdata('flash_message', 'Faculty name has been changed successfully!');
+            load_view('admin/index', $data);
+        }
+    }
+
+    function remove_faculty()
+    {
+        if(!($this->session->has_userdata('admin_logged')))
+            redirect('admin/login');
+
+        $data['page_title'] = 'Administration';
+
+        $this->form_validation->set_rules('faculty', 'Faculty ID', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+            load_view('admin/index', $data);
+        else
+        {
+            $faculty_id = get_post('faculty');
+            $this->moderation_model->remove_faculty($faculty_id);
+            $this->session->set_flashdata('flash_message', 'Faculty is deleted!');
+            load_view('admin/index', $data);
+        }
+    }
+
+    function add_department()
+    {
+        if (!($this->session->has_userdata('admin_logged')))
+            redirect('admin/login');
+            
+        $data['page_title'] = 'Administration';
+    
+        $this->form_validation->set_rules('department_name', 'Department Name', 'required|max_length[60]|is_unique[departments.department]',
+        ['is_unique' => 'A department with the same given name already exists!']);
+        $this->form_validation->set_rules('faculty', 'Faculty ID', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+            load_view('admin/index', $data);
+        else
+        {
+            $department = get_post('department_name');
+            $faculty_id = get_post('faculty');
+
+            $this->moderation_model->add_department($department, $faculty_id);
+            $this->session->set_flashdata('flash_message', 'New Department name has been added successfully!');
+            load_view('admin/index', $data);
+        }
+    }
+
+    function update_department()
+    {
+        if (!($this->session->has_userdata('admin_logged')))
+            redirect('admin/login');
+            
+        $data['page_title'] = 'Administration';
+    
+        $this->form_validation->set_rules('department_name', 'Department Name', 'required|max_length[60]|is_unique[departments.department]',
+        ['is_unique' => 'A department with the same given name already exists!']);
+        $this->form_validation->set_rules('department', 'Department ID', 'required');
+        $this->form_validation->set_rules('faculty', 'Faculty ID', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+            load_view('admin/index', $data);
+        else
+        {
+            $department = get_post('department_name');
+            $department_id = get_post('department');
+            $faculty_id = get_post('faculty');
+
+            $this->moderation_model->update_department($department_id, $department, $faculty_id);
+            $this->session->set_flashdata('flash_message', 'Department name has been changed successfully!');
+            load_view('admin/index', $data);
+        }
+    }
+
+    function add_moderator()
+    {
+        if (!($this->session->has_userdata('admin_logged')))
+            redirect('admin/login');
+            
+        $data['page_title'] = 'Administration';
+    
+        $this->form_validation->set_rules('faculty', 'Faculty ID', 'required');
+        $this->form_validation->set_rules('department', 'Department ID', 'required');
+        $this->form_validation->set_rules('level', 'Level', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[12]|is_unique[moderators.username]',
+        ['is_unique' => 'Username already taken!']);
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[50]|valid_email|xss_clean|is_unique[moderators.username]',
+        ['is_unique' => 'An account with the same email address exists!']);
+        $this->form_validation->set_rules('full_name', 'Full Name', 'required|max_length[50]');
+        $this->form_validation->set_rules('gender', 'Gender', 'required');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required|max_length[11]|callback_check_if_all_digit',
+        ['is_unique' => 'An account with the same phone number exists!']);
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[70]|callback_check_password_expression');
+
+        if ($this->form_validation->run() == FALSE)
+            load_view('admin/index', $data);
+        else
+        {
+            $entries = 
+            [
+                'username' => get_post('username'),
+                'email' => get_post('email'),
+                'password' => get_post('password'),
+                'full_name' => get_post('full_name'),
+                'gender' => get_post('gender'),
+                'phone' => get_post('phone'),
+                'faculty_id' => get_post('faculty'),
+                'department_id' => get_post('department'),
+                'level_id' => get_post('level'),
+            ];
+
+            if(!($this->moderation_model->is_moderator_unique($entries)))
+            {
+                $this->moderation_model->add_moderator($entries);
+                $this->session->set_flashdata('flash_message', 'A new moderator has been added successfully!');
+                load_view('admin/index', $data);
+            }
+            else
+            {
+                $data['custom_error'] = 'A moderator from the same faculty, department and level exists!';
+                load_view('admin/index',  $data);
+            }
+        }
+    }
+
+    function check_password_expression($password)
+    {
+        if(1 !== preg_match("/^.*(?=.{6,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/", $password))
+        {
+            $this->form_validation->set_message('check_password_expression', '%s must be at least 6 characters and must contain at least one lowercase letter, one uppercase letter and one digit');
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
     }
 }
