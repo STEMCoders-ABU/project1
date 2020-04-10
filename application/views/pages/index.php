@@ -49,7 +49,7 @@
         <div class="row">
           <div class="col-sm">
             <h2 class="mb-5 text-center">WHAT DIFFERENCE DOES IT MAKE?</h2>
-            <p class="text-muted">Remember those awkward moments when you go onlinine on WhatsApp only to discover about 100 unread messages waiting for you. You've already 
+            <p class="text-muted">Remember those awkward moments when you go online on WhatsApp only to discover about 100 unread messages waiting for you. You've already 
               had your fair share of frustation after the day's long hours of lectures. Now all you care about is getting that peaceful resting time, you probably don't want 
               to go through all those mesages (they're not all that useful anyway), so you take a peek at the last three messages. You're pretty much satisfied now because the last three mesages
               weren't useful just like you presumed (the rest are probably useless too), then you log off.
@@ -58,7 +58,7 @@
               trying to revise for the test. Puzzled, you exclaimed: TEST? WHEN? WHERE? HOW?. Unfortunately for you, the test was announced in the WhatsApp group and you failed to read. To make matters worst, past questions, 
               ebooks and even useful materials were also shared but you missed all that and now you're pretty much doomed!
             </p>
-            <p class="lead">To be fair, that wasn't entirely your fault, following up departmental WhatsApp group messages is a pain. But that's not an excuse to fail! You'll usually end up missing vital info and resources!</p>
+            <p class="lead">Ok, that wasn't entirely your fault, following up departmental WhatsApp group messages is a pain. But that's not an excuse to fail! You'll usually end up missing vital info and resources!</p>
             <p class="lead">This is where Campus Space comes in! We give class representatives the oppurtunity to keep class members up to date with resources and useful information in an organised and student friendly manner.
               At Campus Space, we let you focus on what you're actually interested in. You no longer have to scroll through hundreds of not so useful messages to get updated
             </p>
@@ -75,7 +75,7 @@
       <!--SECTION C .. OPPORTUNITIES-->
     <section id="section-c" class="mt-5">
         <h2 class="text-center">LATEST NEWS/UPDATES</h2>
-        <p id="sub-header" class="text-center mb-5">ASSIGNMENTS | SCHOLARSHIPS | COMPETITIONS | ASSESMENTS | GRANTS | GENERAL NEWS</p>
+        <p id="sub-header" class="text-center mb-5 mx-2">ASSIGNMENTS | SCHOLARSHIPS | COMPETITIONS | ASSESMENTS | GRANTS | GENERAL NEWS</p>
 
         <div class="container-fluid">
           <?php if (isset($news) && $news): ?>

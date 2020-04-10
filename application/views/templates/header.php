@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="Stem Coders Club">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#007bff">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#007bff">
+    <meta name="theme-color" content="#075031">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#075031">
     
     <title>
       <?php if (isset($page_title)): ?>
