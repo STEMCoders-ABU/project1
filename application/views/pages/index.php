@@ -104,7 +104,7 @@
         </div>
     </section>
 
-    <section class="mt-5 container mb-4">
+    <section class="container" style="margin-top: 8rem;">
       <div class="jumbtron p-3 shadow shadow-lg">
         <div class="p-4 bg-dark text-white mx-n3 mt-n3">
           <h4 class="text-center">Subscribe for Email Notifications</h4>

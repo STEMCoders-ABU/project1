@@ -46,7 +46,7 @@
         </button>
                  
         <div id="nav-menu" class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav alex-font text-white">
+          <ul class="navbar-nav alex-font text-white lead">
             <li class="nav-item <?php if ($page_title == 'Home') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
             <li class="nav-item <?php if ($page_title == 'Resources') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('resources') ?>">Resources</a></li>
             <li class="nav-item <?php if ($page_title == 'News') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('news') ?>">News</a></li>
@@ -64,4 +64,4 @@
     
     <div id="page-contents">
       <!-- The Main Contents -->
-      <main id="content-wrap" class="container-fluid p-0 alegreya-r" style="padding-bottom: 6rem !important;">
+      <main id="content-wrap" class="container-fluid px-0 pt-0 alegreya-r">

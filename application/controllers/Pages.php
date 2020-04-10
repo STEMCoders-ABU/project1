@@ -23,6 +23,12 @@ class Pages extends CI_Controller
         load_view('pages/about', $data);
     }
 
+    public function contact()
+    {
+        $data['page_title'] = 'Contact';
+        load_view('pages/contact', $data);
+    }
+
     function news_sub()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|max_length[50]|valid_email');
