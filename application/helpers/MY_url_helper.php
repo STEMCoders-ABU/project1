@@ -71,7 +71,7 @@
 		return $select;
 	}
 
-	function get_levels_select ($id = '')
+	function get_levels_select ($id = 'level_select')
 	{
 		$CI =& get_instance();
 		$moderation_model = $CI->load->model('moderation_model');
