@@ -51,7 +51,7 @@ $(document).ready(function (){
 	// show resources when the 'Find Resources' is click
 	$('button#btn_find_resources').click(function()
 		{
-			var faculty_id = get_selected_faculty_id();
+			var faculty_id = get_selected_faculty_id('select#faculty_select');
 			var department_id = get_selected_department_id();
 			var level_id = get_selected_level_id();
 			var category_id = 0;
@@ -63,6 +63,25 @@ $(document).ready(function (){
 			if (LOCAL_HOST == true)
 				link = '/project1/resources/resource/' + faculty_id + '/' + department_id
 					+ '/' + level_id + '/' + category_id + '/' + course_id;
+
+			window.location.href = link;
+		}
+	);
+
+	// show news when the 'Find News' is click
+	$('button#btn_find_news').click(function()
+		{
+			var faculty_id = get_selected_faculty_id('select#faculty_select');
+			var department_id = get_selected_department_id();
+			var level_id = get_selected_level_id();
+			var category_id = 0;
+			
+			var link = '/news/news/' + faculty_id + '/' + department_id
+				+ '/' + level_id + '/' + category_id;
+
+			if (LOCAL_HOST == true)
+				link = '/project1/news/news/' + faculty_id + '/' + department_id
+					+ '/' + level_id + '/' + category_id;
 
 			window.location.href = link;
 		}
@@ -172,6 +191,81 @@ function add_resource_comment (resource_id)
 	var post_data = {'resource_id': resource_id, 'author': author, 'comment': comment};
 
 	$.post(SITE_URL + 'resources/add_resource_comment', post_data,
+		function(data, status)
+		{
+			if (status === 'success')
+			{
+				$('input#category-comment-author').val('');
+				$('textarea#category-comment').val('');
+				$('img.ajax-loader-indicator').removeClass('ajax-loading');
+				$('div#category-comments-container').append(data);
+				$('p.no-comment').addClass('d-none');
+			}
+			else
+			{
+				alert('Oops! We could not add your comment, please try again.');
+			}
+		}
+	);
+}
+
+function add_news_category_comment (department_id, level_id, category_id)
+{
+	if ($('img.ajax-loader-indicator').hasClass('ajax-loading'))
+		return;
+
+	var author = $('input#category-comment-author').val();
+	var comment = $('textarea#category-comment').val();
+
+	if (author == '' || comment == '')
+	{
+		alert('Please fill out the comment fields before submission!');
+		return;
+	}
+
+	$('img.ajax-loader-indicator').addClass('ajax-loading');
+
+	var post_data = {'department_id': department_id, 'level_id': level_id, 'category_id': category_id,
+		'author': author, 'comment': comment};
+
+	$.post(SITE_URL + 'news/add_category_comment', post_data,
+		function(data, status)
+		{
+			if (status === 'success')
+			{
+				$('input#category-comment-author').val('');
+				$('textarea#category-comment').val('');
+				$('img.ajax-loader-indicator').removeClass('ajax-loading');
+				$('div#category-comments-container').append(data);
+				$('p.no-comment').addClass('d-none');
+			}
+			else
+			{
+				alert('Oops! We could not add your comment, please try again.');
+			}
+		}
+	);
+}
+
+function add_news_item_comment (news_id)
+{
+	if ($('img.ajax-loader-indicator').hasClass('ajax-loading'))
+		return;
+
+	var author = $('input#category-comment-author').val();
+	var comment = $('textarea#category-comment').val();
+
+	if (author == '' || comment == '')
+	{
+		alert('Please fill out the comment fields before submission!');
+		return;
+	}
+
+	$('img.ajax-loader-indicator').addClass('ajax-loading');
+
+	var post_data = {'news_id': news_id, 'author': author, 'comment': comment};
+
+	$.post(SITE_URL + 'news/add_news_comment', post_data,
 		function(data, status)
 		{
 			if (status === 'success')

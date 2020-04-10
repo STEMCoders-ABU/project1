@@ -639,3 +639,71 @@ _VIEW;
 		else if ($category == 'Video')
 			return generate_video_resource_view($resource);
 	}
+
+	function generate_news_card ($news_item)
+	{
+		$img_url = base_url('assets/imgs/index/reading.jpg');
+		$content = ellipsize($news_item['news_content'], 250);
+		$title = $news_item['news_title'];
+		$date = $news_item['news_date'];
+		$view_link = site_url('news/view/' . $news_item['id']);
+
+		$card = <<<_CARD
+			<div class="card mt-4 bg-light">
+				<div class="container-fluid p-0">
+					<div class="row">
+						<div class="col-sm-4">
+							<img src="{$img_url}" alt="News Image" class="img-fluid img-thumbnail">
+						</div>
+
+						<div class="col-sm">
+							<div class="mt-4 mt-md-5 w-100 h-100">
+								<h4 class="ml-3">{$title}</h4>
+								<small class=" ml-3 text-muted"><span class="far fa-calendar mr-2"></span> {$date}</small>
+								
+								<p class="lead text-muted mt-5 ml-3 news-card-text">
+									{$content}
+								</p>
+
+								<a href="{$view_link}" class="btn btn-dark btn-lg ml-3 news-card-btn-more">Read More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+_CARD;
+		return $card;
+	}
+
+	function generate_news_item_view ($news_item)
+	{
+		$img_url = base_url('assets/imgs/index/reading.jpg');
+		$title = $news_item['news_title'];
+		$category = $news_item['news_category'];
+		$department = $news_item['news_department'];
+		$date = $news_item['news_date'];
+		$content = $news_item['news_content'];
+
+		$view = <<<_VIEW
+			<div class="jumbotron p-3">
+				<div class="text-center mb-5">
+					<img src="{$img_url}" alt="News Image" class="img-fluid img-thumbnail">
+				</div>
+
+				<div class="mt-5">
+					<h4>{$title}</h4>
+
+					<div class="text-left lead ml-3 mb-5 text-muted">
+						<p class="mb-2">{$category}</p>
+						<p class="mb-2">{$department}</p>
+						<p class="mb-2">Posted on {$date}</p>
+					</div>
+
+					<p class="lead pb-3 pt-5">
+						{$content}
+					</p>
+				</div>
+			</div>
+_VIEW;
+		return $view;
+	}

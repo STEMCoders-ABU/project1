@@ -49,6 +49,7 @@
           <ul class="navbar-nav alex-font text-white">
             <li class="nav-item <?php if ($page_title == 'Home') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
             <li class="nav-item <?php if ($page_title == 'Resources') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('resources') ?>">Resources</a></li>
+            <li class="nav-item <?php if ($page_title == 'News') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('news') ?>">News</a></li>
             <li class="nav-item <?php if ($page_title == 'Moderation') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('moderation') ?>">Moderation</a></li>
             <li class="nav-item <?php if ($page_title == 'Contact') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('contact') ?>">Contact</a></li>
             <li class="nav-item <?php if ($page_title == 'About') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('about') ?>">About</a></li>

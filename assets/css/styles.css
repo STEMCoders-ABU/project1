@@ -297,13 +297,31 @@ div.resources-index-mfa {
   margin-top: 5rem;
 }
 
+p.news-card-text {
+  height: 7rem !important;
+}
+
+a.news-card-btn-more {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
 @media(max-width: 34em) {
   div.resources-index-mfa {
     padding: 0.2rem;
   }
 
   p.resource-card-text {
-    height: 12rem !important;
+    height: auto !important;
+  }
+
+  p.news-card-text {
+    height: auto !important;
+  }
+
+  a.news-card-btn-more {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
   }
 }
 

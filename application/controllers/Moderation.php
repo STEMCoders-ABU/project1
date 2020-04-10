@@ -173,6 +173,7 @@ class Moderation extends CI_Controller
                 'title' => get_post('news_title'),
                 'content' => get_post('news_content'),
                 'category_id' => get_post('category'),
+                'faculty_id' => $this->session->userdata('faculty_id'),
                 'department_id' => $this->session->userdata('department_id'),
                 'level_id' => $this->session->userdata('level_id'),
             ];
