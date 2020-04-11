@@ -64,5 +64,6 @@ $route['resources'] = 'resources/index';
 $route['register'] = 'users/register';
 $route['login'] = 'users/login';
 $route['users/(:any)'] = 'users/$1';
+$route['(:any)/(:any)/(:any)/(:any)/(:any)'] = 'pages/$1/$2/$3/$4/$5';
 $route['(:any)'] = 'pages/$1';
 $route['default_controller'] = 'pages/index';

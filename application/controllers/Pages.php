@@ -90,4 +90,48 @@ class Pages extends CI_Controller
             }
         }
     }
+
+    function unsub_news ($id, $faculty_id, $department_id, $level_id)
+    {
+        $restrictions = 
+        [
+            'faculty_id' => $faculty_id,
+            'department_id' => $department_id,
+            'level_id' => $level_id,
+            'id' => $id,
+        ];
+
+        if (! $this->news_model->subscription_exists($restrictions))
+            $data['message'] = 'You are not subscribed with this combination!';
+        else
+        {
+            $this->news_model->remove_subscription($restrictions);
+            $data['message'] = 'You have successfully unsubscribed from news/updates notifications!';
+        }
+
+        $data['page_title'] = 'Subscription';
+        load_view('pages/unsubscribe', $data);
+    }
+
+    function unsub_resources ($id, $faculty_id, $department_id, $level_id)
+    {
+        $restrictions = 
+        [
+            'faculty_id' => $faculty_id,
+            'department_id' => $department_id,
+            'level_id' => $level_id,
+            'id' => $id,
+        ];
+
+        if (! $this->resources_model->subscription_exists($restrictions))
+            $data['message'] = 'You are not subscribed with this combination!';
+        else
+        {
+            $this->resources_model->remove_subscription($restrictions);
+            $data['message'] = 'You have successfully unsubscribed from resources notifications!';
+        }
+
+        $data['page_title'] = 'Subscription';
+        load_view('pages/unsubscribe', $data);
+    }
 }

@@ -188,4 +188,9 @@ class Resources_model extends CI_Model
     {
         $this->db->insert('resources_subscriptions', $entries);
     }
+
+    function remove_subscription ($restrictions)
+    {
+        $this->db->where($restrictions)->delete('resources_subscriptions');
+    }
 }

@@ -173,4 +173,9 @@ class News_model extends CI_Model
     {
         $this->db->insert('news_subscriptions', $entries);
     }
+
+    function remove_subscription ($restrictions)
+    {
+        $this->db->where($restrictions)->delete('news_subscriptions');
+    }
 }
