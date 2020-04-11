@@ -116,7 +116,31 @@ class Moderation extends CI_Controller
                     'file' => $this->upload->data('file_name'),
                 ];
 
-                $this->moderation_model->add_resource($entries);
+                $id = $this->moderation_model->add_resource($entries);
+                $faculty_id = $this->session->userdata('faculty_id');
+                $department_id = $this->session->userdata('department_id');
+                $level_id = $this->session->userdata('level_id');
+                
+                $restrictions = 
+                [
+                    'faculty_id' => $faculty_id,
+                    'department_id' => $department_id,
+                    'level_id' => $level_id,
+                ];
+
+                $faculty = $this->moderation_model->get_faculty($faculty_id);
+                $department = $this->moderation_model->get_department($department_id);
+                $level = $this->moderation_model->get_level($level_id);
+                
+                $this->load->model('resources_model');
+
+                $url = site_url('resources/view/' . $id);
+                $resources_data = $this->moderation_model->get_resource2($id);
+                $subscriptions = $this->resources_model->get_subscriptions($restrictions);
+                
+                dispatch_resources_notifications ($url, $resources_data, $subscriptions, $faculty_id, $department_id, $level_id, $faculty, 
+                    $department, $level);
+        
                 $this->session->set_flashdata('resource_added', 'The resource was added successfully!');
                 load_view('moderation/add_resource', $data);
             }
@@ -178,7 +202,31 @@ class Moderation extends CI_Controller
                 'level_id' => $this->session->userdata('level_id'),
             ];
 
-            $this->moderation_model->add_news($entries);
+            $id = $this->moderation_model->add_news($entries);
+            $faculty_id = $this->session->userdata('faculty_id');
+            $department_id = $this->session->userdata('department_id');
+            $level_id = $this->session->userdata('level_id');
+            
+            $restrictions = 
+            [
+                'faculty_id' => $faculty_id,
+                'department_id' => $department_id,
+                'level_id' => $level_id,
+            ];
+
+            $faculty = $this->moderation_model->get_faculty($faculty_id);
+            $department = $this->moderation_model->get_department($department_id);
+            $level = $this->moderation_model->get_level($level_id);
+            
+            $this->load->model('news_model');
+
+            $url = site_url('news/view/' . $id);
+            $news_data = $this->moderation_model->get_news_item2($id);
+            $subscriptions = $this->news_model->get_subscriptions($restrictions);
+            
+            dispatch_news_notifications ($url, $news_data, $subscriptions, $faculty_id, $department_id, $level_id, $faculty, 
+                $department, $level);
+        
             $this->session->set_flashdata('news_added', 'The news was added successfully!');
             load_view('moderation/add_news',  $data);
         }

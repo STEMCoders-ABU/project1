@@ -193,4 +193,10 @@ class Resources_model extends CI_Model
     {
         $this->db->where($restrictions)->delete('resources_subscriptions');
     }
+
+    function get_subscriptions ($restrictions)
+    {
+        return $this->db->select('id, email')->from('resources_subscriptions')
+            ->where($restrictions)->get()->result_array();
+    }
 }

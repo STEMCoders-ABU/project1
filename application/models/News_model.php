@@ -178,4 +178,10 @@ class News_model extends CI_Model
     {
         $this->db->where($restrictions)->delete('news_subscriptions');
     }
+
+    function get_subscriptions ($restrictions)
+    {
+        return $this->db->select('id, email')->from('news_subscriptions')
+            ->where($restrictions)->get()->result_array();
+    }
 }

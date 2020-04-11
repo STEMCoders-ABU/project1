@@ -251,11 +251,11 @@
 	{
 		$page = <<<_PAGE
 			<html>
-				<body style="background-color: rgb(235, 235, 235); padding: 1rem; font-family: 'Courier New', Courier, monospace;">
+				<body style="background-color: rgb(235, 235, 235); padding: 2rem; font-family: 'Courier New', Courier, monospace;">
 					{$contents}
 			
 					<footer style="position: absolute; bottom:0; width:150%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-						<p>STEM Coders Web Development Team</p>
+						<p>Campus Space, STEM Coders Web Development Team</p>
 					</footer>
 				</body>
 			</html>
@@ -706,4 +706,92 @@ _CARD;
 			</div>
 _VIEW;
 		return $view;
+	}
+
+	function generate_news_notifications_email ($url, $unsub_link, $data, $faculty, $department, $level)
+	{
+		$category = $data['news_category'] . 's';
+		$title = $data['news_title'];
+
+		$content = <<<_CONTENT
+			<p>News/Updates just recieved a new update. Click {$url} to view it now.</p>
+			<p>
+				Faculty: {$faculty} <br>
+				Department: {$department} <br>
+				Level: {$level} <br>
+				News Category: {$category} <br>
+				News Title: {$title} <br>
+			</p>
+			<br><br>
+
+			<p>
+				You recieved this notification because a subscription was registered with this email and the combination above. If you wish to cancel 
+				the subscription for this combination, click {$unsub_link}
+			</p>
+_CONTENT;
+
+		return generate_email_page($content);
+	}
+
+	function generate_resources_notifications_email ($url, $unsub_link, $data, $faculty, $department, $level)
+	{
+		$category = $data['resource_category'] . 's';
+		$title = $data['resource_title'];
+		$course = $data['resource_course'];
+		
+		$content = <<<_CONTENT
+			<p>Resources just recieved a new update. Click {$url} to view it now.</p>
+			<p>
+				Faculty: {$faculty} <br>
+				Department: {$department} <br>
+				Level: {$level} <br>
+				Course: {$course} <br>
+				Resource Category: {$category} <br>
+				Resource Title: {$title} <br>
+			</p>
+			<br><br>
+
+			<p>
+				You recieved this notification because a subscription was registered with this email and the combination above. If you wish to cancel 
+				the subscription for this combination, click {$unsub_link}
+			</p>
+_CONTENT;
+
+		return generate_email_page($content);
+	}
+
+	function dispatch_news_notifications ($url, $data, $subscriptions, $faculty_id, $department_id, $level_id, $faculty, 
+		$department, $level)
+	{
+		$CI =& get_instance();
+		$CI->load->library('email');
+		$CI->email->from('admin@campusspace.com.ng', 'Campus Space');
+		$CI->email->subject($data['news_category'] . ' Update');
+		
+		foreach ($subscriptions as $subscription)
+		{
+			$unsub_link = site_url('unsub_news/' . $subscription['id'] . '/' . $faculty_id . '/' . $department_id . '/' . $level_id);
+			
+			$CI->email->to($subscription['email']);
+			$CI->email->message(generate_news_notifications_email($url, $unsub_link, $data, $faculty, $department, $level));
+			$CI->email->send();
+		}
+	}
+
+	function dispatch_resources_notifications ($url, $data, $subscriptions, $faculty_id, $department_id, $level_id, $faculty, 
+		$department, $level)
+	{
+		$CI =& get_instance();
+		$CI->load->library('email');
+		$CI->email->from('admin@campusspace.com.ng', 'Campus Space');
+		$CI->email->subject($data['resource_category'] . ' Update');
+		
+		foreach ($subscriptions as $subscription)
+		{
+			$unsub_link = site_url('unsub_resources/' . $subscription['id'] . '/' . $faculty_id . '/' . $department_id . '/' . $level_id);
+			
+			$CI->email->to($subscription['email']);
+			$CI->email->message(generate_resources_notifications_email($url, $unsub_link, $data, $faculty, $department, $level));
+			$CI->email->send();
+		}
 	}

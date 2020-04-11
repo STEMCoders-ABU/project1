@@ -58,6 +58,36 @@ class Moderation_model extends CI_Model
         return $this->db->get('resource_categories')->result_array();
     }
 
+    public function get_faculty ($id)
+    {
+        $query = $this->db->get_where('faculties', ['id' => $id]);
+
+        if ($query->row_array())
+            return $query->row_array()['faculty'];
+        else
+            return FALSE;
+    }
+
+    public function get_department ($id)
+    {
+        $query = $this->db->get_where('departments', ['id' => $id]);
+
+        if ($query->row_array())
+            return $query->row_array()['department'];
+        else
+            return FALSE;
+    }
+
+    public function get_level ($id)
+    {
+        $query = $this->db->get_where('levels', ['id' => $id]);
+
+        if ($query->row_array())
+            return $query->row_array()['level'];
+        else
+            return FALSE;
+    }
+
     public function get_news_categories()
     {
         return $this->db->get('news_categories')->result_array();
@@ -71,11 +101,13 @@ class Moderation_model extends CI_Model
     public function add_resource ($entries)
     {
         $this->add_entries('resources', $entries);
+        return $this->db->insert_id();
     }
 
     public function add_news ($entries)
     {
         $this->add_entries('news', $entries);
+        return $this->db->insert_id();
     }
 
     public function add_entries ($table, $entries)
@@ -179,6 +211,31 @@ class Moderation_model extends CI_Model
     {
         return $this->db->get_where('news', ['id' => $news_id])
             ->row_array();    
+    }
+
+    public function get_news_item2 ($id)
+    {
+        $condtions = ['news.id' => $id];
+
+        $query = $this->db->select('news.id, news.title AS news_title, news_categories.category AS news_category')
+            ->from('news')
+            ->join('news_categories', 'news_categories.id = news.category_id')
+            ->where($condtions);
+
+        return $query->get()->row_array();
+    }
+
+    public function get_resource2 ($id)
+    {
+        $condtions = ['resources.id' => $id];
+
+        $query = $this->db->select('resources.id, resources.title AS resource_title, resource_categories.category AS resource_category, courses.course_code AS resource_course')
+            ->from('resources')
+            ->join('resource_categories', 'resource_categories.id = resources.category_id')
+            ->join('courses', 'courses.id = resources.course_id')
+            ->where($condtions);
+
+        return $query->get()->row_array();
     }
 
     public function update_news_item ($news_id, $entries)
