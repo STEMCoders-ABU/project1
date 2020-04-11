@@ -224,7 +224,7 @@
 		else if ($category == 'Textbook')
 			$allowed_types = 'pdf';
 		else if ($category == 'Document')
-			$allowed_types = 'dot|docx|dotx|docm|xls|xlsx|ppt|pptx';
+			$allowed_types = 'dot|doc|docx|dotx|docm|xls|xlsx|ppt|pptx';
 
 		return $allowed_types;
 	}
