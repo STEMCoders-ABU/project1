@@ -380,7 +380,7 @@ ALTER TABLE `moderators`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE (`faculty_id`, `department_id`, `level_id`);
+  ADD UNIQUE KEY `department_id` (`department_id`);
 
 --
 -- Indexes for table `news`

@@ -200,13 +200,13 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('level', 'Level', 'required');
         $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[12]|is_unique[moderators.username]',
         ['is_unique' => 'Username already taken!']);
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[50]|valid_email|xss_clean|is_unique[moderators.username]',
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[50]|valid_email|is_unique[moderators.email]',
         ['is_unique' => 'An account with the same email address exists!']);
         $this->form_validation->set_rules('full_name', 'Full Name', 'required|max_length[50]');
         $this->form_validation->set_rules('gender', 'Gender', 'required');
-        $this->form_validation->set_rules('phone', 'Phone Number', 'required|max_length[11]|callback_check_if_all_digit',
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required|max_length[11]|is_unique[moderators.phone]',
         ['is_unique' => 'An account with the same phone number exists!']);
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[70]|callback_check_password_expression');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[70]');
 
         if ($this->form_validation->run() == FALSE)
             load_view('admin/index', $data);
@@ -225,7 +225,7 @@ class Admin extends CI_Controller
                 'level_id' => get_post('level'),
             ];
 
-            if(!($this->moderation_model->is_moderator_unique($entries)))
+            if(!($this->moderation_model->is_moderator_unique($entries['department_id'])))
             {
                 $this->moderation_model->add_moderator($entries);
                 $this->session->set_flashdata('flash_message', 'A new moderator has been added successfully!');
@@ -233,22 +233,9 @@ class Admin extends CI_Controller
             }
             else
             {
-                $data['custom_error'] = 'A moderator from the same faculty, department and level exists!';
+                $data['custom_error'] = 'A moderator from the same department exists!';
                 load_view('admin/index',  $data);
             }
-        }
-    }
-
-    function check_password_expression($password)
-    {
-        if(1 !== preg_match("/^.*(?=.{6,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/", $password))
-        {
-            $this->form_validation->set_message('check_password_expression', '%s must be at least 6 characters and must contain at least one lowercase letter, one uppercase letter and one digit');
-            return FALSE;
-        }
-        else
-        {
-            return TRUE;
         }
     }
 }
