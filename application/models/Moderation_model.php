@@ -19,6 +19,12 @@ class Moderation_model extends CI_Model
         return $query->row_array();
     }
 
+    public function get_moderator_data2 ($restrictions)
+    {
+        $query = $this->db->get_where('moderators', $restrictions);
+        return $query->row_array();
+    }
+
     public function get_admin_data ($username)
     {
         $query = $this->db->get_where('administrators', ['username' => $username]);

@@ -378,3 +378,34 @@ function sub_for_resources()
 		}
 	);
 }
+
+function get_moderator_data()
+{
+	if ($('img.ajax-loader-indicator').hasClass('ajax-loading'))
+		return;
+
+	var faculty_id = get_selected_faculty_id('select#faculty_select');
+	var department_id = get_selected_department_id();
+	var level_id = get_selected_level_id();
+	
+	$('img.ajax-loader-indicator').addClass('ajax-loading');
+
+	var post_data = {'faculty_id': faculty_id, 'department_id': department_id, 'level_id': level_id};
+
+	$.post(SITE_URL + 'moderation/get_moderator_data', post_data,
+		function(data, status)
+		{
+			if (status === 'success')
+			{
+				$('div#phone_feedback').removeClass('d-none');
+				$('p#feedback_text').html('');
+				$('p#feedback_text').html(data);
+				$('img.ajax-loader-indicator').removeClass('ajax-loading');
+			}
+			else
+			{
+				alert('Oops! We could not add your comment, please try again.');
+			}
+		}
+	);
+}

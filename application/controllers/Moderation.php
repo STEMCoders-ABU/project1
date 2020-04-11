@@ -530,8 +530,35 @@ _END;
         }
     }
 
-    function add_category_comment()
+    function get_moderator_data()
     {
-        echo 'hehehe';
+        $faculty_id = get_post('faculty_id');
+        $department_id = get_post('department_id');
+        $level_id = get_post('level_id');
+        
+        $restrictions = 
+        [
+            'faculty_id' => $faculty_id,
+            'department_id' => $department_id,
+            'level_id' => $level_id,
+        ];
+
+        $moderator_data = $this->moderation_model->get_moderator_data2($restrictions);
+
+        if ($moderator_data)
+        {
+            $name = $moderator_data['full_name'];
+            $phone = $moderator_data['phone'];
+            $email = $moderator_data['email'];
+
+            $output = <<<_OUT
+                <span class="text-dark">Name:</span> {$name} <br>
+                <span class="text-dark">Phone:</span> {$phone} <br>
+                <span class="text-dark">Email:</span> {$email}
+_OUT;
+            echo $output;
+        }
+        else
+            echo 'The class representative for this combination is not registered yet! Please try again some other time.';
     }
 }

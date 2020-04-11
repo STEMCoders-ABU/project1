@@ -46,7 +46,7 @@
         </button>
                  
         <div id="nav-menu" class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav alex-font text-white lead">
+          <ul class="navbar-nav alex-font text-white">
             <li class="nav-item <?php if ($page_title == 'Home') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
             <li class="nav-item <?php if ($page_title == 'Resources') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('resources') ?>">Resources</a></li>
             <li class="nav-item <?php if ($page_title == 'News') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('news') ?>">News</a></li>

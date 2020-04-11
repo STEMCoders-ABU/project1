@@ -172,12 +172,12 @@ div.about-header .header-contents {
     width: 8rem !important;
   }
 
-  div.about-main-contents {
-    
-  }
-
   div.about-header .header-contents h2 {
     font-size: 1.1rem;
+  }
+
+  p#feedback_text {
+    font-size: 1rem !important;
   }
 }
 
