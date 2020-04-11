@@ -8,6 +8,12 @@
             </div>
         <?php endif; ?>
 
+        <?php if ($this->session->flashdata('profile_modified')): ?>
+            <div class="mb-5 alert alert-success">
+                <p class="lead"><?= $this->session->flashdata('profile_modified'); ?></p>
+            </div>
+        <?php endif; ?>
+        
         <?php if(validation_errors()): ?>
             <div class="mb-4 alert alert-danger">
                 <strong>The following errors occured</strong><br><br>
@@ -23,14 +29,14 @@
 
         <?= form_open('moderation/add_course', ''); ?>
             <div class="input-group mt-3"> 
-                <input type="text" class="form-control bg-light" name="course_title" maxlength="60" minlength="4" value="<?= set_value('course_title'); ?>" placeholder="Enter Course Title" required>
+                <input type="text" class="form-control bg-light" name="course_title" maxlength="60" minlength="4" value="<?= set_value('course_title'); ?>" placeholder="Course Title" required>
             </div>
 
             <div class="input-group mt-3"> 
-                <input type="text" class="form-control bg-light" name="course_code" maxlength="12" minlength="3" value="<?= set_value('course_code'); ?>" placeholder="Enter Course Code" required>
+                <input type="text" class="form-control bg-light" name="course_code" maxlength="12" minlength="3" value="<?= set_value('course_code'); ?>" placeholder="Course Code" required>
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-success btn-theme">
-                        <span class="fas fa-plus mr-1"></span> Add Course
+                         Add Course
                     </button>                          
                 </div>
             </div>
@@ -38,6 +44,7 @@
     </div>
 
     <div class="card mt-5 m-2 m-md-5 p-5 moderation-index-card">
+        <a href="<?= site_url('moderation/edit') ?>" class="btn btn-success btn-lg btn-block mb-1">Edit Profile</a>
         <a href="<?= site_url('moderation/add_resource') ?>" class="btn btn-success btn-lg btn-block mb-1">Add Resources</a>
         <a href="<?= site_url('moderation/manage_resource') ?>" class="btn btn-success btn-lg btn-block mb-1">Resource Management</a>
         <a href="<?= site_url('moderation/add_news') ?>" class="btn btn-success btn-lg btn-block mb-1">Add News/Updates</a>

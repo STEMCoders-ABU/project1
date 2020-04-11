@@ -245,5 +245,5 @@ class Moderation_model extends CI_Model
 		$query = $this->db->where('email', $email)
 			->update('moderators', $new_data);
 		return $query;
-	}
+    }
 }

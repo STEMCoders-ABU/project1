@@ -561,4 +561,50 @@ _OUT;
         else
             echo 'The class representative for this combination is not registered yet! Please try again some other time.';
     }
+
+    function edit()
+    {
+        if (!($this->session->has_userdata('logged')))
+            redirect('moderation/login');
+            
+        $restrictions = 
+        [
+            'faculty_id' => $this->session->userdata('faculty_id'),
+            'department_id' => $this->session->userdata('department_id'),
+            'level_id' => $this->session->userdata('level_id'),
+        ];
+
+        $moderator_data = $this->moderation_model->get_moderator_data2($restrictions);
+
+        $data['page_title'] = 'Moderation';
+        $data['moderator_data'] = $moderator_data;
+        
+        if ($moderator_data['email'] == get_post('email'))
+            $this->form_validation->set_rules('email', 'Email', 'required|max_length[50]');
+        else
+            $this->form_validation->set_rules('email', 'Email', 'required|max_length[50]|is_unique[moderators.email]',
+                ['is_unique' => 'This email address already exists!']);
+
+        $this->form_validation->set_rules('full_name', 'Full Name', 'required|max_length[50]');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required|max_length[14]|min_length[11]');
+        $this->form_validation->set_rules('password', 'Password', 'required|max_length[60]');
+
+        if ($this->form_validation->run() == FALSE)
+            load_view('moderation/edit', $data);
+		else
+        {
+            $entries = 
+            [
+                'email' => get_post('email'),
+                'phone' => get_post('phone'),
+                'full_name' => get_post('full_name'),
+                'gender' => get_post('gender'),
+                'password' => get_post('password'),
+            ];
+
+            $this->moderation_model->update_moderator(get_post('email'), $entries);
+            $this->session->set_flashdata('profile_modified', 'Your profile was updated successfully');
+            load_view('moderation/index', $data);
+        }
+    }
 }

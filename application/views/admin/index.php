@@ -21,7 +21,7 @@
             </div>
         <?php endif; ?>
 
-        <?= form_open('admin/add_faculty', ''); ?>
+        <?= form_open('admin/add_faculty', 'class="mx-n4"'); ?>
             <div class="input-group mt-3"> 
                 <input type="text" class="form-control bg-light" name="faculty_name" maxlength="60" minlength="4" value="<?= set_value('faculty_name'); ?>" placeholder="Enter Faculty Name" required>
                 <div class="input-group-append">
@@ -32,7 +32,7 @@
             </div>
         </form>
 
-        <?= form_open('admin/update_faculty', 'class="mt-5"'); ?>
+        <?= form_open('admin/update_faculty', 'class="mt-5 mx-n4"'); ?>
             <div class="input-group mt-3"> 
                 <?= get_faculties_select(); ?>
             </div>
@@ -47,7 +47,7 @@
             </div>
         </form>
 
-        <?= form_open('admin/remove_faculty', 'class="mt-5"'); ?>
+        <?= form_open('admin/remove_faculty', 'class="mt-5 mx-n4"'); ?>
             <div class="input-group mt-3"> 
                 <?= get_faculties_select(); ?>
                 <div class="input-group-append">
@@ -58,7 +58,7 @@
             </div>
         </form>
 
-        <?= form_open('admin/add_department', 'class="mt-5"'); ?>
+        <?= form_open('admin/add_department', 'class="mt-5 mx-n4"'); ?>
             <div class="input-group mt-3"> 
                 <?= get_faculties_select(); ?>
             </div>
@@ -73,7 +73,7 @@
             </div>
         </form>
 
-        <?= form_open('admin/update_department', 'class="mt-5 update-dept-form"'); ?>
+        <?= form_open('admin/update_department', 'class="mt-5 update-dept-form mx-n4"'); ?>
             <div class="input-group mt-3"> 
                 <?= get_faculties_select('faculty_select'); ?>
             </div>
@@ -94,7 +94,7 @@
     </div>
 
     <div class="card jumbotron mx-auto p-5 mt-5 container">
-        <?= form_open('admin/add_moderator', 'class="mt-5 add-mod-form"'); ?>
+        <?= form_open('admin/add_moderator', 'class="mt-5 add-mod-form mx-n4 mt-n3"'); ?>
             <div class="input-group mt-3"> 
                 <?= get_faculties_select('faculty_select'); ?>
             </div>
