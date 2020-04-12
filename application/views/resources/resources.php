@@ -1,4 +1,13 @@
-<div class="resources-siderbar-wrapper pr-2">
+<?php if (isset($error)): ?>
+    <div class="alert alert-info mt-5 mx-5">
+        <p class="lead text-center">Oops! We found no resources matching your search data!</p>
+        <p class="lead text-center">No resource was uploaded with such configuration. Please contact your class rep for more info.</p>
+    </div>
+
+    <?php return; ?>
+<?php endif; ?>
+
+<div class="resources-wrapper pr-2 d-none">
     <!-- Sidebar -->
     <nav id="resources-sidebar" class="shadow shadow-lg">
         <div class="resources-sidebar-header">
@@ -6,65 +15,28 @@
         </div>
 
         <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#materialsMenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Materials</a>
-                <ul class="collapse list-unstyled" id="materialsMenu">
-                    <li>
-                        <a href="#">COSC101</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC102</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC103</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="#textbooksMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Textbooks</a>
-                <ul class="collapse list-unstyled" id="textbooksMenu">
-                    <li>
-                        <a href="#">COSC101</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC102</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC103</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="#documentsMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Documents</a>
-                <ul class="collapse list-unstyled" id="documentsMenu">
-                    <li>
-                        <a href="#">COSC101</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC102</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC103</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-            <a href="#videosMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Videos</a>
-                <ul class="collapse list-unstyled" id="videosMenu">
-                    <li>
-                        <a href="#">COSC101</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC102</a>
-                    </li>
-                    <li>
-                        <a href="#">COSC103</a>
-                    </li>
-                </ul>
-            </li>
+            <?php foreach ($sidebar_contents as $sidebar_content): ?>
+                <?php if (! $sidebar_content['contents']): continue; ?>
+                <?php endif; ?>
+                <?php $header = $sidebar_content['header']; ?>
+                <li <?php if ($header == $category . 's') echo 'class="active"'; ?>>
+                    <a href="#<?= $header; ?>" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><?= $header; ?></a>
+                    <ul class="collapse list-unstyled" id="<?= $header; ?>">
+                        <?php $existing_courses = []; ?>
+                        <?php foreach ($sidebar_content['contents'] as $course): ?>
+                            <?php if (array_key_exists($course['course_id'], $existing_courses)): ?>
+                                <?php continue; ?>
+                            <?php else: ?>
+                                <?php $existing_courses[$course['course_id']] = $course['course']; ?>
+                            <?php endif; ?>
+                            <li>
+                                <a href="<?= site_url('resources/resource/' . $faculty_id . '/' . $department_id 
+                                   . '/' . $level_id . '/' . $sidebar_content['category_id'] . '/' . $course['course_id'] ); ?>" class="sidebar_course_link"><?= $course['course']; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+            <?php endforeach; ?>
         </ul>
     </nav>
 
@@ -81,21 +53,13 @@
             
             <!-- Search Bar -->
             <div class="search-bar card jumbotron mx-auto p-5 shadow shadow-lg">
-                <?= form_open('resources/search', ''); ?>
+                <?= form_open('resources/search/' . $faculty_id . '/' . $department_id . '/' . $level_id . '/' . $category_id . '/' . $course_id . '/null'); ?>
                     <div class="input-group mb-2">
-                        <!--<div class="input-group-prepend">
-                            <span class="input-group-text category">Category</span>                          
-                        </div>--> 
-                        <select class="form-control bg-light" name="category" required> 
-                            <option value="materials">Materials</option>
-                            <option value="documents">Documents</option>
-                            <option value="documents">Textbooks</option>
-                            <option value="videos">Videos</option>
-                        </select>
+                        <?= get_resource_categories_select(); ?>
                     </div>
 
                     <div class="input-group mt-3"> 
-                        <input type="text" class="form-control bg-light" name="search" placeholder="Enter keyword" required>
+                        <input type="text" class="form-control bg-light" name="keyword" placeholder="Enter keyword" required>
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-success">
                                 <span class="fas fa-search mr-1"></span> Search
@@ -105,255 +69,130 @@
                 </form>
             </div>
 
-            <div class="jumbotron p-4" style="margin-top: 6rem">
-                <h4 class="text-center">COSC101 Resources</h4>
-            </div>
-
-            <!-- Resources Group -->
-            <div class="card-deck mb-md-4">
-                <div class="card">
-                    <img src="<?= base_url('assets/imgs/resources/headers/book.jpg'); ?>" alt="Materials Image" class="img-fluid card-img-top"
-                        style="height: 40vh">
-                    <div class="card-header">
-                        <h4>Material Title</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="lead text-muted">
-                            A brief description A brief description A brief description A brief description 
-                        </p>
-
-                        <div class="mt-5">
-                            <a href="" class="btn btn-dark btn-lg btn-block">View</a>
-                            <a href="" class="btn btn-dark btn-lg btn-block">Download</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="embed-responsive embed-responsive-16by9" style="height: 40vh">
-                        <iframe  class="embed-responsive-item" src="<?php echo base_url('assets/imgs/comments/video.ogv'); ?>" allowfullscreen></iframe>
-                     </div>
-                    <div class="card-header">
-                        <h4>Video Title</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="lead text-muted">
-                            A brief description A brief description A brief description A brief description 
-                        </p>
-
-                        <div class="mt-5">
-                            <a href="" class="btn btn-dark btn-lg btn-block">View</a>
-                            <a href="" class="btn btn-dark btn-lg btn-block">Download</a>
-                        </div>
-                    </div>
+            <div class="shadow shadow-lg mb-5">
+                <div class="jumbotron p-4 bg-dark text-white" style="margin-top: 6rem">
+                    <h4 class="text-center"><?= $course_code; ?> Resources [<?= $category . 's' ?>]</h4>
                 </div>
 
-            </div>
+                <div class="p-3">
+                    <!-- Resources Group -->
+                    <?php if ($resources): ?>
+                        <?php $max_cols = 3; $size = count($resources); ?>
+                        <?php if ($size <= $max_cols): $remainder = $max_cols - $size; ?>
+                            <div class="card-deck mb-md-4">
+                                <?php for ($i=0; $i < $size; $i++): ?>
+                                    <?php $resource = array_shift($resources); ?>
+                                    <?php if ($resource): echo generate_resource_card($category, $resource); ?>
+                                    <?php else: echo generate_hidden_card(); ?>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                                <?php for ($i=0; $i < $remainder; $i++): echo generate_hidden_card(); ?>
+                                <?php endfor; ?>
+                            </div>
+                        <?php else: ?>
+                            <?php if ($size % $max_cols == 0): ?>
+                                <?php for ($i=0; $i < $size; $i += $max_cols): ?>
+                                    <div class="card-deck mb-md-4">
+                                        <?php for ($j=0; $j < $max_cols; $j++) echo generate_resource_card($category, array_shift($resources)); ?>
+                                    </div>
+                                <?php endfor; ?>
+                            <?php else: ?>
+                                <?php $remainder = $size % $max_cols; $new_size = $size - $remainder; ?>
+                                <?php for ($i=0; $i < $new_size; $i += $max_cols): ?>
+                                    <div class="card-deck mb-md-4">
+                                        <?php for ($j=0; $j < $max_cols; $j++) echo generate_resource_card($category, array_shift($resources)); ?>
+                                    </div>
+                                <?php endfor; ?>
 
-            <div class="card-deck">
-                <div class="card">
-                    <img src="<?= base_url('assets/imgs/resources/headers/pdf.jpg'); ?>" alt="Textbooks Image" class="img-fluid card-img-top"
-                        style="height: 40vh">
-                    <div class="card-header">
-                        <h4>Textbook Title</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="lead text-muted">
-                            A brief description A brief description A brief description A brief description 
-                        </p>
-
-                        <div class="mt-5">
-                            <a href="" class="btn btn-dark btn-lg btn-block">View</a>
-                            <a href="" class="btn btn-dark btn-lg btn-block">Download</a>
+                                <div class="card-deck mb-md-4">
+                                    <?php for ($i=0; $i < $max_cols; $i++): ?>
+                                        <?php $resource = array_shift($resources); ?>
+                                        <?php if ($resource): echo generate_resource_card($category, $resource); ?>
+                                        <?php else: echo generate_hidden_card(); ?>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                    </div>
+                            <?php endif; ?>
+                        <?php endif; ?> 
+                    <?php else: ?>
+                        <div class="alert alert-info">
+                            <p class="lead text-center">Oops! We found no resources matching your search data!</p>
                         </div>
+                    <?php endif; ?>
+                    <div class="text-center w-100 pagination-container">
+                        <?= $pagination ?? ''; ?>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <img src="<?= base_url('assets/imgs/resources/headers/documents.jpg'); ?>" alt="Documents Image" class="img-fluid card-img-top"
-                        style="height: 40vh">
-                    <div class="card-header">
-                        <h4>Document Title</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="lead text-muted">
-                            A brief description A brief description A brief description A brief description 
-                        </p>
-
-                        <div class="mt-5">
-                            <a href="" class="btn btn-dark btn-lg btn-block">View</a>
-                            <a href="" class="btn btn-dark btn-lg btn-block">Download</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <!-- Frequently Accessed Resources -->
-            <div class="mt-5">
-                <div class="jumbotron p-3">
-                    <h4 class="alex-font text-center">Frequently Accessed Resources</h4>
-                    <hr class="bg-dark w-25 mb-5">
+            <div class="shadow shadow-lg" style="margin-top: 10rem">
+                <div class="jumbotron p-3 pb-4">
+                    <div class="jumbotron p-4 bg-dark text-white mx-n3 mt-n3">
+                        <h4 class="text-center res-header">Most Downloaded Resources for <?= $course_code; ?> [<?= $category . 's' ?>]</h4>
+                    </div>
 
                     <div>
-                        <div class="p-3 bg-light mt-3">
-                            <div class="d-inline">
-                                <span class="fas fa-arrow-right mr-4"></span>
-                            </div>
-                            <div class="d-inline">
-                                <h5 class="d-inline">Resource Title</h5>
-                                <div class="ml-5 mt-2">
-                                    <div class="d-block"><span class="far fa-comments mr-2"></span> 13k comments</div>
-                                    <div class="mt-2">
-                                        <a href="" class="btn btn-dark btn-sm">View</a>
-                                        <a href="" class="btn btn-dark btn-sm">Download</a>
+                        <?php foreach ($freq_resources as $freq_resource): ?>
+                            <div class="p-3 bg-light mt-3">
+                                <div class="d-inline">
+                                    <span class="fas fa-arrow-right mr-4"></span>
+                                </div>
+                                <div class="d-inline">
+                                    <h5 class="d-inline"><?= $freq_resource['resource_title']; ?></h5>
+                                    <div class="ml-5 mt-2">
+                                        <div class="d-block"><span class="fas fa-download mr-2"></span><?= $freq_resource['resource_downloads']; ?> Downloads</div>
+                                        <div class="mt-3">
+                                            <a href="<?= site_url('resources/view/' . $freq_resource['id']); ?>" class="btn btn-dark btn-sm mr-2">View</a>
+                                            <a href="<?= site_url('download/resource/' . $freq_resource['id']); ?>" class="btn btn-dark btn-sm">Download</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="p-3 bg-light mt-3">
-                            <div class="d-inline">
-                                <span class="fas fa-arrow-right mr-4"></span>
-                            </div>
-                            <div class="d-inline">
-                                <h5 class="d-inline">Resource Title</h5>
-                                <div class="ml-5 mt-2">
-                                    <div class="d-block"><span class="far fa-comments mr-2"></span> 13k comments</div>
-                                    <div class="mt-2">
-                                        <a href="" class="btn btn-dark btn-sm">View</a>
-                                        <a href="" class="btn btn-dark btn-sm">Download</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-3 bg-light mt-3">
-                            <div class="d-inline">
-                                <span class="fas fa-arrow-right mr-4"></span>
-                            </div>
-                            <div class="d-inline">
-                                <h5 class="d-inline">Resource Title</h5>
-                                <div class="ml-5 mt-2">
-                                    <div class="d-block"><span class="far fa-comments mr-2"></span> 13k comments</div>
-                                    <div class="mt-2">
-                                        <a href="" class="btn btn-dark btn-sm">View</a>
-                                        <a href="" class="btn btn-dark btn-sm">Download</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-3 bg-light mt-3">
-                            <div class="d-inline">
-                                <span class="fas fa-arrow-right mr-4"></span>
-                            </div>
-                            <div class="d-inline">
-                                <h5 class="d-inline">Resource Title</h5>
-                                <div class="ml-5 mt-2">
-                                    <div class="d-block"><span class="far fa-comments mr-2"></span> 13k comments</div>
-                                    <div class="mt-2">
-                                        <a href="" class="btn btn-dark btn-sm">View</a>
-                                        <a href="" class="btn btn-dark btn-sm">Download</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
 
                 </div>
             </div>
 
             <!-- Comments -->
-            <div class="mt-5 jumbotron p-3">
-                <h4 class="alex-font text-center">Category Comments</h4>
-                <hr class="bg-dark w-25 mb-5">
-
-                <div class="p-3 bg-light mt-3 container-fluid">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <img src="<?= base_url('assets/imgs/avatar.png'); ?>" alt="Avatar" class="img-fluid" style="height: 20vh">
-                        </div>
-
-                        <div class="col-sm mt-3 p-md-0 pt-md-2">
-                            <h4>Display Name</h4>
-                            <small class="text-mute"><span class="far fa-calendar mr-2"></span>31-01-2020</small>
-
-                            <p class="lead mt-3 text-muted">
-                                This person said something about this resource category....
-                            </p>
-                        </div>
-                    </div>
+            <div class="jumbotron p-3 shadow shadow-lg" style="margin-top: 10rem">
+                <div class="jumbotron p-4 bg-dark text-white mx-n3 mt-n3">
+                    <h4 class="text-center">Comments for <?= $course_code; ?> [<?= $category . 's' ?>]</h4>
                 </div>
 
-                <div class="p-3 bg-light mt-3 container-fluid">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <img src="<?= base_url('assets/imgs/avatar.png'); ?>" alt="Avatar" class="img-fluid" style="height: 20vh">
-                        </div>
-
-                        <div class="col-sm mt-3 p-md-0 pt-md-2">
-                            <h4>Display Name</h4>
-                            <small class="text-mute"><span class="far fa-calendar mr-2"></span>31-01-2020</small>
-
-                            <p class="lead mt-3 text-muted">
-                                This person said something about this resource category....
-                            </p>
-                        </div>
-                    </div>
+                <div id="category-comments-container">
+                    <?php if (isset($category_comments) && $category_comments): ?>
+                            <?php foreach ($category_comments as $comment): ?>
+                                <?= generate_comment_markup($comment); ?>
+                            <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="lead text-center p-3 no-comment">No category comments yet! Write comments below</p>
+                    <?php endif; ?>
                 </div>
-
-                <div class="p-3 bg-light mt-3 container-fluid">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <img src="<?= base_url('assets/imgs/avatar.png'); ?>" alt="Avatar" class="img-fluid" style="height: 20vh">
-                        </div>
-
-                        <div class="col-sm mt-3 p-md-0 pt-md-2">
-                            <h4>Display Name</h4>
-                            <small class="text-mute"><span class="far fa-calendar mr-2"></span>31-01-2020</small>
-
-                            <p class="lead mt-3 text-muted">
-                                This person said something about this resource category....
-                            </p>
-                        </div>
+                
+                <div class="bg-ligh p-3" style="margin-top: 4rem">
+                    <div class="input-group mt-3"> 
+                        <input id="category-comment-author" type="text" class="form-control" name="author" placeholder="Enter Display Name" maxlength="20" required>
                     </div>
-                </div>
 
-                <div class="p-3 bg-light mt-3 container-fluid">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <img src="<?= base_url('assets/imgs/avatar.png'); ?>" alt="Avatar" class="img-fluid" style="height: 20vh">
-                        </div>
-
-                        <div class="col-sm mt-3 p-md-0 pt-md-2">
-                            <h4>Display Name</h4>
-                            <small class="text-mute"><span class="far fa-calendar mr-2"></span>31-01-2020</small>
-
-                            <p class="lead mt-3 text-muted">
-                                This person said something about this resource category....
-                            </p>
-                        </div>
+                    <div class="form-group mt-3"> 
+                        <textarea id="category-comment" rows="3" class="form-control" name="comment" placeholder="Your Message" maxlength="500" required></textarea>
                     </div>
-                </div>
 
-                <div class="bg-ligh p-3" style="margin-top: 9rem">
-                    <?= form_open('resources/add_comment'); ?>
-                        <div class="input-group mt-3"> 
-                            <input type="text" class="form-control" name="name" placeholder="Display Name" required>
-                        </div>
+                    <button id="btn-submit-category-comment" class="btn btn-success btn-lg mr-5 btn-theme"
+                        onclick="add_category_comment(<?= $department_id . ',' . $level_id . ',' . $category_id . ',' . $course_id; ?>)">
+                        <span class="fas fa-comment mr-1"></span> Comment
+                    </button>
 
-                        <div class="form-group mt-3"> 
-                            <textarea rows="3" class="form-control" name="message" placeholder="Your Message" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-success btn-lg" style="background: seagreen;">
-                            <span class="fas fa-comment mr-1"></span> Comment
-                        </button>
-                    </form>
+                    <img class="ajax-loader-indicator" src="<?= base_url('assets/imgs/ajax-loader.gif'); ?>" alt="Adding Comment...">
                 </div>
 
             </div>
         </div>
     </div>
+</div>
+
+<div class="text-center mt-5 resource-loading-container">
+    <img src="<?= base_url('assets/imgs/ajax-loader-spinner.gif'); ?>" alt="Loading..." class="img-fluid resource-loading">
 </div>

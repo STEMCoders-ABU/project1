@@ -1,5 +1,5 @@
 
-div .resources-siderbar-wrapper {
+div .resources-wrapper {
   display: flex;
   width: 100%;
   perspective: 1500px;
@@ -199,10 +199,14 @@ div#resources-main-contents .search-bar .category {
   }
 
   div#resources-content {
-    margin-left: 1rem;
+    margin-left: 0.6rem;
   }
 
   div#resources-main-contents .search-bar {
     width: 100% !important;
+  }
+
+  h4.res-header {
+    font-size: 1.1rem;
   }
 }

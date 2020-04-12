@@ -1,32 +1,30 @@
-<div id="about-container">
-	<section class="about-section-1">
-		<h1 class="text-center">ABOUT</h1>
-		<div class="text-wrap">
-			Campus space is an open source cloud sharing platform for students of Ahmadu Bello University. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, vitae?
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos, hic.
+<div>
+	<div class="about-header">
+		<div class="translucent-bg-50 text-cente header-contents">
+			<h2 class="text-white p-4 translucent-bg-60 text-center">Campus Space is a free cloud sharing platform for students of Ahmadu Bello University, Zaria.</h2>
 		</div>
-	</section>
-	<section class="about-section-2">
-		<div class="logo-wrapper">
-			<img class="circular-img" src="assets/imgs/stemlogo.jpg" > 
-			<p>STEM CODERS CLUB<p>
-	
-	
-		</div>
-		<div class="logo-wrapper">
-			<img class="circular-img" src="assets/imgs/abu-logo.png">
-			<p>AHMADU BELLO UNIVERSITY</p> 
+	</div>
+
+	<div class="container text-center shadow shadow-lg about-main-contents">
+		<div class="d-flex  mt-5">
+			<img src="<?= base_url('assets/imgs/stemlogo.jpg'); ?>" alt="SCC Logo" class="img-fluid w-50">
+			<img src="<?= base_url('assets/imgs/abu-logo.png'); ?>" alt="ABU Logo" class="img-fluid w-50 mt-1">
 		</div>
 		
-	</section>
-	 <section class="about-section-3" >
-		<div class="innersection-1">
-			<h2 class="text-center">MISSION</h2>
-			<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque, quo.</p>
+		<div class="row mt-5 mx-2">
+			<div class="col-sm jumbotron p-4">
+				<h4 class="text-center">MISSION</h4>
+				<p class="lead text-muted mt-5">
+					Campus Space is a free cloud sharing platform for students of Ahmadu Bello University, Zaria.
+				</p>
+			</div>
+
+			<div class="col-sm jumbotron bg-dark p-4 text-white">
+				<h4 class="text-center text-muted">VISION</h4>
+				<p class="lead text-light mt-5">
+					Campus Space is a free cloud sharing platform for students of Ahmadu Bello University, Zaria.
+				</p>
+			</div>
 		</div>
-		<div class="innersection-2">
-			<h2 class="text-center">VISION</h2>
-			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque suscipit quibusdam vel inventore et nobis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, animi?</p>
-		</div>
-	</section> 
+	</div>
 </div>

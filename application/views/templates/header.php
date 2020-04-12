@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="Stem Coders Club">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#007bff">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#007bff">
+    <meta name="theme-color" content="#075031">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#075031">
     
     <title>
       <?php if (isset($page_title)): ?>
@@ -25,12 +25,6 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/styles.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/styles_sidebar.css') ?>">
 
-    <!-- Libraries CSS Files -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/nivo-slider.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/nivo-slider-theme.css') ?>">
-    <!-- Libraries CSS Files enhance nivo slides-->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/animate.min.css') ?>">
-    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -55,16 +49,19 @@
           <ul class="navbar-nav alex-font text-white">
             <li class="nav-item <?php if ($page_title == 'Home') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
             <li class="nav-item <?php if ($page_title == 'Resources') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('resources') ?>">Resources</a></li>
+            <li class="nav-item <?php if ($page_title == 'News') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('news') ?>">News</a></li>
             <li class="nav-item <?php if ($page_title == 'Moderation') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('moderation') ?>">Moderation</a></li>
             <li class="nav-item <?php if ($page_title == 'Contact') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('contact') ?>">Contact</a></li>
             <li class="nav-item <?php if ($page_title == 'About') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('about') ?>">About</a></li>
           </ul>
 
-          <a href="<?= site_url(); ?>" class="btn btn-success btn-md-lg ml-md-4 mt-3 mt-md-0 btn-theme">Sign Out</a>
+          <?php if ($this->session->has_userdata('logged') || $this->session->has_userdata('admin_logged')): ?>
+            <a href="<?= site_url('moderation/logout'); ?>" class="btn btn-success btn-md-lg ml-md-4 mt-3 mt-md-0 btn-theme">Sign Out</a>
+          <?php endif; ?>
         </div>
       </nav>
     </header>
     
     <div id="page-contents">
       <!-- The Main Contents -->
-      <main id="content-wrap" class="container-fluid p-0 alegreya-r" style="padding-bottom: 6rem !important;">
+      <main id="content-wrap" class="container-fluid px-0 pt-0 alegreya-r">
