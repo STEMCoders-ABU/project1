@@ -116,7 +116,31 @@ class Moderation extends CI_Controller
                     'file' => $this->upload->data('file_name'),
                 ];
 
-                $this->moderation_model->add_resource($entries);
+                $id = $this->moderation_model->add_resource($entries);
+                $faculty_id = $this->session->userdata('faculty_id');
+                $department_id = $this->session->userdata('department_id');
+                $level_id = $this->session->userdata('level_id');
+                
+                $restrictions = 
+                [
+                    'faculty_id' => $faculty_id,
+                    'department_id' => $department_id,
+                    'level_id' => $level_id,
+                ];
+
+                $faculty = $this->moderation_model->get_faculty($faculty_id);
+                $department = $this->moderation_model->get_department($department_id);
+                $level = $this->moderation_model->get_level($level_id);
+                
+                $this->load->model('resources_model');
+
+                $url = site_url('resources/view/' . $id);
+                $resources_data = $this->moderation_model->get_resource2($id);
+                $subscriptions = $this->resources_model->get_subscriptions($restrictions);
+                
+                dispatch_resources_notifications ($url, $resources_data, $subscriptions, $faculty_id, $department_id, $level_id, $faculty, 
+                    $department, $level);
+        
                 $this->session->set_flashdata('resource_added', 'The resource was added successfully!');
                 load_view('moderation/add_resource', $data);
             }
@@ -173,11 +197,36 @@ class Moderation extends CI_Controller
                 'title' => get_post('news_title'),
                 'content' => get_post('news_content'),
                 'category_id' => get_post('category'),
+                'faculty_id' => $this->session->userdata('faculty_id'),
                 'department_id' => $this->session->userdata('department_id'),
                 'level_id' => $this->session->userdata('level_id'),
             ];
 
-            $this->moderation_model->add_news($entries);
+            $id = $this->moderation_model->add_news($entries);
+            $faculty_id = $this->session->userdata('faculty_id');
+            $department_id = $this->session->userdata('department_id');
+            $level_id = $this->session->userdata('level_id');
+            
+            $restrictions = 
+            [
+                'faculty_id' => $faculty_id,
+                'department_id' => $department_id,
+                'level_id' => $level_id,
+            ];
+
+            $faculty = $this->moderation_model->get_faculty($faculty_id);
+            $department = $this->moderation_model->get_department($department_id);
+            $level = $this->moderation_model->get_level($level_id);
+            
+            $this->load->model('news_model');
+
+            $url = site_url('news/view/' . $id);
+            $news_data = $this->moderation_model->get_news_item2($id);
+            $subscriptions = $this->news_model->get_subscriptions($restrictions);
+            
+            dispatch_news_notifications ($url, $news_data, $subscriptions, $faculty_id, $department_id, $level_id, $faculty, 
+                $department, $level);
+        
             $this->session->set_flashdata('news_added', 'The news was added successfully!');
             load_view('moderation/add_news',  $data);
         }
@@ -529,8 +578,81 @@ _END;
         }
     }
 
-    function add_category_comment()
+    function get_moderator_data()
     {
-        echo 'hehehe';
+        $faculty_id = get_post('faculty_id');
+        $department_id = get_post('department_id');
+        $level_id = get_post('level_id');
+        
+        $restrictions = 
+        [
+            'faculty_id' => $faculty_id,
+            'department_id' => $department_id,
+            'level_id' => $level_id,
+        ];
+
+        $moderator_data = $this->moderation_model->get_moderator_data2($restrictions);
+
+        if ($moderator_data)
+        {
+            $name = $moderator_data['full_name'];
+            $phone = $moderator_data['phone'];
+            $email = $moderator_data['email'];
+
+            $output = <<<_OUT
+                <span class="text-dark">Name:</span> {$name} <br>
+                <span class="text-dark">Phone:</span> {$phone} <br>
+                <span class="text-dark">Email:</span> {$email}
+_OUT;
+            echo $output;
+        }
+        else
+            echo 'The class representative for this combination is not registered yet! Please try again some other time.';
+    }
+
+    function edit()
+    {
+        if (!($this->session->has_userdata('logged')))
+            redirect('moderation/login');
+            
+        $restrictions = 
+        [
+            'faculty_id' => $this->session->userdata('faculty_id'),
+            'department_id' => $this->session->userdata('department_id'),
+            'level_id' => $this->session->userdata('level_id'),
+        ];
+
+        $moderator_data = $this->moderation_model->get_moderator_data2($restrictions);
+
+        $data['page_title'] = 'Moderation';
+        $data['moderator_data'] = $moderator_data;
+        
+        if ($moderator_data['email'] == get_post('email'))
+            $this->form_validation->set_rules('email', 'Email', 'required|max_length[50]');
+        else
+            $this->form_validation->set_rules('email', 'Email', 'required|max_length[50]|is_unique[moderators.email]',
+                ['is_unique' => 'This email address already exists!']);
+
+        $this->form_validation->set_rules('full_name', 'Full Name', 'required|max_length[50]');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required|max_length[14]|min_length[11]');
+        $this->form_validation->set_rules('password', 'Password', 'required|max_length[60]');
+
+        if ($this->form_validation->run() == FALSE)
+            load_view('moderation/edit', $data);
+		else
+        {
+            $entries = 
+            [
+                'email' => get_post('email'),
+                'phone' => get_post('phone'),
+                'full_name' => get_post('full_name'),
+                'gender' => get_post('gender'),
+                'password' => get_post('password'),
+            ];
+
+            $this->moderation_model->update_moderator(get_post('email'), $entries);
+            $this->session->set_flashdata('profile_modified', 'Your profile was updated successfully');
+            load_view('moderation/index', $data);
+        }
     }
 }

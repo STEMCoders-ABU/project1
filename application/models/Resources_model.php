@@ -174,4 +174,29 @@ class Resources_model extends CI_Model
 
         return $query->get()->row_array();
     }
+
+    function subscription_exists ($restrictions)
+    {
+        $query = $this->db->select('id')
+            ->from('resources_subscriptions')
+            ->where($restrictions);
+
+        return $query->get()->row_array();
+    }
+
+    function add_subscription ($entries)
+    {
+        $this->db->insert('resources_subscriptions', $entries);
+    }
+
+    function remove_subscription ($restrictions)
+    {
+        $this->db->where($restrictions)->delete('resources_subscriptions');
+    }
+
+    function get_subscriptions ($restrictions)
+    {
+        return $this->db->select('id, email')->from('resources_subscriptions')
+            ->where($restrictions)->get()->result_array();
+    }
 }

@@ -71,14 +71,14 @@
 		return $select;
 	}
 
-	function get_levels_select()
+	function get_levels_select ($id = 'level_select')
 	{
 		$CI =& get_instance();
 		$moderation_model = $CI->load->model('moderation_model');
 
 		$levels = $CI->moderation_model->get_levels();
 
-		$select = '<select id="level_select" class="form-control bg-light" name="level" required>';
+		$select = '<select id="' . $id . '" class="form-control bg-light" name="level" required>';
 
 		foreach ($levels as $level)
 			$select .= '<option value=' . $level['id'] . '>' . $level['level'] . '</option>';
@@ -170,7 +170,7 @@
 
 		$categories = $CI->moderation_model->get_news_categories();
 
-		$select = '<select class="form-control bg-light" name="category" required>';
+		$select = '<select id="news_category_select" class="form-control bg-light" name="category" required>';
 		$select .= '<option value="0" selected>All</option>';
 
 		foreach ($categories as $category)
@@ -188,7 +188,7 @@
 
 		$categories = $CI->moderation_model->get_news_categories();
 
-		$select = '<select class="form-control bg-light" name="category" required>';
+		$select = '<select id="news_category_select" class="form-control bg-light" name="category" required>';
 		
 		foreach ($categories as $category)
 			if ($selected == $category['id'])
@@ -224,7 +224,7 @@
 		else if ($category == 'Textbook')
 			$allowed_types = 'pdf';
 		else if ($category == 'Document')
-			$allowed_types = 'dot|docx|dotx|docm|xls|xlsx|ppt|pptx';
+			$allowed_types = 'dot|doc|docx|dotx|docm|xls|xlsx|ppt|pptx';
 
 		return $allowed_types;
 	}
@@ -251,11 +251,11 @@
 	{
 		$page = <<<_PAGE
 			<html>
-				<body style="background-color: rgb(235, 235, 235); padding: 1rem; font-family: 'Courier New', Courier, monospace;">
+				<body style="background-color: rgb(235, 235, 235); padding: 2rem; font-family: 'Courier New', Courier, monospace;">
 					{$contents}
 			
 					<footer style="position: absolute; bottom:0; width:150%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-						<p>STEM Coders Web Development Team</p>
+						<p>Campus Space, STEM Coders Web Development Team</p>
 					</footer>
 				</body>
 			</html>
@@ -638,4 +638,160 @@ _VIEW;
 			return generate_textbook_resource_view($resource);
 		else if ($category == 'Video')
 			return generate_video_resource_view($resource);
+	}
+
+	function generate_news_card ($news_item)
+	{
+		$img_url = base_url('assets/imgs/index/reading.jpg');
+		$content = ellipsize($news_item['news_content'], 250);
+		$title = $news_item['news_title'];
+		$date = $news_item['news_date'];
+		$view_link = site_url('news/view/' . $news_item['id']);
+
+		$card = <<<_CARD
+			<div class="card mt-4 bg-light">
+				<div class="container-fluid p-0">
+					<div class="row">
+						<div class="col-sm-4">
+							<img src="{$img_url}" alt="News Image" class="img-fluid img-thumbnail">
+						</div>
+
+						<div class="col-sm">
+							<div class="mt-4 mt-md-5 w-100 h-100">
+								<h4 class="ml-3">{$title}</h4>
+								<small class=" ml-3 text-muted"><span class="far fa-calendar mr-2"></span> {$date}</small>
+								
+								<p class="lead text-muted mt-5 ml-3 news-card-text">
+									{$content}
+								</p>
+
+								<a href="{$view_link}" class="btn btn-dark btn-lg ml-3 news-card-btn-more">Read More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+_CARD;
+		return $card;
+	}
+
+	function generate_news_item_view ($news_item)
+	{
+		$img_url = base_url('assets/imgs/index/reading.jpg');
+		$title = $news_item['news_title'];
+		$category = $news_item['news_category'];
+		$department = $news_item['news_department'];
+		$date = $news_item['news_date'];
+		$content = $news_item['news_content'];
+
+		$view = <<<_VIEW
+			<div class="jumbotron p-3">
+				<div class="text-center mb-5">
+					<img src="{$img_url}" alt="News Image" class="img-fluid img-thumbnail">
+				</div>
+
+				<div class="mt-5">
+					<h4>{$title}</h4>
+
+					<div class="text-left lead ml-3 mb-5 text-muted">
+						<p class="mb-2">{$category}</p>
+						<p class="mb-2">{$department}</p>
+						<p class="mb-2">Posted on {$date}</p>
+					</div>
+
+					<p class="lead pb-3 pt-5">
+						{$content}
+					</p>
+				</div>
+			</div>
+_VIEW;
+		return $view;
+	}
+
+	function generate_news_notifications_email ($url, $unsub_link, $data, $faculty, $department, $level)
+	{
+		$category = $data['news_category'] . 's';
+		$title = $data['news_title'];
+
+		$content = <<<_CONTENT
+			<p>News/Updates just recieved a new update. Click {$url} to view it now.</p>
+			<p>
+				Faculty: {$faculty} <br>
+				Department: {$department} <br>
+				Level: {$level} <br>
+				News Category: {$category} <br>
+				News Title: {$title} <br>
+			</p>
+			<br><br>
+
+			<p>
+				You recieved this notification because a subscription was registered with this email and the combination above. If you wish to cancel 
+				the subscription for this combination, click {$unsub_link}
+			</p>
+_CONTENT;
+
+		return generate_email_page($content);
+	}
+
+	function generate_resources_notifications_email ($url, $unsub_link, $data, $faculty, $department, $level)
+	{
+		$category = $data['resource_category'] . 's';
+		$title = $data['resource_title'];
+		$course = $data['resource_course'];
+		
+		$content = <<<_CONTENT
+			<p>Resources just recieved a new update. Click {$url} to view it now.</p>
+			<p>
+				Faculty: {$faculty} <br>
+				Department: {$department} <br>
+				Level: {$level} <br>
+				Course: {$course} <br>
+				Resource Category: {$category} <br>
+				Resource Title: {$title} <br>
+			</p>
+			<br><br>
+
+			<p>
+				You recieved this notification because a subscription was registered with this email and the combination above. If you wish to cancel 
+				the subscription for this combination, click {$unsub_link}
+			</p>
+_CONTENT;
+
+		return generate_email_page($content);
+	}
+
+	function dispatch_news_notifications ($url, $data, $subscriptions, $faculty_id, $department_id, $level_id, $faculty, 
+		$department, $level)
+	{
+		$CI =& get_instance();
+		$CI->load->library('email');
+		$CI->email->from('admin@campusspace.com.ng', 'Campus Space');
+		$CI->email->subject($data['news_category'] . ' Update');
+		
+		foreach ($subscriptions as $subscription)
+		{
+			$unsub_link = site_url('unsub_news/' . $subscription['id'] . '/' . $faculty_id . '/' . $department_id . '/' . $level_id);
+			
+			$CI->email->to($subscription['email']);
+			$CI->email->message(generate_news_notifications_email($url, $unsub_link, $data, $faculty, $department, $level));
+			$CI->email->send();
+		}
+	}
+
+	function dispatch_resources_notifications ($url, $data, $subscriptions, $faculty_id, $department_id, $level_id, $faculty, 
+		$department, $level)
+	{
+		$CI =& get_instance();
+		$CI->load->library('email');
+		$CI->email->from('admin@campusspace.com.ng', 'Campus Space');
+		$CI->email->subject($data['resource_category'] . ' Update');
+		
+		foreach ($subscriptions as $subscription)
+		{
+			$unsub_link = site_url('unsub_resources/' . $subscription['id'] . '/' . $faculty_id . '/' . $department_id . '/' . $level_id);
+			
+			$CI->email->to($subscription['email']);
+			$CI->email->message(generate_resources_notifications_email($url, $unsub_link, $data, $faculty, $department, $level));
+			$CI->email->send();
+		}
 	}

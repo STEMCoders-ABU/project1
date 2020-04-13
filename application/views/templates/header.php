@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="Stem Coders Club">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#007bff">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#007bff">
+    <meta name="theme-color" content="#075031">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#075031">
     
     <title>
       <?php if (isset($page_title)): ?>
@@ -49,6 +49,7 @@
           <ul class="navbar-nav alex-font text-white">
             <li class="nav-item <?php if ($page_title == 'Home') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
             <li class="nav-item <?php if ($page_title == 'Resources') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('resources') ?>">Resources</a></li>
+            <li class="nav-item <?php if ($page_title == 'News') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('news') ?>">News</a></li>
             <li class="nav-item <?php if ($page_title == 'Moderation') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('moderation') ?>">Moderation</a></li>
             <li class="nav-item <?php if ($page_title == 'Contact') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('contact') ?>">Contact</a></li>
             <li class="nav-item <?php if ($page_title == 'About') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('about') ?>">About</a></li>
@@ -63,4 +64,4 @@
     
     <div id="page-contents">
       <!-- The Main Contents -->
-      <main id="content-wrap" class="container-fluid p-0 alegreya-r" style="padding-bottom: 6rem !important;">
+      <main id="content-wrap" class="container-fluid px-0 pt-0 alegreya-r">
