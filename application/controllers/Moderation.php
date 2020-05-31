@@ -40,7 +40,7 @@ class Moderation extends CI_Controller
                 $moderator_data = $this->moderation_model->get_moderator_data($username);
                 $password = get_post('password');
 
-                if ($password == $moderator_data['password'])
+                if (password_verify($password, $moderator_data['password']))
                 {
                     $session_data =
                     [
@@ -647,7 +647,7 @@ _OUT;
                 'phone' => get_post('phone'),
                 'full_name' => get_post('full_name'),
                 'gender' => get_post('gender'),
-                'password' => get_post('password'),
+                'password' => password_hash(get_post('password'), PASSWORD_DEFAULT),
             ];
 
             $this->moderation_model->update_moderator(get_post('email'), $entries);

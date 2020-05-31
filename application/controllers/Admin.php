@@ -41,7 +41,7 @@ class Admin extends CI_Controller
                 $admin_data = $this->moderation_model->get_admin_data($username);
                 $password = get_post('password');
 
-                if ($password == $admin_data['password'])
+                if (password_verify($password, $admin_data['password']))
                 {
                     $session_data =
                     [
@@ -216,7 +216,7 @@ class Admin extends CI_Controller
             [
                 'username' => get_post('username'),
                 'email' => get_post('email'),
-                'password' => get_post('password'),
+                'password' => password_hash(get_post('password'), PASSWORD_DEFAULT),
                 'full_name' => get_post('full_name'),
                 'gender' => get_post('gender'),
                 'phone' => get_post('phone'),

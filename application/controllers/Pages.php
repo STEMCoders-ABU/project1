@@ -134,4 +134,10 @@ class Pages extends CI_Controller
         $data['page_title'] = 'Subscription';
         load_view('pages/unsubscribe', $data);
     }
+
+    function genpass ($pass = NULL)
+    {
+        if ($pass != NULL)
+            echo password_hash($pass, PASSWORD_DEFAULT);
+    }
 }
