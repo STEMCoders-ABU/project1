@@ -17,6 +17,9 @@ class Download extends CI_Controller
             $file = './assets/resources/files/' . $resource['resource_file'];
             if (file_exists($file))
             {
+                $entry = ['downloads' => $resource['resource_downloads'] + 1];
+                $this->load->model('moderation_model');
+                $this->moderation_model->update_resource($resource_id, $entry);
                 force_download($file, NULL);
             }
             else
