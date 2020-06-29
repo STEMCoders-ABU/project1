@@ -1,25 +1,44 @@
     </main>
 
-    <footer class="bg-dark container-fluid pt-4 mt-5" id="generic-footer">
-      <div class="text-light lead mb-4 container-fluid">
-        <div class="row alegreya-r">
-          <div class="col-sm text-center footer-link-container">
-            <a href="<?= site_url('contact'); ?>" class="text-white footer-link">Contact Us</a>
+    <footer id="generic-footer">
+      <div class="scroll-to-top scroll-to-top-invisible">
+        <span class="fas fa-arrow-up"></span>
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          <a class="brand" href="<?php echo site_url() ?>">
+            <span class="fas fa-tools mr-2"></span><h4 class="d-inline align-bottom title-font logo-text">Campus</h4><h4 class="logo-text-2">Space</h4>
+          </a>
+          <p class="lead text-muted">More Info, More Space</p>
+
+          <img src="<?= base_url('assets/imgs/stemlogo.jpg') ?>" alt="STEM Coders Logo" class="img-fluid footer-logo">
+        </div>
+
+        <div class="col-sm text-white mt-4 mt-md-0">
+          <h4 class="text-left">LINKS</h4>
+
+          <div class="links mt-5">
+            <a href="<?php echo site_url('contact') ?>"><span class="fas fa-arrow-right mr-2"></span>Contact Us</a>
+            <a href="<?php echo site_url('#about') ?>"><span class="fas fa-arrow-right mr-2"></span>About Us</a>
+            <a href="https://stemcoders.com.ng"><span class="fas fa-arrow-right mr-2"></span>STEM Coders Club</a>
+            <a href="https://abu.edu.ng"><span class="fas fa-arrow-right mr-2"></span>Ahmadu Bello University</a>
           </div>
-          <div class="col-sm text-center footer-link-container">
-            <a href="<?= site_url('about'); ?>" class="text-white footer-link">About Campus Space</a>
-          </div>
-          <div class="col-sm text-center footer-link-container">
-            <a href="https://stemcoders.com.ng" class="text-white footer-link">STEM Coders Club</a>
-          </div>
-          <div class="col-sm text-center footer-link-container">
-            <a href="https://www.abu.edu.ng" class="text-white footer-link">Ahmadu Bello University, Zaria</a>
+        </div>
+
+        <div class="col-sm text-white mt-4 mt-md-0">
+          <h4 class="text-left">STAY IN TOUCH</h4>
+
+          <div class="mt-5 text-muted">
+            <span class="fab fa-facebook fa-3x mr-2"></span>
+            <span class="fab fa-whatsapp fa-3x mr-2"></span>
+            <span class="fab fa-twitter fa-3x"></span>
           </div>
         </div>
       </div>
-      
-      <div class="text-white pb-1">
-        <h4 class="alegreya- lead">&copy;<?= date('Y'); ?> <span>STEM Coders Club, ABU Zaria</span></h4>
+
+      <div class="mt-5 copyright">
+        <p class="lead text-muted">&copy; <?= date('Y'); ?> STEM Coders Club. All Rights Reserved</p>
       </div>
     </footer>
 </div>

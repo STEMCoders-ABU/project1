@@ -41,6 +41,36 @@ class Moderation_model extends CI_Model
         return $this->db->get('faculties')->result_array();
     }
 
+    public function get_departments_count()
+    {
+        $q = $this->db->get('departments')->result_array();
+
+        if ($q)
+            return count($q);
+        else
+            return 0;
+    }
+
+    public function get_resources_count()
+    {
+        $q = $this->db->get('resources')->result_array();
+
+        if ($q)
+            return count($q);
+        else
+            return 0;
+    }
+
+    public function get_resources_downloads_count()
+    {
+        $q = $this->db->select('SUM(downloads) AS total')->get('resources')->row_array();
+
+        if ($q)
+            return $q['total'];
+        else
+            return 0;
+    }
+
     public function get_faculty_departments ($faculty_id)
     {
         return $this->db->get_where('departments', ['faculty_id' => $faculty_id])
