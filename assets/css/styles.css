@@ -270,6 +270,7 @@ div .index-header-container .motto {
   font-size: 2rem;
   margin-bottom: 7rem;
   margin-top: -1rem;
+  border-radius: 1rem;
 }
 
 div .index-header-container .resources-link {
@@ -421,7 +422,7 @@ div#main-index-container .section-5 .col-sm p.lead {
 }
 
 div#main-index-container .section-6 {
-  background-image: url(../imgs/long-corridor.jpg);
+  background-image: url(../imgs/long-corridor.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -531,19 +532,19 @@ div .mod-login-container .header {
   }
   
   div .index-header-container .motto {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 4rem;
     margin-top: -.5rem;
     padding: 0.8rem;
   }
 
   div .index-header-container .resources-link {
-    font-size: 1rem;
+    font-size: 1.3rem;
     padding: 1rem;
   }
 
   div .index-header-container .app-link {
-    font-size: 1rem;
+    font-size: 1.3rem;
     padding: 1rem;
   }
 
