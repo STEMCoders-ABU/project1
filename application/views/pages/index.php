@@ -69,7 +69,7 @@
     </div>
   </div>
 
-  <div class="section-4 container-fluid px-0 mt-5" id="about">
+  <div class="section-4 container-fluid mt-5" id="about">
     <div class="row">
       <div class="col-sm logo">
         <div class="inner"></div>
@@ -78,7 +78,7 @@
       <div class="col-sm text jumbotron m-0 text-white">
         <div class="row">
           <div class="col-2">
-            <hr class="w-100 bg-white">
+            <hr class="bg-white">
           </div>
           <div class="col">
             <h6 class="title-font">what's this about?</h6>

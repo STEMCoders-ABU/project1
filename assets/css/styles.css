@@ -172,7 +172,7 @@ footer#generic-footer {
 footer#generic-footer .scroll-to-top {
   position: fixed;
   bottom: 1rem;
-  right: 1rem;
+  right: 1.5rem;
   z-index: 1000;
   background-color: rgb(139, 46, 46, 0.8);
   padding: 1rem;
@@ -227,7 +227,7 @@ footer#generic-footer .links a:hover {
   }
 
   nav#generic-navbar div#nav-menu {
-    transition: 0.5s ease;
+    transition: 0.3s ease;
   }
 
   nav#generic-navbar .navbar-media-container {
@@ -531,7 +531,7 @@ div .mod-login-container .header {
   }
   
   div .index-header-container .motto {
-    font-size: .8rem;
+    font-size: 1.1rem;
     margin-bottom: 4rem;
     margin-top: -.5rem;
     padding: 0.8rem;
