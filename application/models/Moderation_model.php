@@ -327,9 +327,9 @@ class Moderation_model extends CI_Model
 			->delete('password_resets');
     }
     
-    public function update_moderator ($email, array $new_data)
+    public function update_moderator ($id, array $new_data)
 	{
-		$query = $this->db->where('email', $email)
+		$query = $this->db->where('id', $id)
 			->update('moderators', $new_data);
 		return $query;
     }
