@@ -368,9 +368,10 @@ class Moderation_model extends CI_Model
         $this->db->insert('moderators', $entries);
     }
 
-    public function is_moderator_unique($department_id)
+    public function is_moderator_unique($department_id, $level_id)
     {
-        $query = $this->db->get_where('moderators', ['department_id' => $department_id]);
+        $query = $this->db->get_where('moderators', ['department_id' => $department_id,
+            'level_id' => $level_id]);
         return $query->num_rows() == 1;
     }
 }

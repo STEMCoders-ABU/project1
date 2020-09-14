@@ -224,8 +224,8 @@ class Admin extends CI_Controller
                 'department_id' => get_post('department'),
                 'level_id' => get_post('level'),
             ];
-
-            if(!($this->moderation_model->is_moderator_unique($entries['department_id'])))
+ 
+            if(!($this->moderation_model->is_moderator_unique($entries['department_id'], $entries['level_id'])))
             {
                 $this->moderation_model->add_moderator($entries);
                 $this->session->set_flashdata('flash_message', 'A new moderator has been added successfully!');
