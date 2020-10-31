@@ -1,7 +1,6 @@
-<div class="text-center mt-5 shadow shadow-sm container p-4">
-	<h4 class="text-center">Sign In to Account</h4>
-	<hr class="mb-5 w-25">
-
+<div class="text-center mt-5 container p-4 mod-login-container">
+	<h4 class="text-center header mx-n4 mt-n4">Sign In to Account</h4>
+	
     <div class="mb-5 alert alert-info">
         <p class="lead">Please note, only class reps are required to sign in! <strong>No account is required for normal students to access the resources.</strong></p>
     </div>

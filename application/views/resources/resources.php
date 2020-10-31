@@ -7,7 +7,7 @@
     <?php return; ?>
 <?php endif; ?>
 
-<div class="resources-wrapper pr-2 d-none">
+<div class="resources-wrapper pr-2">
     <!-- Sidebar -->
     <nav id="resources-sidebar" class="shadow shadow-lg">
         <div class="resources-sidebar-header">
@@ -52,7 +52,7 @@
         <div class="mt-5" id="resources-main-contents">
             
             <!-- Search Bar -->
-            <div class="search-bar card jumbotron mx-auto p-5 shadow shadow-lg">
+            <div class="search-bar card jumbotron mx-auto p-5">
                 <?= form_open('resources/search/' . $faculty_id . '/' . $department_id . '/' . $level_id . '/' . $category_id . '/' . $course_id . '/null'); ?>
                     <div class="input-group mb-2">
                         <?= get_resource_categories_select(); ?>
@@ -70,7 +70,7 @@
             </div>
 
             <div class="shadow shadow-lg mb-5">
-                <div class="jumbotron p-4 bg-dark text-white" style="margin-top: 6rem">
+                <div class="jumbotron p-4 bg-dark text-white resources-title" style="margin-top: 6rem">
                     <h4 class="text-center"><?= $course_code; ?> Resources [<?= $category . 's' ?>]</h4>
                 </div>
 
@@ -128,7 +128,7 @@
             <!-- Frequently Accessed Resources -->
             <div class="shadow shadow-lg" style="margin-top: 10rem">
                 <div class="jumbotron p-3 pb-4">
-                    <div class="jumbotron p-4 bg-dark text-white mx-n3 mt-n3">
+                    <div class="jumbotron p-4 bg-dark text-white mx-n3 mt-n3 most-downloaded-resources-title">
                         <h4 class="text-center res-header">Most Downloaded Resources for <?= $course_code; ?> [<?= $category . 's' ?>]</h4>
                     </div>
 
@@ -157,7 +157,7 @@
 
             <!-- Comments -->
             <div class="jumbotron p-3 shadow shadow-lg" style="margin-top: 10rem">
-                <div class="jumbotron p-4 bg-dark text-white mx-n3 mt-n3">
+                <div class="jumbotron p-4 bg-dark text-white mx-n3 mt-n3 comments-title">
                     <h4 class="text-center">Comments for <?= $course_code; ?> [<?= $category . 's' ?>]</h4>
                 </div>
 
@@ -191,8 +191,4 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="text-center mt-5 resource-loading-container">
-    <img src="<?= base_url('assets/imgs/ajax-loader-spinner.gif'); ?>" alt="Loading..." class="img-fluid resource-loading">
 </div>

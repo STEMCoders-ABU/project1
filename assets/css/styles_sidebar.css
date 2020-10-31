@@ -9,7 +9,7 @@ nav#resources-sidebar {
   min-width: 250px;
   max-width: 250px;
   min-height: 100vh;
-  background: #343a40;
+  background: #191a1b;
   color: #fff;
   transition: all 0.5s cubic-bezier(0.945, 0.020, 0.270, 0.665);
   transform-origin: center left;
@@ -22,7 +22,7 @@ nav#resources-sidebar.open {
 }
 
 nav#resources-sidebar .active {
-  background: seagreen;
+  background: rgba(16, 43, 9, 0.89);
 }
 
 nav#resources-sidebar a[data-toggle="collapse"] {
@@ -52,7 +52,7 @@ nav#resources-sidebar a, a:hover, a:focus {
 
 nav#resources-sidebar .resources-sidebar-header {
   padding: 20px;
-  background: rgb(43, 160, 94);
+  background: rgba(20, 54, 11, 0.89);
 }
 
 nav#resources-sidebar ul .components {
@@ -82,13 +82,13 @@ nav#resources-sidebar .active a:hover {
 
 nav#resources-sidebar ul li .active > a, a[aria-expanded="true"] {
   color: #fff;
-  background: #208d4e;
+  background: rgba(16, 43, 9, 0.89);
 }
 
 nav#resources-sidebar ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #377c46;
+  background: rgba(25, 66, 14, 0.89);
 }
 
 div#resources-content {
@@ -101,15 +101,11 @@ div#resources-content {
 #resources-sidebar-collapse {
   width: 60px;
   height: 50px;
-  background: #343a40;;
+  background: #191a1b;
 }
 
 #resources-sidebar-collapse:hover {
-  background: seagreen;;
-}
-
-#resources-sidebar-collapse:focus {
-  background: rgb(37, 112, 70);;
+  background: rgba(16, 43, 9, 0.89);
 }
 
 #resources-sidebar-collapse span {
@@ -145,10 +141,14 @@ div#resources-content {
 
 div#resources-main-contents .search-bar {
   width: 100% !important;
+  box-shadow: 0 12px 20px 0 rgb(170, 168, 168), 0 16px 30px 0 rgb(112, 111, 111);
+  background-color: rgb(46, 46, 46);
+  border-radius: 2rem;
 }
 
 div#resources-main-contents .search-bar button {
-  background: seagreen;
+  background: rgb(9, 61, 32);
+  border: .1rem solid seagreen;
 }
 
 div#resources-main-contents .search-bar button:hover {
@@ -159,6 +159,18 @@ div#resources-main-contents .search-bar button:hover {
 div#resources-main-contents .search-bar .category {
   background: #343a40;
   color: #fff;
+}
+
+div .resources-title {
+  background: rgb(46, 46, 46) !important;
+}
+
+div .most-downloaded-resources-title {
+  background: rgb(46, 46, 46) !important;
+}
+
+div .comments-title {
+  background: rgb(46, 46, 46) !important;
 }
 
 @media (max-width: 768px) {

@@ -34,4 +34,18 @@ class Download extends CI_Controller
             load_view('download/file_not_found', $data);
         }
     }
+
+    public function app()
+    {
+        $file = './assets/app/campus-space.apk';
+        if (file_exists($file))
+        {
+            force_download($file, NULL);
+        }
+        else
+        {
+            $data['page_title'] = 'File Not Found';
+            load_view('download/file_not_found', $data);
+        }
+    }
 }

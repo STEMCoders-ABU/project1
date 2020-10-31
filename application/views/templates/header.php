@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="Stem Coders Club">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#075031">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#075031">
+    <meta name="theme-color" content="#252424">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#252424">
     
     <title>
       <?php if (isset($page_title)): ?>
@@ -17,6 +17,9 @@
         <?= 'Campus Space'; ?>
       <?php endif; ?>
     </title>
+
+    <link rel="shortcut icon" href="<?php echo base_url('assets/favicon.ico') ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/favicon.ico') ?>" type="image/x-icon">
 
     <!-- Bootstrap core CSS, FontAwesome and custom css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
@@ -35,9 +38,11 @@
   	<!-- The Header -->
     <header class="sticky-top">
       <!-- Navbar -->
-      <nav class="navbar navbar-dark bg-dark text-white navbar-expand-sm px-3 shadow shadow-sm" id="generic-navbar">
+     
+      <nav class="navbar navbar-dark bg-dark text-white navbar-expand-sm px-3 shadow shadow-sm <?php if ($page_title == 'Home') echo 'nav-transparent'; else echo 'nav-opaque ignore-scroll-change'; ?>" 
+        id="generic-navbar">
         <a class="navbar-brand" href="<?php echo site_url() ?>">
-        	<h5 class="d-inline align-bottom title-font">Campus Space</h5>
+          <span class="fas fa-tools mr-2"></span><h4 class="d-inline align-bottom title-font logo-text">Campus</h4><h4 class="logo-text-2">Space</h4>
         </a>
         
         <button class="navbar-toggler text-light border border-light" style="outline:none" type="button" data-toggle="collapse"
@@ -45,18 +50,24 @@
           <span class="fas fa-align-right"></span>
         </button>
                  
-        <div id="nav-menu" class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav alex-font text-white">
+        <div id="nav-menu" class="collapse navbar-collapse justify-content-center">
+          <ul class="navbar-nav text-white title-font">
             <li class="nav-item <?php if ($page_title == 'Home') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
             <li class="nav-item <?php if ($page_title == 'Resources') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('resources') ?>">Resources</a></li>
-            <li class="nav-item <?php if ($page_title == 'News') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('news') ?>">News</a></li>
+            <!--<li class="nav-item <?php if ($page_title == 'News') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('news') ?>">News</a></li>-->
             <li class="nav-item <?php if ($page_title == 'Moderation') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('moderation') ?>">Moderation</a></li>
             <li class="nav-item <?php if ($page_title == 'Contact') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('contact') ?>">Contact</a></li>
-            <li class="nav-item <?php if ($page_title == 'About') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('about') ?>">About</a></li>
+            <li class="nav-item <?php if ($page_title == 'About') echo 'active'; ?>"><a class="nav-link" href="<?php echo site_url('#about') ?>">About</a></li>
           </ul>
 
+          <div class="navbar-media-container">
+            <span class="fab fa-facebook-f mr-1"></span>
+            <span class="fab fa-whatsapp mr-1"></span>
+            <span class="fab fa-twitter"></span>
+          </div>
+
           <?php if ($this->session->has_userdata('logged') || $this->session->has_userdata('admin_logged')): ?>
-            <a href="<?= site_url('moderation/logout'); ?>" class="btn btn-success btn-md-lg ml-md-4 mt-3 mt-md-0 btn-theme">Sign Out</a>
+            <a href="<?= site_url('moderation/logout'); ?>" class="btn btn-success btn-md-lg btn-logout">Sign Out</a>
           <?php endif; ?>
         </div>
       </nav>

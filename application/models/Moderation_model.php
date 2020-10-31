@@ -41,6 +41,36 @@ class Moderation_model extends CI_Model
         return $this->db->get('faculties')->result_array();
     }
 
+    public function get_departments_count()
+    {
+        $q = $this->db->get('departments')->result_array();
+
+        if ($q)
+            return count($q);
+        else
+            return 0;
+    }
+
+    public function get_resources_count()
+    {
+        $q = $this->db->get('resources')->result_array();
+
+        if ($q)
+            return count($q);
+        else
+            return 0;
+    }
+
+    public function get_resources_downloads_count()
+    {
+        $q = $this->db->select('SUM(downloads) AS total')->get('resources')->row_array();
+
+        if ($q)
+            return $q['total'];
+        else
+            return 0;
+    }
+
     public function get_faculty_departments ($faculty_id)
     {
         return $this->db->get_where('departments', ['faculty_id' => $faculty_id])
@@ -297,9 +327,9 @@ class Moderation_model extends CI_Model
 			->delete('password_resets');
     }
     
-    public function update_moderator ($email, array $new_data)
+    public function update_moderator ($id, array $new_data)
 	{
-		$query = $this->db->where('email', $email)
+		$query = $this->db->where('id', $id)
 			->update('moderators', $new_data);
 		return $query;
     }
@@ -338,9 +368,10 @@ class Moderation_model extends CI_Model
         $this->db->insert('moderators', $entries);
     }
 
-    public function is_moderator_unique($department_id)
+    public function is_moderator_unique($department_id, $level_id)
     {
-        $query = $this->db->get_where('moderators', ['department_id' => $department_id]);
+        $query = $this->db->get_where('moderators', ['department_id' => $department_id,
+            'level_id' => $level_id]);
         return $query->num_rows() == 1;
     }
 }

@@ -1,153 +1,145 @@
-<div class="index-container d-none">
-  <div class="index-header">
-    <div class="translucent-bg-50 text-center headline">
-      <h1 class="index-header-title">Campus Space</h1>
+<div id="main-index-container">
+  <div class="index-header-container">
+    <div class="headline text-left translucent-bg-60">
+      <div class="mb-5">
+        <h1 class="title">CAMPUS SPACE</h1>
+        <p class="lead text-white motto translucent-bg-40">More Space, More Info...</p>
+      </div>
 
-      <?php if (!$this->session->has_userdata('logged')): ?>
-        <div class="mt-5 auth-container">
-          <a href="<?= site_url('moderation/login'); ?>" class="btn btn-outline-light btn-lg mr-5 shadow shadow-sm" id="login">Sign In</a>
-          <a href="<?= site_url('resources'); ?>" class="btn btn-success btn-lg shadow shadow-sm btn-theme" id="register">Explore Resources</a>
+      <div class="row mr-3">
+        <div class="col-sm">
+          <a href="<?= site_url('resources'); ?>" class="resources-link"><span class="fas fa-search mr-3 text-black"></span>Explore Resources</a>
         </div>
-      <?php endif; ?>
+
+        <div class="col-sm mt-4 mt-md-0">
+          <a href="<?= site_url('download/app'); ?>" class="app-link"><span class="fab fa-android mr-3 text-black"></span>Get the Mobile App</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="index-contents">
-    <section id="section-a">
-      <div class="card-deck">
-        <div class="card">
-          <img class="img-fluid card-img-top" src="<?= base_url('assets/imgs/index/res-card.jpeg') ?>">
-          <div class="card-body">
-            <h4 class="card-title">RESOURCES</h4>
-            <p class="lead" style="height: 5rem;">Get exclusive access to departmental materials, documents, textbooks and videos.</p>
-            <a href="<?= site_url('resources'); ?>" class="btn btn-dark card-btn card-link">Explore</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="img-fluid card-img-top" src="<?= base_url('assets/imgs/index/opp-card.jpg') ?>">
-          <div class="card-body">
-            <h4 class="card-title">LATEST NEWS/UPDATES</h4>
-            <p class="lead" style="height: 5rem;">Stay informed with departmental updates, scholarship oppurtunities, etc.</p>
-            <a href="<?= site_url('news'); ?>" class="btn btn-dark card-btn card-link">Explore</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="img-fluid card-img-top" src="<?= base_url('assets/imgs/index/gp-card.jpg') ?>">
-          <div class="card-body">
-            <h4 class="card-title">GP CALCULATOR</h4>
-            <p class="lead" style="height: 5rem;">A handy assesment tool for calculating your GP</p>
-            <a href="#" class="btn btn-dark card-btn card-link">Explore</a>
-          </div>
-        </div>
+  <div class="container-fluid section-2 jumbotron mb-0">
+    <div class="row">
+      <div class="col-sm text-center">
+        <span class="d-block fas fa-folder fa-5x"></span>
+        <p class="lead text-muted">Save Space</p>
       </div>
-    </section>
 
-    <!--SECTION B .. INFO-->
-    <section id="section-b" class="container-fluid jumbotron">
+      <div class="col-sm text-center mt-5 mt-md-0">
+        <span class="d-block fas fa-tasks fa-5x"></span>
+        <p class="lead text-muted">Discuss</p>
+      </div>
+
+      <div class="col-sm text-center mt-5 mt-md-0">
+        <span class="d-block fas fa-clock fa-5x"></span>
+        <p class="lead text-muted">Save Time</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-3">
+    <div class="contents translucent-bg-60 text-center text-white">
+      <h1>HOW IT WORKS</h1>
+      <hr class="w-75">
+
+      <p class="lead text-muted text-left">
+      We give class representatives the oppurtunity to keep class members up to date with resources and useful information in an organised and student friendly manner. At Campus Space, we let you focus on what you're actually interested in. You no longer have to scroll through hundreds of not so useful messages to get updated
+      <br><br>
+      You're not limited to just your departmental resources, you have access to every other faculty, department and level! Basically, you can access resources for higher levels even before you get there!
+      </p>
+    </div>
+  </div>
+
+  <div class="section-5 container-fluid jumbotron mb-0">
+    <div class="row mx-1 mx-md-0 p-4">
+      <div class="col-sm text-center">
+        <h2><?= $total_departments ?></h2>
+        <p class="lead text-muted">Departments</p>
+      </div>
+
+      <div class="col-sm text-center mt-5 mt-md-0">
+        <h2><?= $total_resources ?></h2>
+        <p class="lead text-muted">Resources</p>
+      </div>
+
+      <div class="col-sm text-center mt-5 mt-md-0">
+        <h2><?= $total_downloads ?></h2>
+        <p class="lead text-muted">Downloads</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-4 container-fluid mt-5" id="about">
+    <div class="row">
+      <div class="col-sm logo">
+        <div class="inner"></div>
+      </div>
+
+      <div class="col-sm text jumbotron m-0 text-white">
         <div class="row">
-          <div class="col-sm">
-            <h2 class="mb-5 text-center">WHAT DIFFERENCE DOES IT MAKE?</h2>
-            <p class="text-muted">Remember those awkward moments when you go online on WhatsApp only to discover about 100 unread messages waiting for you. You've already 
-              had your fair share of frustation after the day's long hours of lectures. Now all you care about is getting that peaceful resting time, you probably don't want 
-              to go through all those mesages (they're not all that useful anyway), so you take a peek at the last three messages. You're pretty much satisfied now because the last three mesages
-              weren't useful just like you presumed (the rest are probably useless too), then you log off.
-            </p>
-            <p class="text-muted">It's the next day and you're in class as usual (ready to be frustrated again). Something looks different though. The class is quite, the books are recieving much attention as all your classmates are
-              trying to revise for the test. Puzzled, you exclaimed: TEST? WHEN? WHERE? HOW?. Unfortunately for you, the test was announced in the WhatsApp group and you failed to read. To make matters worst, past questions, 
-              ebooks and even useful materials were also shared but you missed all that and now you're pretty much doomed!
-            </p>
-            <p class="lead">Ok, that wasn't entirely your fault, following up departmental WhatsApp group messages is a pain. But that's not an excuse to fail! You'll usually end up missing vital info and resources!</p>
-            <p class="lead">This is where Campus Space comes in! We give class representatives the oppurtunity to keep class members up to date with resources and useful information in an organised and student friendly manner.
-              At Campus Space, we let you focus on what you're actually interested in. You no longer have to scroll through hundreds of not so useful messages to get updated
-            </p>
-            <p class="lead">You're not limited to just your departmental resources, you have access to every other faculty, department and level! Essentially, you can access resources for higher levels even before you get there!
-            </p>
+          <div class="col-2">
+            <hr class="bg-white">
           </div>
-
-          <div class="col-sm text-center">
-            <img class="img-fluid img-thumbnail" src="<?= base_url('assets/imgs/index/reading.jpg') ?>">
+          <div class="col">
+            <h6 class="title-font">what's this about?</h6>
           </div>
         </div>
-    </section>
 
-      <!--SECTION C .. OPPORTUNITIES-->
-    <section id="section-c" class="mt-5">
-        <h2 class="text-center">LATEST NEWS/UPDATES</h2>
-        <p id="sub-header" class="text-center mb-5 mx-2">ASSIGNMENTS | SCHOLARSHIPS | COMPETITIONS | ASSESMENTS | GRANTS | GENERAL NEWS</p>
+        <p class="lead text-muted mt-5 text-left">
+          Campus Space is a cloud-based socio-academic web application built to provide students and other key players in the learning environment easy access to study materials.
+          <br><br>
+          This platform aims to improve communication as well as dissemination (sharing) of study materials effectively for the best learning experience!
+          <br><br>
+          Campus space caters for all academic institutions encompassing trainings, professional and traditional methods of learning. It seeks to bring all study materials in one place for easy access and more sustainable use.
+          <br><br>
+          The pilot phase for this project is targeted at Ahmadu Bello University, Zaria - Nigeria. It is managed by the STEM Coders Club as part of the plans in place for solving contemproray problems in the society.
+          <br><br>
+          With many other cloud-based services available, Campus Space is 100% open source; providing access to study files for students globally with no hidden charges to better enhance access and promote effective study habits.
+        </p>
+      </div>
+    </div>
+  </div>
 
-        <div class="container-fluid">
-          <?php if (isset($news) && $news): ?>
-            <?php foreach ($news as $news_item): ?>
-              <div class="card jumbotron p-0 shadow shadow-sm">
-                <div class="row">
-                  <div class="col-sm">
-                    <img class="img-fluid img-thumbnail" src="<?= base_url('assets/imgs/index/gp-card.jpg') ?>">
-                  </div>
-                  <div class="col-sm p-5">
-                    <div class="pt-3">
-                      <h4 class="card-title"><?= $news_item['news_title'] ?></h4>
-                    </div>
+  <div class="section-6">
+    <div class="contents translucent-bg-60 text-center">
+      <h1 class="text-center translucent-bg-60">READY TO EXPLORE?<hr class="w-25"></h1>
+      <a href="<?= site_url('resources'); ?>">Explore Resources</a>
+    </div>
+  </div>
 
-                    <p class="mt-3"><?= ellipsize($news_item['news_content'], 200); ?></p>
-                    <a href="<?= site_url('news/view/' . $news_item['id']); ?>" class="btn btn-dark mt-5 w-100">View Full Story</a>
-                  </div>
-                </div>
-              </div>
-            <?php endforeach; ?>
-          <?php else: ?>
-            <div class="alert alert-info">
-              <p class="lead">No News/Updates to display at this time. Please check again later!</p>
-            </div>
-          <?php endif; ?>
-        </div>
-    </section>
-
-    <section class="container" style="margin-top: 8rem;">
-      <div class="jumbtron p-3 shadow shadow-lg">
-        <div class="p-4 bg-dark text-white mx-n3 mt-n3">
-          <h4 class="text-center">Subscribe for Email Notifications</h4>
+  <div class="container section-7 jumbotron">
+      <div class="jumbtron p-3 content">
+        <div class="p-4 mx-n3 mt-n3 header">
+          <h4 class="text-center text-uppercase title-font">Subscribe for Email Notifications</h4>
         </div>
 
         <div class="p-3 mt-3">
-          <div class="alert alert-info mb-4 d-none" id="subscription_feedback" style="transition: all 0.3s linear;">
+          <div class="alert alert-warning mb-4 d-none" id="subscription_feedback" style="transition: all 0.3s linear;">
             <p class="lead" id="feedback_text"></p>
           </div>
 
           <div class="input-group mt-3"> 
-              <?= get_faculties_select('faculty_select'); ?>
-          </div>
+              <select id="faculty_select" class="form-control bg-light" name="faculty" required=""><option value="1">Test Faculty</option><option value="2">Another Test Faculty</option></select>          </div>
 
           <div class="input-group mt-3" id="departments_select_container"> 
               <!-- Departments Select will be inserted automatically via Ajax -->
-          </div>
+          <select id="department_select" class="form-control bg-light" name="department" required=""><option value="1">Test Department</option></select></div>
 
           <div class="input-group mt-3"> 
-              <?= get_levels_select('level_select'); ?>
-          </div>
+              <select id="level_select" class="form-control bg-light" name="level" required=""><option value="1">100</option><option value="3">200</option><option value="4">300</option><option value="5">400</option><option value="6">500</option><option value="7">600</option></select>          </div>
 
           <div class="input-group mt-3"> 
-              <input type="text" class="form-control bg-light sub_email" name="email" maxlength="50" value="<?= set_value('email'); ?>" placeholder="Enter Email" required>
+              <input type="text" class="form-control bg-light sub_email" name="email" maxlength="50" value="" placeholder="Enter Email" required="">
           </div>
 
           <div class="text-center">
             <img class="ajax-loader-indicator mt-4 mb-3 d-block mx-auto" src="<?= base_url('assets/imgs/ajax-loader.gif'); ?>" alt="Adding subscription...">
 
-            <button class="btn btn-success btn-theme btn-lg mr-md-3" id="btn_news_sub" onclick="sub_for_news()">
-              <span class="fas fa-envelope mr-2"></span> Subscribe for News
-            </button>
-
-            <button class="btn btn-success btn-theme btn-lg mt-2 mt-md-0" id="btn_resources_sub" onclick="sub_for_resources()">
-              <span class="fas fa-envelope mr-2"></span> Subscribe for Resources
+            <button class="btn btn-success btn-lg mt-2 mt-md-0" id="btn_resources_sub" onclick="sub_for_resources()">
+              <span class="fas fa-envelope mr-2"></span>SUBSCRIBE!
             </button>
           </div>
         </div>
       </div>
-    </section>
   </div>
-</div>
-
-<div class="text-center mt-5 index-loading-container">
-    <img src="<?= base_url('assets/imgs/ajax-loader-spinner.gif'); ?>" alt="Loading..." class="img-fluid resource-loading">
 </div>

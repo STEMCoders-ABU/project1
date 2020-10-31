@@ -423,14 +423,13 @@ class Moderation extends CI_Controller
 					{
 						$temp = openssl_random_pseudo_bytes(16);
 						$verification_code = bin2hex($temp);
-						$this->moderation_model->insert_verification_data($email, $verification_code);
 						
 						$this->load->library('email');
 						$link = site_url('moderation/reset_password/' . $verification_code);
 
 						$message = <<<_END
-							<p>Hello!<br> You requested a password reset for your Campus Space Moderator account.</p>
-							<p>Click here {$link} to reset your password now.</p>
+							<p>Hello!<br>You requested a password reset for your Campus Space Moderator account.</p>
+							<p>Click <a href="{$link}">this link</a> to reset your password now.</p>
 
 							<p>
 								You received this email because a password reset was requested for the account of which this email address was registered with.
@@ -438,13 +437,14 @@ class Moderation extends CI_Controller
 							</p>
 _END;
 
-						$this->email->from('admin@campusspace.com.ng', 'Campus Space');
+						$this->email->from('mail@campus-space.com.ng', 'Campus Space');
 						$this->email->to($email);
 						$this->email->subject('Password Reset');
-						$this->email->message(generate_email_page($message));
+						$this->email->message(generate_email_page($message, 'Password Reset Confirmation'));
 
 						if ($this->email->send())
 						{
+                            $this->moderation_model->insert_verification_data($email, $verification_code);
 							$reset_data = $this->moderation_model->get_verification_data ($email);
 							$data['code_sent'] = TRUE;
 							$data['id'] = $reset_data['id'];
@@ -500,7 +500,7 @@ _END;
 
 		$message = <<<_END
 			<p>Hello!<br> You requested a password reset for your Campus Space Moderator account.</p>
-			<p>Click here {$link} to reset your password now.</p>
+			<p>Click <a href="{$link}">this link</a> to reset your password now.</p>
 
 			<p>
 				You received this email because a password reset was requested for the account of which this email address was registered with.
@@ -508,10 +508,10 @@ _END;
 			</p>
 _END;
 
-        $this->email->from('admin@campusspace.com.ng', 'Campus Space');
+        $this->email->from('mail@campus-space.com.ng', 'Campus Space');
 		$this->email->to($email);
 		$this->email->subject('Password Reset');
-		$this->email->message(generate_email_page($message));
+		$this->email->message(generate_email_page($message, 'Password Reset Confirmation'));
 
 		if ($this->email->send())
 		{
@@ -650,7 +650,7 @@ _OUT;
                 'password' => password_hash(get_post('password'), PASSWORD_DEFAULT),
             ];
 
-            $this->moderation_model->update_moderator(get_post('email'), $entries);
+            $this->moderation_model->update_moderator($moderator_data['id'], $entries);
             $this->session->set_flashdata('profile_modified', 'Your profile was updated successfully');
             load_view('moderation/index', $data);
         }

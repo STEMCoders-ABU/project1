@@ -7,12 +7,15 @@ class Pages extends CI_Controller
 		$this->load->library('form_validation');
         $this->load->model('resources_model');
         $this->load->model('news_model');
+        $this->load->model('moderation_model');
     }
 
     public function index()
     {
         $data['page_title'] = 'Home';
-        $data['news'] = $this->news_model->get_latest_news();
+        $data['total_departments'] = $this->moderation_model->get_departments_count();
+        $data['total_resources'] = $this->moderation_model->get_resources_count();
+        $data['total_downloads'] = $this->moderation_model->get_resources_downloads_count();
 
         load_view('pages/index', $data);
     }

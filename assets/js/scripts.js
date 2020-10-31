@@ -3,6 +3,45 @@ var LOCAL_HOST = true;
 var SITE_URL = 'http://localhost/project1/';
 
 $(document).ready(function (){
+	const windowObj = $(window);
+	if (windowObj.scrollTop() > 100) {
+		const navbar = $('nav#generic-navbar');
+		navbar.addClass('nav-opaque');
+		navbar.removeClass('nav-transparent');
+	}
+
+	windowObj.scroll(() => {
+		const scrollHeight = $(this).scrollTop();
+		const navbar = $('nav#generic-navbar');
+		
+		if (scrollHeight > 100) {
+			if (!navbar.hasClass('ignore-scroll-change')) {
+				navbar.addClass('nav-opaque');
+				navbar.removeClass('nav-transparent');
+			}
+		}
+		else {
+			if (!navbar.hasClass('ignore-scroll-change')) {
+				navbar.removeClass('nav-opaque');
+				navbar.addClass('nav-transparent');
+			}
+		}
+
+		if (scrollHeight > window.screen.height) {
+			$('.scroll-to-top').removeClass('scroll-to-top-invisible');
+		}
+		else {
+			$('.scroll-to-top').addClass('scroll-to-top-invisible');
+		}
+	});
+
+	$('.scroll-to-top').click(function(){
+		$('html, body').animate({
+			scrollTop: 0
+		}, 'slow');
+		return false;
+	});
+
 	$('#resources-sidebar-collapse').on('click', function (){
 		$('#resources-sidebar').toggleClass('open');
 		$('div .resources-siderbar-wrapper').toggleClass('open');
@@ -61,7 +100,7 @@ $(document).ready(function (){
 				+ '/' + level_id + '/' + category_id + '/' + course_id;
 
 			if (LOCAL_HOST == true)
-				link = '/project1/resources/resource/' + faculty_id + '/' + department_id
+				link = SITE_URL + 'resources/resource/' + faculty_id + '/' + department_id
 					+ '/' + level_id + '/' + category_id + '/' + course_id;
 
 			window.location.href = link;
@@ -86,10 +125,6 @@ $(document).ready(function (){
 			window.location.href = link;
 		}
 	);
-
-	/* Ajax */
-	setTimeout(show_index, 1500);
-	setTimeout(show_resources, 1000);
 });
 
 function get_selected_value (selector)

@@ -1,7 +1,6 @@
 <div class="text-center mt-5 shadow shadow-sm container p-4">
-	<h4 class="text-center">Sign In to Account</h4>
-	<hr class="mb-5 w-25">
-
+	<h4 class="text-center bg-dark mx-n4 mt-n4 p-3 text-white mb-5">Sign In to Account</h4>
+	
 	<?php if(validation_errors()): ?>
 		<div class="mb-4 alert alert-danger">
 			<strong>The following errors occured</strong><br><br>
