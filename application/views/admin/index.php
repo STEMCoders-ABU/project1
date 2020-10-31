@@ -1,6 +1,6 @@
 <div class="mt-5 container-fluid text-center">
     
-    <div class="search-bar card jumbotron mx-auto p-5 mt-5 container">
+    <div class="search-bar card jumbotron mx-auto p-5 mt-5 container-fluid shadow-sm">
 
         <?php if ($this->session->flashdata('flash_message')): ?>
             <div class="mb-4 alert alert-success lead">
@@ -21,7 +21,10 @@
             </div>
         <?php endif; ?>
 
-        <?= form_open('admin/add_faculty', 'class="mx-n4"'); ?>
+        <?= form_open('admin/add_faculty', 'class="mx-n4 mb-4"'); ?>
+            <h4>Add a Faculty</h4>
+            <hr/>
+
             <div class="input-group mt-3"> 
                 <input type="text" class="form-control bg-light" name="faculty_name" maxlength="60" minlength="4" value="<?= set_value('faculty_name'); ?>" placeholder="Enter Faculty Name" required>
                 <div class="input-group-append">
@@ -32,7 +35,10 @@
             </div>
         </form>
 
-        <?= form_open('admin/update_faculty', 'class="mt-5 mx-n4"'); ?>
+        <?= form_open('admin/update_faculty', 'class="mt-5 mb-4 mx-n4"'); ?>
+            <h4>Change Faculty Name</h4>
+            <hr/>
+            
             <div class="input-group mt-3"> 
                 <?= get_faculties_select(); ?>
             </div>
@@ -47,7 +53,10 @@
             </div>
         </form>
 
-        <?= form_open('admin/remove_faculty', 'class="mt-5 mx-n4"'); ?>
+        <?= form_open('admin/remove_faculty', 'class="mt-5 mb-4 mx-n4"'); ?>
+            <h4>Remove a Faculty</h4>
+            <hr/>
+            
             <div class="input-group mt-3"> 
                 <?= get_faculties_select(); ?>
                 <div class="input-group-append">
@@ -58,7 +67,10 @@
             </div>
         </form>
 
-        <?= form_open('admin/add_department', 'class="mt-5 mx-n4"'); ?>
+        <?= form_open('admin/add_department', 'class="mt-5 mb-4 mx-n4"'); ?>
+            <h4>Add a Department</h4>
+            <hr/>
+            
             <div class="input-group mt-3"> 
                 <?= get_faculties_select(); ?>
             </div>
@@ -73,7 +85,10 @@
             </div>
         </form>
 
-        <?= form_open('admin/update_department', 'class="mt-5 update-dept-form mx-n4"'); ?>
+        <?= form_open('admin/update_department', 'class="mt-5 mb-4 update-dept-form mx-n4"'); ?>
+            <h4>Change Department Name</h4>
+            <hr/>
+            
             <div class="input-group mt-3"> 
                 <?= get_faculties_select('faculty_select'); ?>
             </div>
@@ -94,6 +109,8 @@
     </div>
 
     <div class="card jumbotron mx-auto p-5 mt-5 container">
+        <h4 class="mb-5 mt-n2">Add a Class Rep</h4>
+        
         <?= form_open('admin/add_moderator', 'class="mt-5 add-mod-form mx-n4 mt-n3"'); ?>
             <div class="input-group mt-3"> 
                 <?= get_faculties_select('faculty_select'); ?>
@@ -135,7 +152,7 @@
             </div>
 
             <button type="submit" class="btn btn-success btn-theme btn-lg mt-5 pull-left">
-               Add Moderator <span class="fas fa-arrow-right ml-2"></span> 
+               Add Class Rep <span class="fas fa-arrow-right ml-2"></span> 
             </button>
         </form>
     </div>

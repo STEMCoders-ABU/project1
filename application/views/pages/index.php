@@ -12,7 +12,7 @@
         </div>
 
         <div class="col-sm mt-4 mt-md-0">
-          <a href="<?= site_url('app'); ?>" class="app-link"><span class="fab fa-android mr-3 text-black"></span>Get the Mobile App</a>
+          <a href="<?= site_url('download/app'); ?>" class="app-link"><span class="fab fa-android mr-3 text-black"></span>Get the Mobile App</a>
         </div>
       </div>
     </div>

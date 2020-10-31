@@ -18,6 +18,9 @@
       <?php endif; ?>
     </title>
 
+    <link rel="shortcut icon" href="<?php echo base_url('assets/favicon.ico') ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/favicon.ico') ?>" type="image/x-icon">
+
     <!-- Bootstrap core CSS, FontAwesome and custom css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/all.css') ?>">
