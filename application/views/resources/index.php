@@ -4,7 +4,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm mt-2">
+                <div class="col-sm mt-2"> 
                     <div class="input-group mb-3">
                         <div class="row w-100">
                             <div class="col p-0">

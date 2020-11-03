@@ -1,4 +1,5 @@
-<div class="text-center mt-5 container p-4 mod-login-container">
+<div class="container px-2 px-md-0">
+<div class="text-center mt-5 p-4 mod-login-container mb-5">
 	<h4 class="text-center header mx-n4 mt-n4">Sign In to Account</h4>
 	
     <div class="mb-5 alert alert-info">
@@ -49,4 +50,5 @@
 
 		<a href="<?= site_url('moderation/reset_password'); ?>" class="ml-2 ml-md-3">Forgot Password?</a>
     </form>
+</div>
 </div>

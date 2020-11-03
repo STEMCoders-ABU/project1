@@ -119,11 +119,12 @@
           </div>
 
           <div class="input-group mt-3"> 
-              <select id="faculty_select" class="form-control bg-light" name="faculty" required=""><option value="1">Test Faculty</option><option value="2">Another Test Faculty</option></select>          </div>
+              <?= get_faculties_select('faculty_select'); ?>       
+          </div>
 
           <div class="input-group mt-3" id="departments_select_container"> 
               <!-- Departments Select will be inserted automatically via Ajax -->
-          <select id="department_select" class="form-control bg-light" name="department" required=""><option value="1">Test Department</option></select></div>
+          </div>
 
           <div class="input-group mt-3"> 
               <select id="level_select" class="form-control bg-light" name="level" required=""><option value="1">100</option><option value="3">200</option><option value="4">300</option><option value="5">400</option><option value="6">500</option><option value="7">600</option></select>          </div>

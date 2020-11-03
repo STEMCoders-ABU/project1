@@ -61,6 +61,7 @@ class Resources extends CI_Controller
         {
             $data['error'] = TRUE;
             load_view('resources/resources', $data);
+            return;
         }
 
         $category = $this->resources_model->get_resource_catgory_title($category_id);
@@ -68,6 +69,7 @@ class Resources extends CI_Controller
         {
             $data['error'] = TRUE;
             load_view('resources/resources', $data);
+            return;
         }
 
         $restrictions['resources.course_id'] = $course_id;
